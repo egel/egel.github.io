@@ -1,3 +1,7 @@
-_site
-.sass-cache
+# jekyll blog
+_site/
+.sass-cache/
 .jekyll-metadata
+
+# IntelliJ
+.idea/
