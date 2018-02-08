@@ -49,7 +49,7 @@ theme_settings:
   google_analytics: "UA-26456669-2" # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname: egel
   katex: true # Enable if using math markup
-  portfolio: true
+  portfolio: false
   search: true
   tags: true
   
