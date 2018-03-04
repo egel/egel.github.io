@@ -4,9 +4,11 @@ title: Tasting of Arch Linux
 tags: [linux, arch, terminal]
 ---
 
-I have to admit that installation of Arch Linux can be difficult for many people, but that's exactly is fun!
+I have to admit that installation of Arch Linux can be difficult for many people, but that's why it's a fun!
 
-A few days ago I've tried to install Arch on my virtual machine than on my laptop and I could not find anything that I didn't like. Yeah, I agree that there are many decisions you have to decide during installation of Arch. For example, manual setting up of partitions, current date, downloading all related packages, then finally install the whole system. For many (unfortunately) it's just the beginning because after the installation you have a bare system - console and that is it. You need to install and configure GUI and other important stuff on your own, but actually, that is huge fun!
+A few days ago I've tried first time to install Arch Linux. I've started on virtual machine, to know better the whole process and later I've tried to install it on my laptop - and you know, from 15 min of first impressions about the Arch I didn't find anything that I could not like.
+
+Yes, I agree that there are many decisions you have to decide during the installation of Arch. For example, manual setting up of partitions, current date, downloading all related packages, then finally install the whole system. For many it's just the beginning because after the installation you've only a bare system - console and that is it. You have to install and configure GUI and other important stuff on your own, but actually this is a fun, isn't it?
 
 The longest part for me was the downloading and installation packages from the Net. This took me around 45 minutes to download the system and GUI interface (Gnome).
 

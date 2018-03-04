@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Git pre-commit e-mail blocker
+title: Git pre-commit E-mail blocker
 category: Diary
 tags: [git, terminal]
 date: 2017-03-20 11:22:00
@@ -9,9 +9,11 @@ summary: Presenting a simple solution that allows only selected git users to com
 
 Since quite a while Git exists in the big market of software development. Many users using it on the daily basis as a standard way of committing their work for an employer and it also became the de facto standard way of developing in the Open Source world.
 
-I also very much like using Git, but after time I discover my way of working with Git especially when need to commit many parts for different employers and almost all the time I've had at least 2 local Git users (these where every user define his own user `~/.gitconfig` file and please don't confuse it with Gitlab, Github nor other user accounts).
+I also enjoying using Git, but after some time I discovered that my way of working with Git especially when I need to commit many different parts for multiple employers then the git user management problem begins.
 
-Usually, employers require a specific company credential while communicating with their repositories, so I figured out, that I can have multiple users in the same file, but activate only single one when I need it.
+Nowadays, almost all the time I have at least 2 local Git users (user that you define in `~/.gitconfig` file and please don't confuse it with Gitlab, Github nor other user accounts). Whatever you'll commit the user data written in `~/.gitconfig` it'll appear in your git logs.
+
+Usually, employers don't care, although some of them require a specific company credential while communicating with their repositories, so I figured out, that I can have multiple local git users in the same file, however activate only single one when I need it.
 
 ```config
 # ~/.gitconfig
@@ -47,7 +49,7 @@ This simple solution gives me an opportunity to have multiple Git local users wi
 
 To give some more real live example, when I want to switch between different users ( I'm doing something for my personal stuff at weekend and on Monday morning start using the same laptop to begin my work as an employer of company ABC) then I just comment line with `~/.gitconfig.local` and uncomment (enable) specific configuration for work `~/.gitconfig.local_work`.
 
-But "hey, no one is infallible, and many times I do a commit as a wrong user to the repository that I shouldn't commit (i.e.: using my personal e-mail address when I commit to employer's repository where I should use company's one). Therefore, since a while, I wondered about:
+Although "hey, no one is infallible, and many times I do a commit as a wrong user to the repository that I shouldn't commit (i.e.: using my personal e-mail address when I commit to employer's repository where I should use company's one). Therefore, since a while, I wondered about:
 
 > "How to disable some not authorized git users to commit in selected local repositories".
 
