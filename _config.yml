@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
 baseurl: ""
-url: "http://egel.pl"
+url: "https://egel.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -9,7 +9,7 @@ theme_settings:
   avatar: assets/img/triangle.svg
   favicon: assets/favicon.ico
   gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
-  description: "Maciej Sypień personal blog mainly about programming" # used by search engines
+  description: "Maciej Sypień personal blog mainly about web development" # used by search engines
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
@@ -22,7 +22,7 @@ theme_settings:
 
   # Icons
   rss: true
-  email_address: "maciej@egel.pl" # Full email address, e.g. "sam@example.com"
+  email_address: "maciejsypien@gmail.com" # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
