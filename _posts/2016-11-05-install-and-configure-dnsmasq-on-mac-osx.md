@@ -5,8 +5,7 @@ tags: [osx, dnsmasq, terminal]
 summary: In few small steps I will try to show you how to setup your own instance of dnsmasq.
 ---
 
-If you previously using `/etc/hosts` to manage your local domains and not heard about a more effective way of managing local domains, you should try the old and good `dnsmasq` program to improve your development workflow.
-
+If you previously used `/etc/hosts` to manage your local domains and didn't yet hear about more effective way of managing local domains, you should definitely try the old and good `dnsmasq` program to improve your development workflow.
 
 ### Installation of program
 
@@ -17,9 +16,11 @@ brew install dnsmasq
 sudo cp -v $(brew --prefix dnsmasq)/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
 ```
 
-### Adding resolver to loc domain
+### Adding resolver to domain
 
-Nowadays, there are so many new domains like `dev`, `build`, `system`, `shop`, etc., so that why I prefer using domain `loc` (which stands for `local` or `localhost`) and it's not in domain's extensions.
+Nowadays, there are so many new global domains like `.dev`, `.build`, `.systems`, `.shop`, etc., thereat I started using shortcut `.loc` for a domain name I'm using on my localhost (which stands for `local` or `localhost`). Moreover the domain `.loc` is also not in the list of extensions for global domains.
+
+Let's add now a resolver for our dnsmasq:
 
 ```bash
 [ -d /etc/resolver ] || sudo mkdir -v /etc/resolver
@@ -34,34 +35,36 @@ sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 ```
 
 ### Configuring dnsmasq as DNS server
-Then when we have a program installed, now we can get strict to the configuration. But before further actions, we will create a backup file.
+
+Afterwards, when we have the program installed, we can go directly to its configuration. But before further actions, we'll create a backup file.
 
 ```bash
 sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 ```
 
-In the example we want to use `loc` domain as our local domain (I do not use `.dev` anymore due to now it is into standard global domains) and into `/etc/dnsmasq.conf` the file we add:
+In the example we want to use domain `.loc`, so we add lines below to `/etc/dnsmasq.conf`:
 
 ```conf
 listen-address=127.0.0.1
 address=/loc/127.0.0.1
 ```
 
-That is pretty much it. Next restart the service by:
+Next, restart the service:
 
 ```bash
 sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 ```
 
-The last thing we probably have to do is a reset of  `mDNSResponser` service.
+The last thing we have to do, is to reset `mDNSResponser` service.
 
-```shell
+```bash
 sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
 ```
 
-Finally check if everything went ok and you are good to go.
-```
+Finally check if everything went OK and you are good to go.
+
+```bash
 ping example.loc
 PING example.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms
