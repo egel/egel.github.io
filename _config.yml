@@ -46,7 +46,7 @@ theme_settings:
   youtube:
 
   # Scripts / Features
-  google_analytics: "UA-26456669-2" # Tracking ID, e.g. "UA-000000-01"
+  google_analytics: "UA-115501084-1" # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname: egel
   katex: true # Enable if using math markup
   portfolio: false
