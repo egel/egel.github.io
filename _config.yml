@@ -15,10 +15,10 @@ theme_settings:
   header_text: > #two or three lines to describe your site
     <h2>Simplicity and clarity of the implementation</h2>
     <br>
-    <p>An adventure through digital network</p>
+    <p>An adventure through a digital network</p>
   header_text_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
-    Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved
+    Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved.
 
   # Icons
   rss: true
@@ -45,15 +45,15 @@ theme_settings:
   wordpress:
   youtube:
 
-  # Scripts / Features 
+  # Scripts / Features
   google_analytics: "UA-26456669-2" # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname: egel
   katex: true # Enable if using math markup
   portfolio: false
   search: true
   tags: true
-  
-  
+
+
   # Localization strings
   str_follow_on: "Follow on"
   str_rss_follow: "Follow RSS feed"
