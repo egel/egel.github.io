@@ -5,3 +5,9 @@ _site/
 
 # IntelliJ
 .idea/
+
+#  Vim temp files
+**/*~
+
+# Finder
+**/.DS_Store
