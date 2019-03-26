@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 feature-img: "assets/img/pexels/circuit.jpeg"
-tags: [about, github, gpg/pgp]
+tags: [about, github, pgp]
 ---
 
 <img style="float: left; padding: 0 20px 0 0;" src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=200"/>
