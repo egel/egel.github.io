@@ -9,12 +9,12 @@ When I saw for the first time a commits with the mysterious "Verified" sign and 
 
 ![Commit verified]({{ site.baseurl }}/assets/img/commit-verified.png)
 
-After a moment I was informed about this cool feature, I start wondering:
+After a moment when I was informed about this cool function, I started to wonder:
 
-> 1. Ok... but what those verified commits really are for?
-> 1. Why I might need to sign my commits with this PGP key? I already use SSH private/public keys.
+> 1. Ok... but what exactly those verified commits really are for?
+> 1. Why should I sign my commits with this PGP key? I already use SSH private/public keys.
 
-So to answer those questions I google a bit and found: ["Why would I sign my git commits with a PGP key when I already use an SSH key to authenticate myself when I push?"](https://security.stackexchange.com/a/120725). The post gave me a reasonable answer to why we might need to sign commits or at least sign the tags.
+So to answer those questions, I did some queries on Google and found: ["Why would I sign my git commits with a PGP key when I already use an SSH key to authenticate myself when I push?"](https://security.stackexchange.com/a/120725). The post gave me a reasonable answer to why we should sign commits or at least sign the tags.
 
 Ok, but to the most important question for me at the time was:
 
