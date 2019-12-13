@@ -31,3 +31,10 @@ jekyll-theme-type-on-strap.gemspec
 .jekyll-cache/*
 test/*
 assets/package-lock.json
+
+#  Vim temp files
+**/*~
+
+# Finder
+**/.DS_Store
+
