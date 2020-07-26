@@ -1,6 +1,5 @@
 ---
 layout: post
-<!-- title: Effective vs. inexperience programmer -->
 title: What makes you be a good programmer?
 published: true
 tags: [personality, diary, profession]
@@ -73,32 +72,32 @@ Source: Quora, "Is it better to work 5 eight-hour days or 4 twelve-hour day shif
 
 **No room for tests** - oh, if I heard something like this:
 
-    > "My code is working, you saw it - I don't need to test this, I already did that!" 
+> "My code is working, you saw it - I don't need to test this, I already did that!"
 
-    I immediately start having a goose-flesh when I just look at this person 😳. It's not about 'not knowing how to write tests or testing in general', it's more in the way of human ignorance or/and attitude to work and make own code better (less error-prone), so in the end, you won't need to clean somebody's else mess (e.g: a nasty case where the code crash the program). 
+I immediately start having a goose-flesh when I just look at this person 😳. It's not about 'not knowing how to write tests or testing in general', it's more in the way of human ignorance or/and attitude to work and make own code better (less error-prone), so in the end, you won't need to clean somebody's else mess (e.g: a nasty case where the code crash the program).
 
-    Every good programmer knows that tests are for all other people involved in the project (not for the entity), so they can claim with high certainty that the code they produced (or change) works in given test scenarios. Without tests, even the best code may be worth nothing to other programmers, because as professionals if they change something and there are no tests, they literally cannot assure the correctness of code running.  
+Every good programmer knows that tests are for all other people involved in the project (not for the entity), so they can claim with high certainty that the code they produced (or change) works in given test scenarios. Without tests, even the best code may be worth nothing to other programmers, because as professionals if they change something and there are no tests, they literally cannot assure the correctness of code running.
 
 
 **Asking for everything and not thinking for himself** or something similar like **don't ask for any help after spending a lot of time on an issue**. Those to things are incomplete opposite, although both might a negative impact on the team velocity. E.g: having a person who is a beginner and learning things. Then after a couple of sessions, you've noticed that she **keeps asking the same question over without any reflection** on them, then this in the real world sprint may crush the objectives in the sprint vision (or miss the deadline!).
 
-    The second one, "not asking for help, and waiting". This is far worse than being overactive. As you have in a team a "ticking bomb", you don't know when this bomb will blow one of your deadlines - really nasty and stressful character/behavior. 
+The second one, "not asking for help, and waiting". This is far worse than being overactive. As you have in a team a "ticking bomb", you don't know when this bomb will blow one of your deadlines - really nasty and stressful character/behavior.
     
-    In sum: "Keep up with asking questions, but think along as well!"
+In sum: "Keep up with asking questions, but think along as well!"
 
 **Having no interest in personal development after the working hours**. There are 2 opposite camps on this topic. Group one, the one being against spending personal time on self-development nor reading news from the world, will IMHO always fail. The world of IT is changing so rapidly, that sometimes a couple of months missing in the field, might impact a lot of troubles.
 
 As a programmer you're "selling" your skills by writing qualified code, therefore your skill has to up to date in order to be useful at all. If this is not happening, as a programmer you are useless (it's hard/firmly said, but it's true).
 
--   **No blogging nor side projects**. If programming could be shortened to 3 things, it would be _planning_, _implementing_, and _reflection_. All those things coexist with each other and it's difficult to separate them. Planning with implementation is ok, but if you do not reflect on what you did it will not give you anything in your future career, you will just reproduce what you already know. Therefore, blogging helps to rethink and reflect on ideas you had which in the end can help you to: 
+**No blogging nor side projects**. If programming could be shortened to 3 things, it would be _planning_, _implementing_, and _reflection_. All those things coexist with each other and it's difficult to separate them. Planning with implementation is ok, but if you do not reflect on what you did it will not give you anything in your future career, you will just reproduce what you already know. Therefore, blogging helps to rethink and reflect on ideas you had which in the end can help you to:
 
-    - systematize your knowledge, 
-    - manifest your good ideas/skills with the world,
-    - or just help you to get back to some problem which you've solved in the past.
+- systematize your knowledge,
+- manifest your good ideas/skills with the world,
+- or just help you to get back to some problem which you've solved in the past.
     
-    Accomplishing side projects can usually help to systematize and consolidate your knowledge into a skill(s). Usually, it's this combine implementing and reflecting on what you're doing, and by its physical form of practicing you learn the fastest way. 
+Accomplishing side projects can usually help to systematize and consolidate your knowledge into a skill(s). Usually, it's this combine implementing and reflecting on what you're doing, and by its physical form of practicing you learn the fastest way.
     
-    If someone is not blogging nor doing side projects you can with high probability claim this person is not progressing with his knowledge/skills.
+If someone is not blogging nor doing side projects you can with high probability claim this person is not progressing with his knowledge/skills.
 
 ### Noobs section
 
@@ -137,6 +136,10 @@ Below I gather some points that could reveal an inexperienced programmer or sugg
 
 We should always try to search for goodness and positives sides in people. Although sometimes the truth is difficult, sometimes inconvenient, but in the end, it's a result of many factors.
  
-Many, may not agree with me, but I think there is no quick or best way to say how good is the person you just met (or objectively measure yourself). Many points I wrote also I had a problem with, even after a couple of years in the programming industry. To become a good programmer is never a switch case - puff... and I am a one - no, it's a process that requires time for learning, practicing, and perceiving all in this process. In the end, there will be tests, sometimes a lot of tests - therefore may IT companies usually have long and boring test procedures (on many different levels: skills, user interaction, psychological tests, etc.) to test all hallmarks they looking for in the potential candidate. Important to say it's only a small collection of my thoughts which are only a drop in the ocean of testing characteristics, usually processed by highly skilled recruiters. Although, I am not a fan of testing person for 2-3 days just to hear: _Welcome aboard, now you can code for us_. I prefer to always try to learn from people around me, so in the end, I can learn from the mistakes of others. This is my "little secret" - strive to better and be better.
+Many, may not agree with me, but I think there is no quick or best way to say how good is the person you just met (or objectively measure yourself). Many points I wrote, also I had a problem with, even after a couple of years in the programming industry. To become a good programmer is never a switch case - puff, and I am a one. No, it's a process that requires time for learning, practicing, and perceiving all in this process.
+
+On the other had, each programmer will be dragged through tests, sometimes a lot of tests. It's common, that medium and big IT companies have longer and more exhausting test procedures (testing different levels like: core skills, human interaction, psychological tests, decision-making test etc.) to test all hallmarks they looking for in the potential candidate. 
+
+In this article I've mentioned only a small collection of my thoughts, which in the end, are only a drop in the ocean of testing characteristics, usually processed by highly skilled recruiters. Honestly, I am not a fan of testing person for a couple of days just to hear: _Welcome aboard, now you can code for us_. I believe that talk and small, concrete tests will do the job, and the main part of working with the person for few weeks will give the rest, the complete the overview. 
 
 Thank you for your time.
