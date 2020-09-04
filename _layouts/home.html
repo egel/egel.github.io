@@ -4,8 +4,14 @@ layout: default
 
 <div class="home">
   {% if site.theme_settings.header_text %}
-  <div id="main" class="call-out"
-  style="background-image: url('{{ site.baseurl }}/{{ site.theme_settings.header_text_feature_image }}')">
+  <div class="call-out"
+       id="main"
+       style="
+          background-image: url('{{ site.baseurl }}/{{ site.theme_settings.header_text_feature_image }}');
+          background-position: center;
+          background-size: cover;
+       "
+  >
     {{ site.theme_settings.header_text }}
   </div>
   {% endif %}
