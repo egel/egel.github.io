@@ -6,7 +6,14 @@ feature-img: "assets/img/pexels/circuit.jpeg"
 tags: [github, pgp, gpg]
 ---
 <div>
-    <img style="float: left; border-radius: 20px; padding: 0; margin-right: 20px; margin-bottom: 20px;" src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=150"/>
+    <img style="
+            float: left;
+            border-radius: 20px;
+            padding: 0;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        "
+        src="https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=150"/>
 </div>
 
 Hi! My name is Maciej Sypień and I'm a software engineer from Poland with a great passion for web development (especially for the frontend, backend, UX/UI design, and mobile applications).
