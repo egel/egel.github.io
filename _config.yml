@@ -14,7 +14,6 @@ theme_settings:
   # Header and footer text
   header_text: > #two or three lines to describe your site
     <h2>Simplicity and clarity of the implementation</h2>
-    <br>
     <p>An adventure through a digital network</p>
   header_text_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
