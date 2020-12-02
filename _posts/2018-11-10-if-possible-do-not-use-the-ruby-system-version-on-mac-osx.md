@@ -42,7 +42,9 @@ Counting installed Ruby versions: 1 versions
 Checking RubyGems settings: OK
 Auditing installed plugins: OK
 
-$ rbenv global 2.5.3
+$ rbenv install -v 2.5.1 # this might take while, so adding -v flag will give you visial feedback that it didn't stuck
+  ...
+$ rbenv global 2.5.1
 $ gem update --system
 $ gem install jekyll bundler
 ```
@@ -53,7 +55,7 @@ Although, that wasn't the end of my problems with ruby.
 bundle install
 Traceback (most recent call last):
     1: from /usr/local/bin/bundle:23:in `<main>'
-/usr/local/bin/bundle:23:in `load': cannot load such file -- /usr/local/lib/ruby/gems/2.5.0/gems/bundler-1.16.1/exe/bundle (LoadError)
+/usr/local/bin/bundle:23:in `load': cannot load such file -- /usr/local/lib/ruby/gems/2.5.1/gems/bundler-1.16.1/exe/bundle (LoadError)
 ```
 
 What could go wrong? Now when I try to install gems for the projects, the <code>bundler</code> seems not being installed. How? I already installed the bundler and checks if the installation was successful.
