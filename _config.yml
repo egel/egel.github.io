@@ -49,9 +49,8 @@ theme_settings:
   disqus_shortname: egel
   katex: true # Enable if using math markup
   portfolio: false
-  search: true
+  search: false
   tags: true
-
 
   # Localization strings
   str_follow_on: "Follow on"
