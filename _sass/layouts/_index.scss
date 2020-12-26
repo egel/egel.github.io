@@ -14,8 +14,8 @@
     /* --- Responsive --- */
     @media screen and (max-width: 850px) {
         background-size: 100% auto;
-    } 
-    
+    }
+
     //For white images
     p,
     a,
@@ -34,7 +34,8 @@
 }
 
 #main {
-    background-position: 100% 0px, 0% center, center top;
+    background-position: 100% 0, 0 center, center top;
+    overflow: hidden;
 }
 
 // Post listing

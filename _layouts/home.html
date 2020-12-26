@@ -3,17 +3,17 @@ layout: default
 ---
 
 <div class="home">
-  {% if site.theme_settings.header_text %}
+  {% if site.header_text %}
   <div class="call-out"
        id="main"
        style="
-          background-image: url('{{ site.baseurl }}/{{ site.theme_settings.header_text_feature_image }}');
+          background-image: url('{{ site.baseurl }}/{{ site.header_text_feature_image }}');
           background-position: top right;
           background-size: cover;
           background-color: #182124; <!-- added to simulate continuation of the bottom picutre -->
        "
   >
-    {{ site.theme_settings.header_text }}
+    {{ site.header_text }}
   </div>
   {% endif %}
 
@@ -26,22 +26,23 @@ layout: default
       </div>
       {% endif %}
       <span>
-          <header>
-            <h1>
-              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
-                {{ post.title }}
-              </a>
-            </h1>
-            <p class="meta">
-              {{ post.date | date: "%B %-d, %Y" }}
-            </p>
-          </header>
-          <div class="excerpt">
-            {{ post.content | strip_html | truncate: "250" }}
-            <!--<a class="button" href="{{ post.url | prepend: site.baseurl }}">
-              {{ site.theme_settings.str_continue_reading }}
-            </a>-->
-          </div>
+        <header>
+          <h1>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+              {{ post.title }}
+            </a>
+          </h1>
+          <span class="meta">
+            {{ post.date | date: "%B %-d, %Y" }}
+          </span>
+        </header>
+
+        <div class="excerpt">
+          {{ post.content | strip_html | truncate: "250" }}
+          <!--<a class="button" href="{{ post.url | prepend: site.baseurl }}">
+            {{ site.theme_settings.str_continue_reading }}
+          </a>-->
+        </div>
       </span>
     </div>
     {% endfor %}

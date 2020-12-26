@@ -49,7 +49,7 @@ This blog is also partly my work diary, so many decisions, and the reason why I 
 
 If you want to say thank you or want to appreciate my work, you can do it here: 
 
-<a class="button button-primary" target="_blank" href="https://www.paypal.me/MaciejSypien"><i class="fa fa-paypal"> Donate via Paypal</i></a> 
+<a class="btn btn-primary" target="_blank" href="https://www.paypal.me/MaciejSypien"><i class="fa fa-paypal"> Donate via Paypal</i></a> 
 
 The income from this, will be 100% used to provide a better content for this blog. Thank you for any activity on this matter 🙂
 

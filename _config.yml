@@ -3,72 +3,40 @@ baseurl: ""
 url: "https://egel.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
-theme_settings:
-  # Meta
-  title: The Egel's blog
-  avatar: assets/img/triangle.svg
-  favicon: assets/6779124281580121298.svg
-  gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
-  description: "Maciej Sypień personal blog mainly about web development" # used by search engines
+title: The Egel's blog
+description: "Maciej Sypień personal blog mainly about web development" # used by search engines
+avatar: assets/img/triangle.svg
+favicon: assets/6779124281580121298.svg
+gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
 
-  # Header and footer text
-  header_text: > #two or three lines to describe your site
-    <h2>Simplicity and clarity of the implementation</h2>
-    <p>An adventure through a digital network</p>
-  header_text_feature_image: assets/img/pexels/triangular.jpeg
-  footer_text: >
-    Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved.
+# Header and footer text
+header_text: > #two or three lines to describe your site
+  <h2>Simplicity and clarity of the implementation</h2>
+  <p>An adventure through a digital network</p>
+header_text_feature_image: assets/img/pexels/triangular.jpeg
+footer_text: >
+  Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved.
 
-  # Icons
-  rss: true
-  email_address: "maciejsypien@gmail.com" # Full email address, e.g. "sam@example.com"
-  behance:
-  bitbucket:
-  dribbble:
-  facebook:
-  flickr:
-  gitlab: "schmied"
-  github: "egel"
-  google_plus:
-  instagram:
-  keybase: "egel"
-  linkedin:  # Full URL
-  pinterest:
-  reddit:
-  soundcloud:
-  stack_exchange: "https://stackexchange.com/users/2242942/egel"  # Full URL
-  steam:
-  tumblr:
-  twitter: "MaciejSypien" # "twitter username"
-  vimeo:
-  wordpress:
-  youtube:
+# Blog
+excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
+post_navigation: true
+color_image: assets/img/lineart.png                     # A bit transparent for color posts.
 
-  # Scripts / Features
-  google_analytics: "UA-115501084-1" # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname: egel
-  katex: true # Enable if using math markup
-  portfolio: false
-  search: false
-  tags: true
+# Features
+# More in the _data folder for social icons, share buttons, author and language
+# For layout customization, go to the "_sass > base" folder, and check "_variables.scss"
+katex: true                                             # Enable if using math markup
+mermaid: true                                           # Enable mermaid-js for sequence and diagrams
+google_analytics: "UA-115501084-1"                      # Tracking ID, e.g. "UA-000000-01"
+cookie_consent: false                                   # To respect the usage of cookies
+disqus_shortname: "egel"
 
-  # Localization strings
-  str_follow_on: "Follow on"
-  str_rss_follow: "Follow RSS feed"
-  str_email: "Email"
-  str_next_post: "Next post"
-  str_previous_post: "Previous post"
-  str_next_page: "Next"
-  str_previous_page: "Prev"
-  str_continue_reading: "Continue reading"
-  str_javascript_required_disqus: "Please enable JavaScript to view comments."
-
-  # Colours, typography and padding
-  # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
-
-  # Post navigation
-  post_navigation: true
+# Colours, typography and padding
+# Open the "_sass > base" folder, and open "_variables.scss"
+google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+portfolio: true
+search: false
+tags: true
 
 # PAGINATION
 paginate: 7
@@ -83,9 +51,29 @@ collections:
 # BUILD SETTINGS
 markdown: kramdown
 highlighter: rouge
+
 sass:
   sass_dir: _sass
   style: :compressed
-plugins: [jekyll-paginate, jekyll-seo-tag]
-theme: type-on-strap # If using the theme as a jekyll theme gem
-exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]
+
+plugins:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-feed
+
+exclude:
+  - .idea
+  - .jekyll-cache/
+  - .sass-cache/
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - assets/node_modules
+  - gemfiles/
+  - node_modules/
+  - type-on-strap.gemspec
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
