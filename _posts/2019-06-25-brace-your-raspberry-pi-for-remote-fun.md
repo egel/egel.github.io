@@ -5,7 +5,7 @@ published: true
 tags: [raspberry-pi, ssh, wifi]
 ---
 
-Whenever I have some fun with my Raspberry Pi and try to accomplish something crazy, which in the end lead to destroy the system, I have to reproduce some repeatable steps in order to make my Pi useful again. 
+Whenever I have some fun with my Raspberry Pi and try to accomplish something crazy, which in the end lead to destroy the system, I have to reproduce some repeatable steps in order to make my Pi useful again.
 
 Each time my goal is pretty much simple, I would even risk saying minimalistic. The objective is to have as few cables as possible (only power supply) and the most important point to have automatic connection to my local Wi-Fi network, so I can easily SSH to the Pi and start the fun.
 
@@ -41,9 +41,9 @@ sudo raspi-config
 
     Then by clicking through further menu options connect to your network.
 
-    -   Wi-fi
-    -   SSID - Name of the network
-    -   Password
+    - Wi-fi
+    - SSID - Name of the network
+    - Password
 
 If you finally managed to get to your wifi now it's time to download `wicd-curses`
 
@@ -69,15 +69,16 @@ sudo wicd-curses
 1.  Press RIGHT arrow key in order to enter configuration for this network.
 
 1.  Put `X` nearby:
-    -   `[X] Use DHCP Hostname`
-    -   `[X] Automatically connect to this network`
-    -   `[X] Use Encryption`
-    -   Fill the password
-    -   In the end **save** by pressing `Shift`+`S`
+
+    - `[X] Use DHCP Hostname`
+    - `[X] Automatically connect to this network`
+    - `[X] Use Encryption`
+    - Fill the password
+    - In the end **save** by pressing `Shift`+`S`
 
 1.  Select the network and connect it by pressing enter.
 
-Done. Now if you reboot your Pi it should automatically connect to the network. Moreover, if you travel with your Pi to multiple places it will remember all nearby networks and will also automatically connect to them. Sweet! 🤓 
+Done. Now if you reboot your Pi it should automatically connect to the network. Moreover, if you travel with your Pi to multiple places it will remember all nearby networks and will also automatically connect to them. Sweet! 🤓
 
 ## Enable SSH access
 
@@ -92,7 +93,7 @@ Now you can reboot the device and connect to it via SSH.
 
 ## Useful packages
 
-Additionally I 
+Additionally, I usually also install:
 
 ```bash
 sudo apt-get update
