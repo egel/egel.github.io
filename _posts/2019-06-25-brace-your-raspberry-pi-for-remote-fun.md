@@ -96,7 +96,7 @@ Additionally I
 
 ```bash
 sudo apt-get update
-sudo apt-get -y \
+sudo apt-get -y install \
     vim \
     curl \
     wget \
