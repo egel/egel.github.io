@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to properly set up Python project?
-tags: [python, macOS, pyenv, nutshell]
+tags: [python, macos, pyenv, nutshell]
 ---
 
 When you want to use Python or have an existing project written in it, you will inevitably stand before a question about which Python version you should use?

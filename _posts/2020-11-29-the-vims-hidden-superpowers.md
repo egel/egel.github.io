@@ -2,7 +2,7 @@
 layout: post
 title: The Vim's hidden superpowers
 modified: 2020-12-04
-tags: [text-editor, vim, macOS]
+tags: [text-editor, vim, macos]
 ---
 
 Many people ask me why I like Vim so much. Usually, I hear that _"this is an ancient editor and you should use something more modern"_. My answer sounds almost always like: "it depends on what I need".
