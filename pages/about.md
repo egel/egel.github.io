@@ -57,7 +57,7 @@ Well, I'm pleased to invite you to sit comfortably and enjoy the content of my b
 If you want to say thank you or want to appreciate what I do, buy me a coffee ☕️:
 
 <a target="_blank"
-   href="https://www.paypal.me/MaciejSypien"
+   href="https://www.paypal.me/msypien"
    style="
         display: inline-block;
         padding: 14px 20px;
