@@ -13,22 +13,22 @@ gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
 header_text: > #two or three lines to describe your site
   <h2>Simplicity and clarity of the implementation</h2>
   <p>An adventure through a digital network</p>
-header_text_feature_image: assets/img/pexels/triangular.jpeg
+header_text_feature_image: assets/img/pexels/pexels-aleksandar-pasaric-2603464.jpg
 footer_text: >
   Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved.
 
 # Blog
-excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
+excerpt: true # Or "truncate" (first 250 characters), "false" to disable
 post_navigation: true
-color_image: assets/img/lineart.png                     # A bit transparent for color posts.
+color_image: assets/img/lineart.png # A bit transparent for color posts.
 
 # Features
 # More in the _data folder for social icons, share buttons, author and language
 # For layout customization, go to the "_sass > base" folder, and check "_variables.scss"
-katex: true                                             # Enable if using math markup
-mermaid: true                                           # Enable mermaid-js for sequence and diagrams
-google_analytics: "UA-115501084-1"                      # Tracking ID, e.g. "UA-000000-01"
-cookie_consent: false                                   # To respect the usage of cookies
+katex: true # Enable if using math markup
+mermaid: true # Enable mermaid-js for sequence and diagrams
+google_analytics: "UA-115501084-1" # Tracking ID, e.g. "UA-000000-01"
+cookie_consent: false # To respect the usage of cookies
 disqus_shortname: "egel"
 
 # Colours, typography and padding

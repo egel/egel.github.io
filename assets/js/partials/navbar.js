@@ -16,8 +16,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
   /*
    * Make the header images move on scroll
    */
-  window.addEventListener('scroll', function () {
-    var offset = -(window.scrollY || window.pageYOffset || document.body.scrollTop) / 3;
-    document.getElementById("main").style.backgroundPosition = '100% ' + (offset - 50) + 'px' + ', 0%, center top';
+  gsap.to("#scrollable-background", {
+    backgroundPosition: "70% 100%",
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#scrollable-background",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
   });
 });

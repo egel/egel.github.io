@@ -1,63 +1,109 @@
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  />
 
   <!-- JQuery (used for bootstrap and jekyll search) -->
   <script src="/assets/js/vendor/jquery-3.5.1.min.js"></script>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/main.css" />
 
   {% if site.katex or site.theme_settings.katex %}
-  <link rel="stylesheet" href="/assets/css/vendor/katex.min.css">
+  <link rel="stylesheet" href="/assets/css/vendor/katex.min.css" />
   {% endif %}
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.favicon }}" type="image/x-icon">
+  <link
+    rel="shortcut icon"
+    href="{{ site.baseurl }}/{{ site.favicon }}"
+    type="image/x-icon"
+  />
 
   <!-- Canonical -->
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link
+    rel="canonical"
+    href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+  />
 
   <!-- RSS -->
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ 'feed.xml' | absolute_url }}"/>
+  <link
+    rel="alternate"
+    type="application/atom+xml"
+    title="{{ site.title }}"
+    href="{{ 'feed.xml' | absolute_url }}"
+  />
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" type="text/css" href="/assets/css/vendor/font-awesome.min.css">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/assets/css/vendor/font-awesome.min.css"
+  />
 
   <!-- Google Fonts -->
   {% if site.google_fonts %}
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ site.google_fonts }}">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="//fonts.googleapis.com/css?family={{ site.google_fonts }}"
+  />
   {% endif %}
 
+  <!-- gsap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
   <!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
-  <script defer src="/assets/js/main.min.js"></script>
+  <script defer src="/assets/js/partials/navbar.js"></script>
 
   <!-- Mermaid 8.8.2 -->
   {% if site.mermaid %}
-  <script defer src="{{ '/assets/js/vendor/mermaid.min.js' | relative_url }}"
-          onload="mermaid.initialize({startOnLoad:true});"></script>
+  <script
+    defer
+    src="{{ '/assets/js/vendor/mermaid.min.js' | relative_url }}"
+    onload="mermaid.initialize({startOnLoad:true});"
+  ></script>
   {% endif %}
 
   <!-- KaTeX 0.12.0 -->
   {% if site.katex or site.theme_settings.katex %}
-  <script defer src="{{ '/assets/js/vendor/katex.min.js' | relative_url }}"></script>
-  <script defer src="{{ '/assets/js/vendor/auto-render.min.js' | relative_url }}"
-          onload="renderMathInElement(document.body);"></script>
+  <script
+    defer
+    src="{{ '/assets/js/vendor/katex.min.js' | relative_url }}"
+  ></script>
+  <script
+    defer
+    src="{{ '/assets/js/vendor/auto-render.min.js' | relative_url }}"
+    onload="renderMathInElement(document.body);"
+  ></script>
   {% endif %}
 
   <!-- Simple-Jekyll-Search 1.17.12 -->
-  <script src="{{ '/assets/js/vendor/simple-jekyll-search.min.js' | relative_url }}" type="text/javascript"></script>
+  <script
+    src="{{ '/assets/js/vendor/simple-jekyll-search.min.js' | relative_url }}"
+    type="text/javascript"
+  ></script>
 
   <!-- Google Analytics / Cookie Consent -->
   <script>
-    const cookieName = 'cookie-notice-dismissed-{{ site.url }}';
-    const isCookieConsent = '{{ site.cookie_consent }}';
-    const analyticsName = '{{ site.google_analytics }}';
+    const cookieName = "cookie-notice-dismissed-{{ site.url }}";
+    const isCookieConsent = "{{ site.cookie_consent }}";
+    const analyticsName = "{{ site.google_analytics }}";
   </script>
 
   {% if site.cookie_consent %}
-  <div id="cookie-notice"><span>{{ site.data.language.str_cookie_disclaimer | default: "We would like to use third party cookies and scripts to improve the functionality of this website." }}
-          </span><a id="cookie-notice-accept" class="button">{{ site.data.language.str_cookie_approve | default: "Approve" }}</a>
+  <div id="cookie-notice">
+    <span
+      >{{ site.data.language.str_cookie_disclaimer | default: "We would like to
+      use third party cookies and scripts to improve the functionality of this
+      website." }}</span
+    >
+    <a id="cookie-notice-accept" class="button"
+      >{{ site.data.language.str_cookie_approve | default: "Approve" }}</a
+    >
   </div>
   {% endif %}
 
@@ -65,20 +111,27 @@
   {% if site.google_analytics %}
   <script>
     (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+      i["GoogleAnalyticsObject"] = r;
+      (i[r] =
+        i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+        (i[r].l = 1 * new Date());
+      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
       a.async = 1;
       a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      m.parentNode.insertBefore(a, m);
+    })(
+      window,
+      document,
+      "script",
+      "//www.google-analytics.com/analytics.js",
+      "ga"
+    );
 
-    ga('create', '{{ site.google_analytics }}', 'auto');
-    ga('send', 'pageview');
-
+    ga("create", "{{ site.google_analytics }}", "auto");
+    ga("send", "pageview");
   </script>
   {% endif %}
 

@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-feature-img: "assets/img/pexels/circuit.jpeg"
+feature-img: "assets/img/pexels/pexels-elijah-pilchard-12792221_slice3.jpg"
 tags: [github, pgp, gpg]
 ---
 <div>

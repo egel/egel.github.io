@@ -3,31 +3,36 @@ layout: default
 ---
 
 <!-- Bootstrap-5.0.0 -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/vendor/bootstrap.min.css">
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ site.baseurl }}/assets/css/vendor/bootstrap.min.css"
+/>
 
 <!-- Bootstrap JS -->
 <script src="{{ site.baseurl }}/assets/js/vendor/bootstrap.min.js"></script>
 
 <article {% if page.feature-img %}class="feature-image" {% endif %}>
-    <header id="main" style="background-image: url('{{ site.baseurl }}/{{ page.feature-img }}')">
-        <h1 class="title">{{ page.title }}</h1> {% if page.subtitle %}
-        <h2 class="subtitle">{{ page.subtitle }}</h2>{% endif %}
-    </header>
-
-    {% if page.description %}
-    <section class="post-content">
-        {{ page.description }}
-    </section>
+  <header
+    id="main"
+    style="background-image: url('{{ site.baseurl }}/{{ page.feature-img }}')"
+  >
+    <h1 class="title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+    <h2 class="subtitle">{{ page.subtitle }}</h2>
     {% endif %}
+  </header>
 
-    <!-- Bootstrap will work within this div -->
-    <section>
-        <div class="bootstrap-iso">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 centered">
-            {{ content }}
-            </div>
-            <div class="col-md-1"></div>
-        </div>
-    </section>
+  {% if page.description %}
+  <section class="post-content">{{ page.description }}</section>
+  {% endif %}
+
+  <!-- Bootstrap will work within this div -->
+  <section>
+    <div class="bootstrap-iso">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 centered">{{ content }}</div>
+      <div class="col-md-1"></div>
+    </div>
+  </section>
 </article>
