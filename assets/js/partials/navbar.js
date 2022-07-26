@@ -3,13 +3,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
   /*
    * Display the menu items on smaller screens
    */
-  var pull = document.getElementById('pull');
+  var menuToggleButton = document.getElementById('menu-toggle');
   var menu = document.querySelector('nav ul');
 
 
   ['click', 'touch'].forEach(function (e) {
-    pull.addEventListener(e, function () {
-      menu.classList.toggle('hide')
+    menuToggleButton.addEventListener(e, function () {
+      console.log("asdfasfdasdf")
+      menu.classList.toggle('open-menu')
     }, false);
   });
 

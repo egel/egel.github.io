@@ -4,6 +4,7 @@
   display: inline-block;
   width: 100%;
   height: 100%;
+  min-height: 300px;
   background-color: $header-desc-background-color;
   font-size: 1.2em;
   text-align: center;
@@ -14,6 +15,7 @@
   /* --- Responsive --- */
   @media screen and (max-width: 850px) {
     background-size: 100% auto;
+    min-height: 200px;
   }
 
   //For white images
