@@ -1,13 +1,17 @@
 # blog-jekyll
-New blog in jekyll without template generation
+Blog in Jekyll without template generation
 
 ## install
 
 ```bash
 rbenv -v
-rbenv install -v 2.5.1
-rbenv global 2.5.1
+rbenv install --list
+rbenv install -v 2.7.6
+rbenv global 2.7.6
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ruby -v
+
+gem update --system
 gem install bundler jekyll
 bundle install
 ```
@@ -17,5 +21,3 @@ bundle install
 ```bash
 bundle exec jekyll serve --livereload
 ```
-
-brew uninstall openssl; brew uninstall openssl; brew install https://github.com/tebelorg/Tump/releases/download/v1.0.0/openssl.rb
