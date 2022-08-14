@@ -1,53 +1,53 @@
+@import "../base/_variables";
+
 .search-bar {
-  display: block;
+  display: inline-block;
+  position: relative;
   width: 100%;
-  height: 46px;
+  height: 58px;
   padding: 6px 12px;
   font-size: 18px;
-  line-height: 1.43;
+  line-height: 1.5;
   color: $text-color;
-  background-color: $background-color;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s,
-    -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  border-bottom: 2px solid transparent;
+  border-image-source: $avatar-gradient;
+  border-image-slice: 1;
+
 
   &:focus,
   &:hover {
-    border-color: $link-color;
+    border-color: #ff5e62;
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-      0 0 8px $link-shadow;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $link-shadow;
   }
 
+  &::placeholder,
   &::-moz-placeholder {
-    color: $search-color;
-    opacity: 1;
+    color: #999
   }
 
-  &:-ms-input-placeholder,
-  &::-webkit-input-placeholder {
-    color: $search-color;
+  &::after {
+    position: absolute;
+    border-radius: 10px;
   }
+}
 
-  input {
-    &[type="text"] {
-      height: 46px;
-      padding: 10px 16px;
-      font-size: 18px;
-      line-height: 1.33;
-      border-radius: 6px;
+.feature-image .post-content {
+  padding-bottom: $padding-small;
+}
+
+ul#results-container {
+  margin: 2rem 0;
+
+  hr {
+    margin: 40px 0;
+
+    &:last-child {
+      display: none;
     }
   }
 }
 
-.search-title a {
+div.search-title a {
   h3 {
     margin: 0;
   }

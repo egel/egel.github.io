@@ -1,3 +1,19 @@
+// Colors
+$avatar-gradient: linear-gradient(135deg, #ff5e62 0%, #ff9966 50%);
+$rainbow-gradient: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+);
+$rainbow-gradient-pastel: linear-gradient(135deg, #f94144, #f3722c, #f8961e, #f9c74f, #90be6d, #43aa8b, #577590);
+
 // Typography
 $font-family-main: "Source Sans Pro", Helvetica, Arial, sans-serif;
 $font-family-headings: "Source Sans Pro", Helvetica, Arial, sans-serif;
@@ -35,8 +51,11 @@ $header-desc-background-color: #507492;
 $header-desc-text-color: #fff;
 
 // Mobile display
-$break: 768px;
-$sm-break: 450px;
+$phone: 480px;
+$tablet: 768px;
+$smallScreen: 1440px;
+$break: 768px; // @deprecated: use $tablet instead
+$sm-break: 450px; // @deprecated: use $phone instead
 
 /*  Syntax highlighting  */
 // Syntax typography
