@@ -3,8 +3,8 @@ baseurl: ""
 url: "https://egel.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
-title: The Egel's blog
-description: "Maciej Sypień personal blog mainly about web development" # used by search engines
+title: Maciej Sypien
+description: "Personal blog mainly about web development" # used by search engines
 avatar: assets/img/triangle.svg
 favicon: assets/6779124281580121298.svg
 gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
@@ -13,7 +13,7 @@ gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
 header_text: > #two or three lines to describe your site
   <h2>Simplicity and clarity of the implementation</h2>
   <p>An adventure through a digital network</p>
-header_text_feature_image: assets/img/pexels/pexels-aleksandar-pasaric-2603464.jpg
+header_text_feature_image: assets/img/pexels/pexels-aleksandar-pasaric-2603464_s1.jpg
 footer_text: >
   Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved.
 
@@ -65,6 +65,7 @@ exclude:
   - .idea
   - .jekyll-cache/
   - .sass-cache/
+  - .editorconfig
   - Gemfile
   - Gemfile.lock
   - LICENSE
