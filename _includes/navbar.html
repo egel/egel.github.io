@@ -2,7 +2,11 @@
   <!-- Logo and title -->
   <div class="branding">
     <a href="{{ site.baseurl }}/">
-      <img alt="{{ site.title }}" class="avatar" src="{{ site.baseurl }}/{{ site.avatar }}"/>
+      <img
+        alt="{{ site.title }}"
+        class="avatar"
+        src="{{ site.baseurl }}/{{ site.avatar }}"
+      />
     </a>
 
     <h1 class="site-title">
@@ -11,20 +15,20 @@
   </div>
 
   <!-- Toggle menu -->
-  <nav class="clear">
-    <a class="toggle" href="#" id="pull">
+  <nav>
+    <a id="menu-toggle" href="#">
       <i class="fa fa-bars fa-lg"></i>
     </a>
 
     <!-- Menu -->
-    <ul>
-      {% for page in site.pages %}
-      {% if page.title and page.hide != true %}
+    <ul id="menu-list">
+      {% for page in site.pages %} {% if page.title and page.hide != true %}
       <li>
-        <a class="clear" href="{{ page.url | relative_url }}">{{ page.title }}</a>
+        <a class="clear" href="{{ page.url | relative_url }}"
+          >{{ page.title }}</a
+        >
       </li>
-      {% endif %}
-      {% endfor %}
+      {% endif %} {% endfor %}
     </ul>
   </nav>
 </header>

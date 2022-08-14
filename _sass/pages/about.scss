@@ -1,0 +1,110 @@
+@import "../base/_variables";
+
+.my-avatar {
+  $_small: 75px;
+  $_medium: 125px;
+  $_big: 150px;
+  $_huge: 200px;
+
+  @media screen and (max-width: $phone) {
+    width: $_small;
+    height: $_small;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_small), $avatar-gradient;
+  }
+
+  @media screen and (min-width: $phone + 1) and (max-width: $tablet) {
+    width: $_medium;
+    height: $_medium;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_medium), $avatar-gradient;
+  }
+
+  @media screen and (min-width: $tablet + 1) and (max-width: $smallScreen) {
+    width: $_big;
+    height: $_big;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_big), $avatar-gradient;
+  }
+
+  @media screen and (min-width: $smallScreen + 1) {
+    width: $_huge;
+    height: $_huge;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_huge), $avatar-gradient;
+  }
+
+  float: left;
+  border-radius: 25px;
+  padding: 0;
+  margin: 25px 20px 20px 0;
+  border: calc(6px + 0.1vw) solid transparent;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  background-size: cover;
+  box-sizing: border-box;
+  transition: .3s ease;
+
+  &:hover {
+    border: calc(12px + 0.1vw) solid transparent;
+  }
+}
+
+// Nice animated cta button
+.cta-button-paypal {
+  padding: 1em 2em;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background: #262626;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #000000;
+  }
+
+  &:before {
+    content: "";
+    background: $rainbow-gradient;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: rainbow-glowing-button 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+
+    &:after {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #222;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+  }
+}
+
+@keyframes rainbow-glowing-button {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

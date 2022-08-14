@@ -4,11 +4,11 @@ layout: default
 
 <div class="home">
   {% if site.header_text %}
-  <div class="call-out"
-       id="main"
-       style="
+  <div
+    id="scrollable-background"
+    class="call-out"
+    style="
           background-image: url('{{ site.baseurl }}/{{ site.header_text_feature_image }}');
-          background-position: top right;
           background-size: cover;
           background-color: #182124; <!-- added to simulate continuation of the bottom picutre -->
        "
@@ -22,7 +22,7 @@ layout: default
     <div class="post-teaser">
       {% if post.thumbnail %}
       <div class="post-img">
-        <img src="{{ site.baseurl }}/{{ post.thumbnail }}">
+        <img src="{{ site.baseurl }}/{{ post.thumbnail }}" />
       </div>
       {% endif %}
       <span>
@@ -32,9 +32,7 @@ layout: default
               {{ post.title }}
             </a>
           </h1>
-          <span class="meta">
-            {{ post.date | date: "%B %-d, %Y" }}
-          </span>
+          <span class="meta"> {{ post.date | date: "%B %-d, %Y" }} </span>
         </header>
 
         <div class="excerpt">
@@ -51,16 +49,17 @@ layout: default
   {% if paginator.total_pages > 1 %}
   <div class="pagination">
     {% if paginator.previous_page %}
-    <a class="button"
-       href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
+    <a
+      class="button"
+      href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
     >
       <i class="fa fa-chevron-left"></i>
       {{ site.theme_settings.str_previous_page }}
     </a>
-    {% endif %}
-    {% if paginator.next_page %}
-    <a class="button"
-       href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
+    {% endif %} {% if paginator.next_page %}
+    <a
+      class="button"
+      href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
     >
       {{ site.theme_settings.str_next_page }}
       <i class="fa fa-chevron-right"></i>

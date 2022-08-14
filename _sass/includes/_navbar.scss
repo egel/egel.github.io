@@ -1,132 +1,136 @@
 .site-header {
-    padding: $padding-x-small $padding-x-small * 2;
-    padding-top: $padding-x-small;
-    background: $brand-color;
-    display: inline-block;
+  padding: $padding-x-small * 2 $padding-x-small * 2;
+  background: $brand-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // align-items: flex-start;
+  width: 100%;
+
+  .branding {
+    display: flex;
+    flex-direction: row;
+  }
+
+  a {
+    color: $header-link-color;
+  }
+
+  .avatar {
+    height: 30px;
+    width: auto;
+    border-radius: 0.2em;
+    margin-right: 0.5em;
+    padding: 0;
+  }
+
+  .site-title {
     float: left;
-    width: 100%;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+
+  nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    ul {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      line-height: 1.5;
+      text-align: right;
+      clear: both;
+    }
+
+    li {
+      display: inline;
+      float: left;
+      margin-right: 0.4em;
+      min-height: 47px;
+    }
 
     a {
-        color: $header-link-color;
-    }
+      &:hover {
+        color: $link-color;
+      }
 
-    .avatar {
-        height: 3em;
-        width: 3em;
-        float: left;
-        margin-top: -13px;
-        border-radius: 0.2em;
-        margin-right: 0.5em;
-        padding: 10px 10px;
-
-    }
-
-    .site-title {
-        float: left;
-        font-weight: bold;
-        font-size: 1em;
-        line-height: 1.5;
-    }
-
-    nav {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            line-height: 1.5;
-            float: right;
-            text-align: right;
+      &#menu-toggle {
+        i {
+          float: right;
+          margin-bottom: 20px;
         }
-        li {
-            display: inline;
-            float: left;
-            margin-right: 0.4em;
-        }
-        a {
-            &:hover {
-                color: $link-color;
-            }
-            &#pull {
-                i {
-                    margin-top: 13px;
-                    float: right;
-                }
-
-            }
-
-        }
+      }
     }
+  }
 }
 
+// To clear things when we float the element inisde nav and ul
+// .clear {
+//   *zoom: 1;
 
-// To clear things when we float the element inisde nav and ul 
-.clear {
-    *zoom: 1;
+//   &:after {
+//     clear: both;
+//   }
 
-    &:after {
-        clear: both;
-    }
-
-    &:before,
-    &:after {
-        content: " ";
-        display: table;
-    }
-}
+//   &:before,
+//   &:after {
+//     content: " ";
+//     display: table;
+//   }
+// }
 
 /* ---- Responsive ---- */
 
 @media (min-width: $break) {
-    a#pull {
-        display: none;
-    }
+  a#menu-toggle {
+    display: none;
+  }
 }
 
 @media screen and (max-width: $break) {
-    .site-header {
-        img.avatar {
-            margin-top: -7px
-        }
-        .site-title {
-            margin-top: 7px;
-        }
+  nav {
+    height: auto;
+
+    ul {
+      width: 100%;
+      display: none;
+
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-in-out;
+
+      &.open-menu {
+        max-height: 300px;
+      }
     }
 
-    nav {
-        height: auto;
-
-        ul {
-            width: 100%;
-            display: none;
-            height: auto;
-        }
-
-        li {
-            width: 100%;
-            float: left;
-            position: relative;
-        }
-
-        a {
-            text-align: left;
-            width: 100%;
-
-            &#pull {
-                display: block;
-                width: 100%;
-                position: relative;
-
-                &:after {
-                    content: "";
-                    display: inline-block;
-                    position: absolute;
-                    right: 15px;
-                    top: 10px;
-                }
-            }
-        }
+    li {
+      width: 100%;
+      float: left;
+      position: relative;
     }
+
+    a {
+      text-align: left;
+      width: 100%;
+
+      &#menu-toggle {
+        display: block;
+        width: 100%;
+        position: relative;
+
+        &:after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          // right: 15px;
+          // top: 10px;
+        }
+      }
+    }
+  }
 }
