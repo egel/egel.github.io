@@ -31,7 +31,7 @@
   }
 
   float: left;
-  border-radius: 30px;
+  border-radius: 25px;
   padding: 0;
   margin: 25px 20px 20px 0;
   border: calc(6px + 0.1vw) solid transparent;
@@ -39,9 +39,7 @@
   background-clip: content-box, border-box;
   background-size: cover;
   box-sizing: border-box;
-  box-shadow: 0 3px 6px 6px rgba(0, 0, 0, 0.1);
   transition: .3s ease;
-  cursor: pointer;
 
   &:hover {
     border: calc(12px + 0.1vw) solid transparent;
