@@ -1,9 +1,11 @@
 ---
 layout: post
-title: Create the revocation certificate for you GPG key 
+title: Always create GPG revocation certificate backup
 published: true
 tags: [security, diary, gpg]
 ---
+
+## The story behind it
 
 A few days ago I received an encrypted message from a stranger. Unfortunately, I can't read it. I stumble upon a problem, that I forgot my GPG passphrase! Oh, no!
 
@@ -33,7 +35,7 @@ The problem was that there was a bug in my password manager (and I think it is s
 >
 > Always create your keys with expiration dates and store your GPG passphrase in 2 places. Really, just do it! 
 
-### Create recovery cert
+## Create recovery cert
 
 Oh, there was a lot of frustration and irritation in the last couple of paragraphs. Instead of just feeling positive emotions and thrill what's inside I got a package of disappointment that I presented for myself supported by a silly but nasty software bug.    
 
