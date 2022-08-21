@@ -4,7 +4,10 @@ url: "https://egel.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
 title: Maciej Sypien
-description: "Personal blog mainly about web development" # used by search engines
+tagline: Software engineer blog # jekyll-seo-tag
+description: "Personal blog about life as the software engineer." # used by search engines
+author: Maciej Sypien
+logo: assets/img/triangle.svg # jekyll-seo-tag
 avatar: assets/img/triangle.svg
 favicon: assets/6779124281580121298.svg
 gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
@@ -15,7 +18,7 @@ header_text: > #two or three lines to describe your site
   <p>An adventure through a digital network</p>
 header_text_feature_image: assets/img/pexels/pexels-aleksandar-pasaric-2603464_s1.jpg
 footer_text: >
-  Made with ♥ by Maciej Sypień since 2014 · All copyrights reserved.
+  Made with ♥ by Maciej Sypien since 2014 · All copyrights reserved.
 
 # Blog
 excerpt: true # Or "truncate" (first 250 characters), "false" to disable
