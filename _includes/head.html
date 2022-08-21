@@ -1,9 +1,6 @@
 <head>
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <!-- JQuery (used for bootstrap and jekyll search) -->
   <script src="/assets/js/vendor/jquery-3.5.1.min.js"></script>
@@ -16,11 +13,7 @@
   {% endif %}
 
   <!--Favicon-->
-  <link
-    rel="shortcut icon"
-    href="{{ site.baseurl }}/{{ site.favicon }}"
-    type="image/x-icon"
-  />
+  <link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.favicon }}" type="image/x-icon" />
 
   <!-- Canonical -->
   <link
@@ -37,11 +30,7 @@
   />
 
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="/assets/css/vendor/font-awesome.min.css"
-  />
+  <link rel="stylesheet" type="text/css" href="/assets/css/vendor/font-awesome.min.css" />
 
   <!-- Google Fonts -->
   {% if site.google_fonts %}
@@ -70,10 +59,7 @@
 
   <!-- KaTeX 0.12.0 -->
   {% if site.katex or site.theme_settings.katex %}
-  <script
-    defer
-    src="{{ '/assets/js/vendor/katex.min.js' | relative_url }}"
-  ></script>
+  <script defer src="{{ '/assets/js/vendor/katex.min.js' | relative_url }}"></script>
   <script
     defer
     src="{{ '/assets/js/vendor/auto-render.min.js' | relative_url }}"
@@ -96,14 +82,13 @@
 
   {% if site.cookie_consent %}
   <div id="cookie-notice">
-    <span
-      >{{ site.data.language.str_cookie_disclaimer | default: "We would like to
-      use third party cookies and scripts to improve the functionality of this
-      website." }}</span
-    >
-    <a id="cookie-notice-accept" class="button"
-      >{{ site.data.language.str_cookie_approve | default: "Approve" }}</a
-    >
+    <span>
+      {{ site.data.language.str_cookie_disclaimer | default: "We would like to use third party
+      cookies and scripts to improve the functionality of this website." }}
+    </span>
+    <a id="cookie-notice-accept" class="button">
+      {{ site.data.language.str_cookie_approve | default: "Approve" }}
+    </a>
   </div>
   {% endif %}
 
@@ -122,19 +107,13 @@
       a.async = 1;
       a.src = g;
       m.parentNode.insertBefore(a, m);
-    })(
-      window,
-      document,
-      "script",
-      "//www.google-analytics.com/analytics.js",
-      "ga"
-    );
+    })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
 
     ga("create", "{{ site.google_analytics }}", "auto");
     ga("send", "pageview");
   </script>
   {% endif %}
 
-  <!-- seo tags -->
+  <!-- seo tags from jekyll-seo-tag plugin -->
   {% seo %}
 </head>
