@@ -1,5 +1,5 @@
 # blog-jekyll
-Blog in Jekyll without template generation
+Blog in Jekyll that works without template generation with user's default GitHub page.
 
 ## install
 
@@ -17,7 +17,6 @@ bundle install
 ```
 
 ## development
-
 ```bash
-bundle exec jekyll serve --livereload
+npm start
 ```
