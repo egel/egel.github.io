@@ -14,7 +14,7 @@
     </h1>
   </div>
 
-  <!-- Toggle menu -->
+  {% comment %} ===== Toggle menu ===== {% endcomment %}
   <nav>
     <a id="menu-toggle" href="#">
       <i class="fa fa-bars fa-lg"></i>
@@ -24,9 +24,9 @@
     <ul id="menu-list">
       {% for page in site.pages %} {% if page.title and page.hide != true %}
       <li>
-        <a class="clear" href="{{ page.url | relative_url }}"
-          >{{ page.title }}</a
-        >
+        <a class="clear" href="{{ page.url | relative_url }}">
+          {{ page.title }}
+        </a>
       </li>
       {% endif %} {% endfor %}
     </ul>

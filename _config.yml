@@ -7,9 +7,9 @@ title: Maciej Sypien
 tagline: Software engineer blog # jekyll-seo-tag
 description: "Personal blog about life as the software engineer." # used by search engines
 author: Maciej Sypien
-logo: assets/img/triangle.svg # jekyll-seo-tag
-avatar: assets/img/triangle.svg
-favicon: assets/6779124281580121298.svg
+logo: assets/img/logo_black.svg # jekyll-seo-tag
+avatar: assets/img/logo_black.svg
+favicon: assets/img/logo.svg
 gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
 
 # Header and footer text
