@@ -19,6 +19,7 @@
 
 .tag-anchor {
     margin-bottom: $padding-x-small;
+
     a {
         color: $link-color;
 
@@ -31,9 +32,11 @@
 .tag-posts {
     display: inline-block;
     width: 100%;
+
     .tag-title {
         margin-top: 0;
         margin-bottom: 0;
+
         a {
             margin-left: $padding-x-small;
         }

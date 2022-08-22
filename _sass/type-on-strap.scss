@@ -1,26 +1,31 @@
-// Variables
-@import 'base/variables';
+// External =========================================
+@import "external/reset";
 
-// External
-@import 'external/reset';
-@import 'external/syntax';
+@import "base/syntax-highlight";
+@import "external/syntax";
+
+// Theme ============================================
+
+// Variables
+@import "base/variables";
+@import "base/typography";
 
 // Base
-@import 'base/global';
-@import 'base/utility';
+@import "base/global";
+@import "utils/utility";
 
 // Posts
-@import 'layouts/posts';
-@import 'layouts/index';
-@import 'layouts/page';
-@import 'layouts/tags';
-@import 'layouts/search';
-@import 'layouts/portfolio';
+@import "layouts/posts";
+@import "layouts/index";
+@import "layouts/page";
+@import "layouts/tags";
+@import "layouts/search";
+@import "layouts/portfolio";
 
 // Includes
-@import 'includes/footer';
-@import 'includes/post_nav';
-@import 'includes/navbar';
+@import "includes/footer";
+@import "includes/post_nav";
+@import "includes/navbar";
 
 // Pages
 @import "pages/about";
