@@ -61,6 +61,10 @@ header {
 .feature-image {
   padding: 0;
 
+  .title {
+    background: none;
+  }
+
   .post-link {
     color: $feature-image-text-color;
   }

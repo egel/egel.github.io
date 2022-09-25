@@ -1,0 +1,36 @@
+// base colors
+$color-white-orange: #FFC371;
+$color-robins-chest: #FF5F6D;
+$color-sky-and-sea-gray: #5981A2;
+$color-million-grey: #999999;
+$color-vibrant-black: #3F3F3F;
+$color-cannon-smoke: #383838;
+$color-pure-white: #FFFFFF;
+$color-rocky-snowfall: #D4D4D4;
+$color-bath-bubble-optimism: #F2F9FB;
+
+
+// gradients
+$avatar-gradient: linear-gradient(135deg, #ff5e62 0%, #ff9966 50%);
+$rainbow-gradient: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+);
+$rainbow-gradient-pastel: linear-gradient(
+    135deg,
+    #f94144,
+    #f3722c,
+    #f8961e,
+    #f9c74f,
+    #90be6d,
+    #43aa8b,
+    #577590
+);

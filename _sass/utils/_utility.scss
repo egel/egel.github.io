@@ -1,3 +1,6 @@
+@import "../base/colors";
+@import "../base/variables";
+
 .header-txt-shadow {
     text-shadow: 1px 1px 2px $text-shadow;
 }
@@ -34,7 +37,7 @@ a.button {
 .post-link {
   color: transparent;
   background-color: $text-color;
-  background-image: -webkit-linear-gradient(45deg, #FF5F6D 0%, #FFC371 50%, transparent 50%);
+  background-image: linear-gradient(45deg, $color-robins-chest 0%, $color-white-orange 50%, transparent 50%);
   background-position: 100% 0;
   background-size: 200% 200%;
   transition: .1s;
