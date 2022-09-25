@@ -1,15 +1,17 @@
+@import "../utils/_mixins";
+
 .site-header {
   padding: $padding-x-small * 2 $padding-x-small * 2;
   background: $brand-color;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // align-items: flex-start;
   width: 100%;
 
   .branding {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
   a {
@@ -32,6 +34,7 @@
   }
 
   nav {
+    // flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -68,30 +71,16 @@
   }
 }
 
-// To clear things when we float the element inisde nav and ul
-// .clear {
-//   *zoom: 1;
-
-//   &:after {
-//     clear: both;
-//   }
-
-//   &:before,
-//   &:after {
-//     content: " ";
-//     display: table;
-//   }
-// }
-
 /* ---- Responsive ---- */
 
-@media (min-width: $break) {
+@include isSmallScreenLayoutOrMore {
+  // Hide menu
   a#menu-toggle {
     display: none;
   }
 }
 
-@media screen and (max-width: $break) {
+@include isTabletLayoutOrLess {
   nav {
     height: auto;
 
@@ -127,8 +116,6 @@
           content: "";
           display: inline-block;
           position: absolute;
-          // right: 15px;
-          // top: 10px;
         }
       }
     }

@@ -1,0 +1,63 @@
+@import "../base/_variables";
+
+// Breakpoints
+//          | --------- | --------- | ------------- | ----------- >
+// values   | 0 --- 480 | 481 - 768 | 769 ---- 1440 | 1441 ------ >
+// range    |   phone   |   tablet  | small screens | big screens
+//
+@mixin isBigScreenLayout {
+  @media screen and (min-width: #{$small-screen-max + 1}) {
+    @content;
+  }
+}
+
+@mixin isSmallScreenLayoutOrMore {
+  @media screen and (min-width: #{$tablet-max + 1}) {
+    @content;
+  }
+}
+
+@mixin isSmallScreenLayout {
+  @media screen and (min-width: #{$tablet-max + 1}) and (max-width: #{$small-screen-max}) {
+    @content;
+  }
+}
+
+@mixin isTabletLayoutOrLess {
+  @media screen and (max-width: #{$tablet-max}) {
+    @content;
+  }
+}
+
+@mixin isTabletLayout {
+  @media screen and (min-width: #{$phone-max + 1}) and (max-width: #{$tablet-max}) {
+    @content;
+  }
+}
+
+@mixin isPhoneLayout {
+  @media screen and (max-width: $phone-max) {
+    @content;
+  }
+}
+
+// Paddings
+%padding-small {
+  padding: $padding-x-small $padding-x-small * 2;
+
+  @media (max-width: 1000px) {
+    padding: $padding-x-small $padding-x-small;
+  }
+}
+
+%padding-regular {
+  padding: $padding-small $padding-large;
+
+  @media (max-width: 1000px) {
+    padding: $padding-small * 1.5 $padding-large / 1.6;
+  }
+
+  @media (max-width: 576px) {
+    padding: $padding-small;
+  }
+}

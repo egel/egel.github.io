@@ -13,7 +13,6 @@
   border-image-source: $avatar-gradient;
   border-image-slice: 1;
 
-
   &:focus,
   &:hover {
     border-color: #ff5e62;
@@ -22,7 +21,7 @@
 
   &::placeholder,
   &::-moz-placeholder {
-    color: #999
+    color: #999;
   }
 
   &::after {

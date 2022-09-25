@@ -1,3 +1,5 @@
+@import "../utils/_mixins";
+
 * {
     margin: 0;
     padding: 0;
@@ -17,61 +19,8 @@ html {
     background: $background-color;
 }
 
-// Typography
-::selection {
-    background: $selection-color;
-}
 
-::-moz-selection {
-    background: $selection-color;
-}
 
-body {
-    color: $text-color;
-    font-family: $font-family-main;
-    font-size: $font-size;
-    word-wrap: break-word;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $font-family-headings;
-    line-height: 1.3;
-    margin: 0.67em 0;
-    a {
-        color: $text-color;
-    }
-}
-
-h1 {
-    font-size: 2.5em;
-}
-
-h2 {
-    font-size: 2em;
-}
-
-h3 {
-    font-size: 1.5em;
-}
-
-h4 {
-    font-size: 1.15em;
-}
-
-blockquote {
-    border-left: 2px solid darken($blockquote-color, 20%);
-    margin: 1em 1em;
-    padding: 0.75em 1em;
-    background-color: $blockquote-color;
-    box-shadow: 0 2px 2px $border-color;
-}
-
-blockquote p:last-child,
 footer p:last-child {
     margin-bottom: 0;
 }
@@ -171,7 +120,7 @@ img[align=right] {
 
 /* ---- Responsive ---- */
 
-@media screen and (max-width: $sm-break) {
+@include isTabletLayoutOrLess {
     h1 {
         font-size: 2em;
     }

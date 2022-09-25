@@ -6,28 +6,32 @@
   $_big: 150px;
   $_huge: 200px;
 
-  @media screen and (max-width: $phone) {
+  @include isPhoneLayout {
     width: $_small;
     height: $_small;
-    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_small), $avatar-gradient;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_small),
+      $avatar-gradient;
   }
 
-  @media screen and (min-width: $phone + 1) and (max-width: $tablet) {
+  @include isTabletLayout {
     width: $_medium;
     height: $_medium;
-    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_medium), $avatar-gradient;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_medium),
+      $avatar-gradient;
   }
 
-  @media screen and (min-width: $tablet + 1) and (max-width: $smallScreen) {
+  @include isSmallScreenLayout {
     width: $_big;
     height: $_big;
-    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_big), $avatar-gradient;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_big),
+      $avatar-gradient;
   }
 
-  @media screen and (min-width: $smallScreen + 1) {
+  @include isBigScreenLayout {
     width: $_huge;
     height: $_huge;
-    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_huge), $avatar-gradient;
+    background-image: url("https://secure.gravatar.com/avatar/4d66c5a2d6be57e7cb9bdef200417b4d?s=" + $_huge),
+      $avatar-gradient;
   }
 
   float: left;
@@ -39,7 +43,7 @@
   background-clip: content-box, border-box;
   background-size: cover;
   box-sizing: border-box;
-  transition: .3s ease;
+  transition: 0.3s ease;
 
   &:hover {
     border: calc(12px + 0.1vw) solid transparent;
