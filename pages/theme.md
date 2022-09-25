@@ -1,12 +1,11 @@
 ---
 layout: page
-title: "Theme lookup"
+title: "Theme overview"
 permalink: /theme.html
 hide: true
 ---
 
-This page is intended to show most of the elements or techniques used in this blog (HTML, CSS, typography, media, source code, external elements) to make it easier to work on or to fix them.
-
+This page is intended to show most of the elements or techniques used in this blog (HTML, CSS, typography, media, source code, external elements, etc.) to make it easier to work on or to fix them.
 
 ## Typography
 
@@ -55,7 +54,7 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
     <input name="hippo" placeholder="Some placeholder">
 </div>
 
-**Associated label with input** (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">More info</a>)
+**Associated label with input** (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">More info</a>)bb
 
 <label for="hippo">I am a label for input
     <input name="hippo" placeholder="Some placeholder">
