@@ -32,10 +32,19 @@ a.button {
 }
 
 .post-link {
-    &:hover {
-        text-decoration: none;
-        color: lighten($link-color, 10%);
-    }
+  color: transparent;
+  background-color: $text-color;
+  background-image: -webkit-linear-gradient(45deg, #FF5F6D 0%, #FFC371 50%, transparent 50%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  transition: .1s;
+  -webkit-background-clip: text;
+
+  &:hover {
+    color: transparent;
+    background-position: 0 100%;
+    transition: .3s;
+  }
 }
 
 // States
