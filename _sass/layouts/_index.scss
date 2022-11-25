@@ -56,20 +56,19 @@
     }
 
     .post-img {
-      vertical-align: middle;
-      border-radius: 25px;
-      overflow: hidden;
-
       @include isSmallScreenLayoutOrMore() {
         height: 250px;
       }
       @include isTabletLayoutOrLess() {
         height: 150px;
       }
+
+      vertical-align: middle;
+      border-radius: 25px;
+      overflow: hidden;
     }
 
     .post-img img {
-      //max-width: 100%;
       -moz-transform: scale(1);
       -webkit-transform: scale(1);
       transform: scale(1);
@@ -97,12 +96,12 @@
 
 // Pagination
 .pagination {
-  padding: $padding-small $padding-large 0 $padding-large;
-  text-align: center;
-
   @include isTabletLayoutOrLess() {
     padding: $padding-small;
   }
+
+  padding: $padding-small $padding-large 0 $padding-large;
+  text-align: center;
 
   .button {
     margin: 0 1.5em;
