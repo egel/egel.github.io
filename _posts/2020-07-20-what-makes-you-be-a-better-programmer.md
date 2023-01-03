@@ -11,9 +11,9 @@ In this article, I would like to analyze what is web-development a favorable beh
 
 > Disclaimer: this topic is huge and the man could write a book about it. In this article, I will try to emphasize some points which might be a bit different from the well-known stereotype (intelligent, educated, fast typist, fast thinker). This topic will also try to answer the question of how to discover some true potential even in a programming newbie.
 
-## Let's start with positives
+## Let's start with positive aspects
 
-What could advocate for being a promising/awesome programmer to the others? I will not take into consideration the obvious part - skills (which are crucial to getting the job), in here, I will try to focus on behavior and character of each personality and how this might correspond to become an effective programmer.
+What could advocate for being a promising/awesome programmer to the others? I will not take into consideration the obvious part - skills (which are crucial to getting the job done), in here, I will try to focus on behavior and character of each personality and how this might correspond to become an effective programmer.
 
 ### Positive character
 
@@ -31,7 +31,7 @@ A need for **code reviews**, should be high in good daily team workflow. The rea
 
 **Keep It Stupid Simple** (or KISS for short), this is without a doubt the central motto of many programmers with well-developed habits. E.g.: by keeping your code small and simple (small diffs) there will be a great chance, that your change will be soon accepted by the code reviewers and merged. Hence your job will be done sooner, the others will have a feeling you're more productive than the general average.
 
-**Keeping an eye on the goal** - programmers tend to be like a Capitan of a pirate ship, they sail in various oceans of digital bits, but the goal changes along with the wind. This shouldn't be like that. It's a tempting carrier to be like the Capitan of a pirate ship, but often it will lead to troubles. In some example scenarios, if you will not keep an eye on the goal, it could exceed the estimated time to accomplish the issue (if you follow agile) and besides somebody waits for your solution to continue his work - this could lead to misunderstanding, frustration in a team, or working late to deliver the feature. To omit these problems, try to be more like navigator on the ship, no matter what will surround you, by looking at the stars (i.e.: issue's acceptance points and your knowledge) you will always find a way for yourself (and for your crew) to get to the port. This will put more light on you, as a leader of a group.
+**Keeping an eye on the goal** - programmers tend to be like a Captain of a pirate ship, they sail in various oceans of digital bits, but the goal changes along with the wind. This shouldn't be like that. It's a tempting carrier to be like the Captain of a pirate ship, but often it will lead to troubles. In some example scenarios, if you will not keep an eye on the goal, it could exceed the estimated time to accomplish the issue (if you follow agile) and besides somebody waits for your solution to continue his work - this could lead to misunderstanding, frustration in a team, or working late to deliver the feature. To omit these problems, try to be more like navigator on the ship, no matter what will surround you, by looking at the stars (i.e.: issue's acceptance points and your knowledge) you will always find a way for yourself (and for your crew) to get to the port. This will put more light on you, as a leader of a group.
 
 If you're a web developer and you get the task which you know how to accomplish just after you've heard it - great, it should be easy, right? Although, it's not always like that! Most of us (programmers), when getting some task, usually don't have a clue how to finish it, nor how much time they will need for this. However, **do not afraid to get out from your comfort zone** - it's important to go further because this is a part of our profession to learn and discover - uncertainty is high, but usually reward as well. Being a good programmer is never to be closed only in the solutions you already know, rather be open on new, unknown possibilities. This is the power of a true effective specialist, being adaptive.
 
@@ -40,22 +40,28 @@ Definitely not! So this means to be a good programmer, you should a good team pl
 
 If I would summarize in a simple scale factor of 10 points _how much of teamwork is to do compare to solo_ - I would say it's like 3-5:7-5. Depend on the type of task, 3 up to 5 points will be spent on team collaboration, analyzing the problems, and pressing the goals. The rest, 7 up to 5 points will go in the research and physical implementation which is usually a solo activity.
 
-### Physical aspect
+### Physical aspect matters
 
-**Doing exercises**. I think I would not lie to you if I would say that it's popular that IT guys (of any sort) are either fat or thin like a stick. It's not always the true in XXI century. Many "office workers" follow new health trends. But for many people who work in the office, it's hard to resist the higher need of always having something sweet on the side. I think this case applies especially for programmers, where there is a trend to provide all possible sweets or soft drinks in the office (aka. "kitchen goodies", or something similar). Then the temptation of not trying anything of that is huge! But a "round" programmer is not a bad programmer! I know a couple of really good programmers who are really big guys. Although, IMHO this has a deeper meaning. Some of them are overweight because (I'm not involving in it any illnesses nor disabilities) programmers tend to work in front of a desk for long hours. Moreover, to be a good programmer, usually, the person has to learn a lot and cover this with practice, which usually means that you have to spend even more time sitting. While your code skill will rise, the same does your weight. This means the truly effective programmer will also take care of his health by doing some activities to keep the body (and the mind!) in good shape.
+**Doing exercises**. I think I would not lie to you if I would say that it's popular that IT guys (of any sort) are either fat or thin like a stick. Fortunately it's not always the true in XXI century. Many "office workers" follow new health trends. But for many people who work in the office, it's hard to resist the higher need of always having something sweet on the side. I think this case applies especially for programmers, where there is a trend to provide all possible sweets or soft drinks in the office (aka. "kitchen goodies", or something similar). Then the temptation of not trying anything of that is huge! But a "round" programmer is not a bad programmer! I know a couple of extremely good programmers who are really great big guys. Although, IMHO this has a deeper meaning. Some of them are overweight because (I'm not involving in it any illnesses nor disabilities) programmers tend to work in front of a desk for long hours. Moreover, to be a better programmer, usually, the person has to learn a lot and cover this with practice, which usually means that you have to spend even more time sitting. While your code skill will rise, the same does your weight. This means the truly effective programmer will also take care of his health by doing some activities to keep the body (and the mind!) in good shape.
 
 For some of you, this also might be silly but **good position while sitting** might tell if you're treating your job seriously, and you want to be the most effective as possible. People who have a good position while sitting in front of their computers have fewer health problems which means they will be more compelling at work for a longer range of time.
 
-**Drinking a lot of water**. This usually isn't even noticed by other people. For a second try to be 100% honest with yourself, how often have you noticed that your buddy at work drinking water instead of Coke or other soft drink? Possible 30-0% chance that you've noticed. Nevertheless, this simple habit of drinking water will have a significant meaning for your mood and general health. It's well known, that sugar is some sort of "a legal drug", and it won't increase your thinking capabilities, rather the opposite. You might think, that it gives you a boost, but sweets will tell your brain to "feel good", but it's only a feeling, temporary feeling. Pure water will boost your organism to correct and effective work in a long-range. So if you will see a programmer with a bottle of water nearby and the same one with Coke you will know which one will be more effective at work.
+**Drinking a lot of water**. This usually isn't even noticed by other people. For a second try to be 100% honest with yourself, and ask yourself a question? 
+
+> How often have you noticed that your buddy at work drinking water instead of Coke or other soft drink? 
+
+A possible chance 30-0% that you've noticed someone. Nevertheless, this simple habit of drinking water will have a significant meaning for your mood and general health. It's well known, that [sugar is some sort of "a legal drug"](https://medium.com/illumination/sugar-is-the-legal-white-drug-thats-slowly-ruining-your-health-life-4312517333d1), and it won't increase your thinking capabilities, rather the opposite. You might think, that it gives you a boost, but sweets will tell your brain to "feel good", but it's only a feeling, temporary feeling. Pure water instead will boost your organism to correct and effective work in a long time range. 
+
+Now, if you will see a programmer with a bottle of water nearby and the same one with Coke you will know which one will be more effective at work 😉
 
 
 ## Feeble ingredients
 
-Becoming a real programmer is not easy. I don't want to sound pessimistic nor discriminates anybody from the future in the IT industry. I just want to emphasize that not all people have mental predispositions to become one. As analogy example is the Psychiatrist job - it requires a specific immersion on how you work, involvement, and some psychological resistance to things that are happening around. The same is in programming - for some, programming is the most boring job around the world - clicking the whole day on a keyboard. For others, it is a dream job, a way to improve this world.
+Becoming a better programmer is not easy. I don't want to sound pessimistic nor discriminates anybody here from the future in the IT industry. I just want to emphasize that not all people have mental predispositions to become one. As analogy example is the Psychiatrist job - it requires a specific immersion on how you work, involvement, and some psychological resistance to things that are happening around. The same is in programming - for some, programming is the most boring job around the world (e.g.: clicking the whole day on a keyboard), although for others, it is a dream job, like the best way to spend time improving this world.
 
-Some of the characteristics below might strengthen, that a person you think of, could have some difficulties with becoming a programmer.
+Some of the characteristics below might strengthen, that a person you think of, could have some difficulties with becoming a better programmer.
 
-Having **no daily routine** could be one of the key features of having on-board inefficient web-developer. The work of web-developer is almost all about routine and repeatable tasks. For instance, checking new emails 4-5 times a day, daily stand-ups, sprint planning, sprint retro, reviewing available merge requests, etc. If there is no routine, then it will be hard for that person to synchronize with the team.   
+Having **no daily routine** could be one of the key features of inefficiency. The work of web-developer is almost all about routine and repeatable tasks. For instance, checking new emails 4-5 times a day, daily stand-ups, sprint planning, sprint retro, reviewing available merge requests, etc. If there is no routine, then it will be hard for that person to synchronize with the team.   
 
 **No design docs**. By this term, I have in mind omitting a sketching session (or whiteboard session) and just a straight way to start writing code. If a person doesn't know what she is doing, this will definitely (in the best scenario) extend only the estimated time for implementation. But in the worst scenario, this could fail finishing project/feature on time. 
 
@@ -67,39 +73,39 @@ Having **no daily routine** could be one of the key features of having on-board 
 
 Source: Quora, "Is it better to work 5 eight-hour days or 4 twelve-hour day shifts?"
 
-**Lack of motivation** or **being constantly tired** - it's could sound silly when you'll read it for the first time. Moreover, this could be assigned to any other profession (not only to programmers!) and will also fit. But the difference that distinguishes programmers from other IT professions, or professions in general, is the extreme focus while working (writing a program). The program has to follow some logic, whatever this logic is, but have to be some. When you're tired of your motivation is somewhere else, it's difficult to write correct/good code because you're thinking about completely something else
+**Lack of motivation** or **being constantly tired** - it's could sound silly when you'll read it for the first time. Moreover, this could be assigned to any other profession (not only to programmers!) and will also fit. But the difference that distinguishes programmers from other IT professions, or professions in general, is the extreme focus while working (writing a program). The program has to follow some logic, whatever this logic is, but have to be some and must make sense. When you're tired of your motivation is somewhere else, it's difficult to write correct/good code because you're thinking about completely something else.
 
 
 **No room for tests** - oh, if I heard something like this:
 
 > "My code is working, you saw it - I don't need to test this, I already did that!"
 
-I immediately start having a goose-flesh when I just look at this person 😳. It's not about 'not knowing how to write tests or testing in general', it's more in the way of human ignorance or/and attitude to work and make own code better (less error-prone), so in the end, you won't need to clean somebody's else mess (e.g: a nasty case where the code crash the program).
+I immediately start having a goose-flesh when I just look at this person 😳. It's not about 'not knowing how to write tests or testing in general', it's more in the way of human attitude or/and ignorance towards the work to make code better (less error-prone). In the end, nobody won't need to clean somebody's else mess (e.g: a nasty case where the code crash the program).
 
-Every good programmer knows that tests are for all other people involved in the project (not for the entity), so they can claim with high certainty that the code they produced (or change) works in given test scenarios. Without tests, even the best code may be worth nothing to other programmers, because as professionals if they change something and there are no tests, they literally cannot assure the correctness of code running.
+Every good programmer knows that tests are for everyone involved in the project (not for the entity), so they can claim with high certainty that the code they produced (or change) works in given test scenarios. Without tests, even the best code may be worth nothing to other programmers, because as professionals if they change something and there are no tests, they literally cannot assure the correctness of code running. Tests are for making your work-life balance sane again.
 
 
 **Asking for everything and not thinking for himself** or something similar like **don't ask for any help after spending a lot of time on an issue**. Those to things are incomplete opposite, although both might a negative impact on the team velocity. E.g: having a person who is a beginner and learning things. Then after a couple of sessions, you've noticed that she **keeps asking the same question over without any reflection** on them, then this in the real world sprint may crush the objectives in the sprint vision (or miss the deadline!).
 
-The second one, "not asking for help, and waiting". This is far worse than being overactive. As you have in a team a "ticking bomb", you don't know when this bomb will blow one of your deadlines - really nasty and stressful character/behavior.
-    
+The second one, "not asking for help, and waiting" - this is far worse than being overactive. As you have in a team a "ticking bomb", you don't know when this bomb will blow one of your deadlines - really nasty and stressful character/behavior - so it's good to keep yourself just in the middle.
+
 In sum: "Keep up with asking questions, but think along as well!"
 
-**Having no interest in personal development after the working hours**. There are 2 opposite camps on this topic. Group one, the one being against spending personal time on self-development nor reading news from the world, will IMHO always fail. The world of IT is changing so rapidly, that sometimes a couple of months missing in the field, might impact a lot of troubles.
+**Having no interest in personal development after the working hours**. There are 2 opposite camps on this topic. Group one, the one being against spending personal time (time not given in the working hours) on self-development nor reading news from the world, will IMHO always sooner or later fail. The world of IT is changing so rapidly, that sometimes a couple of months missing in the field, might impact a lot of troubles. 
 
-As a programmer you're "selling" your skills by writing qualified code, therefore your skill has to up to date in order to be useful at all. If this is not happening, as a programmer you are useless (it's hard/firmly said, but it's true).
+Also to be frankly speaking, I am not saying that you need to spend all your free time to learn stuff for work. I want to tell you, you should spend some free time to expand yourself in general-IT way, and "the way" it's up to you. As a programmer you're "selling" your skills by writing fast the qualified code, therefore your skill has to up to date in order to be useful at all. If this is not happening, as a programmer you are useless (it's hard/firmly said, but it's true).
 
-**No blogging nor side projects**. If programming could be shortened to 3 things, it would be _planning_, _implementing_, and _reflection_. All those things coexist with each other and it's difficult to separate them. Planning with implementation is ok, but if you do not reflect on what you did it will not give you anything in your future career, you will just reproduce what you already know. Therefore, blogging helps to rethink and reflect on ideas you had which in the end can help you to:
+**No blogging nor side projects**. If programming could be shortened to 3 things, it would be _planning_, _implementing_, and _reflection_. All those things coexist with each other and it's difficult to separate them. Planning with implementation is OK, but if you do not reflect on what you did it will not give you anything in your future career, you will just reproduce what you already know. Therefore, blogging helps to rethink and reflect on ideas you had which in the end can help you to:
 
 - systematize your knowledge,
 - manifest your good ideas/skills with the world,
 - or just help you to get back to some problem which you've solved in the past.
-    
+
 Accomplishing side projects can usually help to systematize and consolidate your knowledge into a skill(s). Usually, it's this combine implementing and reflecting on what you're doing, and by its physical form of practicing you learn the fastest way.
-    
+
 If someone is not blogging nor doing side projects you can with high probability claim this person is not progressing with his knowledge/skills.
 
-### Noobs section
+### Noob section
 
 Below I gather some points that could reveal an inexperienced programmer or suggest that there is still a room before he will become an independent developer:
 
@@ -107,9 +113,9 @@ Below I gather some points that could reveal an inexperienced programmer or sugg
 
 -   large diffs - combining multiple problems in the single solution (pull request), or the problems that "would be nice" to finally have.
 
--   huge methods - building a complex method which does a bit of everything inside, including bear-dance - ok, just joking here, but you get a point.
+-   huge methods - building a complex method which does a bit of everything inside, including bear-dance - OK, just joking here, but you get a point.
 
--   inappropriate variable names - constructing variables or method's parameters which are like a math-teacher function names `f(x) = x, y, z ...` 
+-   inappropriate variable names - constructing variables or method's parameters which are like a math-teacher function names `f(x) = x, y, z ...`. No
 
 -   dozens of "if" statements - not knowing how to properly use `if` statements or without any good reason nesting them in few levels.
 
@@ -122,7 +128,7 @@ Below I gather some points that could reveal an inexperienced programmer or sugg
 
     I would agree, but later - at first, the code must work, and only then you can optimize it when there will be a real need. Only in rare cases, this optimization makes sense.
 
--   over-engineered code - providing, unnecessary options of customizations without any good reason (e.g. _because it's cool to have it there, isn't it?_)
+-   over-engineered code - providing, unnecessary options of customization without any good reason (e.g. _because it's cool to have it there, isn't it?_)
 
 -   copy & paste code without thinking about it - coping the code from other projects as is, or overusing the great help given from the stack overflow.
 
@@ -136,10 +142,14 @@ Below I gather some points that could reveal an inexperienced programmer or sugg
 
 We should always try to search for goodness and positives sides in people. Although sometimes the truth is difficult, sometimes inconvenient, but in the end, it's a result of many factors.
  
-Many, may not agree with me, but I think there is no quick or best way to say how good is the person you just met (or objectively measure yourself). Many points I wrote, also I had a problem with, even after a couple of years in the programming industry. To become a good programmer is never a switch case - puff, and I am a one. No, it's a process that requires time for learning, practicing, and perceiving all in this process.
+Many, may not agree with me, but I think there is no quick or best way to say how good is the person you just met (or objectively measure yourself). Many points I wrote, also I had a problem with, even after a couple of years in the programming industry. To become a good programmer is never a switch case - puff, and I am a one. It's a process that requires time for learning, practicing, and perceiving all in this process.
 
-On the other hand, each programmer will be dragged through tests, sometimes a lot of tests. It's common, that medium and big IT companies have longer and more exhausting test procedures (testing different levels like: core skills, human interaction, psychological tests, decision-making test etc.) to test all hallmarks they looking for in the potential candidate.
+On the other hand, each programmer will be finally dragged through exhausting testing steps. It's common pattern at the moment, that mid-size and big IT companies have longer and more exhausting recruiting procedures (to testing different levels of your skills like: core skills, human interaction, psychological tests, decision-making test etc.) to check all hallmarks they looking for in the potential candidate. I do not believe this is best way but each company may require a bit different skill-set than the other.
 
-In this article I've mentioned only a small collection of my thoughts, which in the end, are only a drop in the ocean of testing characteristics, usually processed by highly skilled recruiters. Honestly, I am not a fan of testing person for a couple of days just to hear: _Welcome aboard, now you can code for us_. I believe that talk and small, concrete tests will do the job, and the main part of working with the person for few weeks will give the rest, the complete the overview.
+In this article I've mentioned only a small collection of my remarks, which in the end, are only a drop in the ocean of recruiting characteristics, usually processed by highly skilled recruiters or head-hunters. Honestly, I am not a fan of in-depth person for a couple of days just to hear: _Welcome aboard, now you can code for us_. I believe that talk and small, concrete code-puzzle-case will do the job. As the main part of working with the person for few weeks will reveal the full picture.
 
-Thank you for your time.
+## References
+
+- "Refactoring: Improving the Design of Existing Code" by Martin Fowler
+- "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
+- "Debug It!: Find, Repair, and Prevent Bugs in Your Code" by Paul Butcher
