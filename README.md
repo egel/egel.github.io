@@ -1,4 +1,5 @@
 # blog-jekyll
+
 Blog in Jekyll that works without template generation with user's default GitHub page.
 
 ## install
@@ -6,8 +7,8 @@ Blog in Jekyll that works without template generation with user's default GitHub
 ```bash
 rbenv -v
 rbenv install --list
-rbenv install -v 2.7.6
-rbenv global 2.7.6
+rbenv install -v 2.7.7 # this version also works with arm64
+rbenv global 2.7.7
 echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ruby -v
 
@@ -17,6 +18,7 @@ bundle install
 ```
 
 ## development
+
 ```bash
 npm start
 ```
