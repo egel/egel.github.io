@@ -47,7 +47,7 @@ h4 {
 }
 
 h5 {
-  font-size: 1.10em;
+  font-size: 1.1em;
 }
 
 h6 {
@@ -64,4 +64,49 @@ blockquote {
 
 blockquote p:last-child {
   margin: 0;
+}
+
+p code,
+pre:not(.highlight) {
+  // highlight is reserved class for rouge code highligher
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  font-family: $font-family-monospace;
+  font-size: 0.75em;
+  padding: 4px 8px;
+}
+
+p kbd,
+li kbd,
+table kbd {
+  // Keyboard
+  --kbd-color-background: white;
+  --kbd-color-border: #999;
+  --kbd-color-text: #282828;
+
+  // Match the page defaults in light mode but
+  // switch to a light-ish grey in dark mode
+  display: inline;
+  position: relative;
+  background-color: var(--kbd-color-background);
+  color: var(--kbd-color-text);
+  border-radius: 0.25rem;
+
+  border: 1px solid var(--kbd-color-border);
+  padding: 2px 5px;
+  box-shadow: 0 2px 0 1px var(--kbd-color-border);
+  font-family: $font-family-monospace;
+  font-size: 0.75em;
+  line-height: 1;
+
+  cursor: default;
+  min-width: 1.5rem;
+  text-align: center;
+  top: -1px;
+
+  &:hover {
+    box-shadow: 0 1px 0 0.5px var(--kbd-color-border);
+    top: 1px;
+    cursor: pointer;
+  }
 }
