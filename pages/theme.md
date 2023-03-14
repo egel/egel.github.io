@@ -41,6 +41,15 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 
 <button>Some button</button>
 
+=======
+
+## Alerts
+
+<div class="alert alert-info">Some message</div>
+<div class="alert alert-success">Some message</div>
+<div class="alert alert-warning">Some message</div>
+<div class="alert alert-danger">Some message</div>
+
 ---
 
 ## Inputs
@@ -84,10 +93,21 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 <ul>
     <li>one</li>
     <li>two</li>
-    <ul>
-        <li>three</li>
-        <li>four</li>
-    </ul>
+    <li>
+        <ul>
+            <li>three</li>
+            <li>four</li>
+            <li>
+                <ul>
+                    <li>five</li>
+                    <li>six
+                        <code> some code block </code>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
 </ul>
 
 ### ordered list
@@ -95,10 +115,12 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 <ol>
     <li>one</li>
     <li>two</li>
-    <ul>
-        <li>three</li>
-        <li>four</li>
-    </ul>
+    <li>
+        <ul>
+            <li>three</li>
+            <li>four</li>
+        </ul>
+    </li>
 </ol>
 
 ---
@@ -144,9 +166,13 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 
 ---
 
+<<<<<<< Updated upstream
+
 ## Keyboard
 
-<kbd>cmd</kbd> + <kbd>r</kbd>
+# <kbd>cmd</kbd> + <kbd>r</kbd>
+
+> > > > > > > Stashed changes
 
 ## Code
 

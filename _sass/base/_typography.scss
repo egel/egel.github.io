@@ -67,13 +67,16 @@ blockquote p:last-child {
 }
 
 p code,
-pre:not(.highlight) {
+li > code,
+pre:not(.highlight),
+pre:not(.highlight) code {
   // highlight is reserved class for rouge code highligher
   background-color: #f0f0f0;
   border-radius: 3px;
   font-family: $font-family-monospace;
   font-size: 0.75em;
   padding: 4px 8px;
+  margin-bottom: 1em;
 }
 
 p kbd,
