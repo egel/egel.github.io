@@ -1,0 +1,510 @@
+---
+layout: post
+title: Setup macbook M1 for web developer
+tags: [diary, macos, macbook, profession]
+feature-img: "assets/img/feature/macbook_pro_m1_2021.jpg"
+---
+
+Setuping mac is definatelly not an every day task. It's usually long process, in order to get an efficient work station. In this article, I want to show you, how I approach to configure M1. I will share the process with the programs and the preferences I use.
+
+<div class="alert alert-info" role="alert">
+    <b>Little dislcaimer</b>: I am not setting up macs every day, so when you may read this article, some things may outdate. If something will not work, toot me <a href="https://twitter.com/MaciejSypien">tweet me</a> or let me know in the comments, so I could fix it. Thanks! 🤘
+</div>
+
+## Prerequisite
+
+-   prepare some time ~1-2h
+-   good internet connection (as there will be planty things to download)
+-   something to drink
+-   positive mood 😉 - I will try to make it as easy as possible for you
+
+### Browsers
+
+-   [Brave](https://brave.com/) (it's based on chromium)
+-   [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+-   [Edge](https://www.microsoft.com/en-gb/edge)
+-   [Safari](https://www.apple.com/safari/) should be already installed
+
+### Password managers
+
+-   First download your password manager(s)!
+-   Optionally: download browsers extensions for easier usage
+
+### Apple Developer Tools
+
+Unfortunatelly many programs will need Apple developer tools, so we install them as well via terminal command. Pay attention as this step might take a while... (this step took me ~10-15min)
+
+```bash
+xcode-select --install
+```
+
+<div class="alert alert-info" role="alert">
+    In case of problems with installation via terminal, follow <a href="https://stackoverflow.com/a/52522566">this URL</a>.
+</div>
+
+### Brew Package Manager
+
+The [brew](https://brew.sh/index_de) is de facto standard macOS Package Manager.
+
+Following <https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f>
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# disable analytics
+brew analytics off
+```
+
+<div class="alert alert-info" role="alert">
+    <p>
+        Optionally: I am installing my usual packages from my dotfiles. If you are interested take a look on <a href="https://raw.githubusercontent.com/egel/dotfiles/main/configuration/Brewfile">my Brewfile</a>.
+    </p>
+
+<pre>
+# to install from Brewfile
+curl https://raw.githubusercontent.com/egel/dotfiles/main/configuration/Brewfile -o ~/Brewfile
+
+brew bundle install --file=~/Brewfile
+</pre>
+
+<p>
+    Later you can save all installed packages with: 
+    <pre>brew bundle dump --file=~/.private/Brewfile</pre>
+</p>
+</div>
+
+### iTerm2
+
+Installed via brew. In case use: `brew install --cask iterm2`
+
+**font, size, window theme**
+
+If you like hack font, do not rush with installing it via: `brew install font-hack`. Instead you may want to have **Hack Font with Powerline symbols** from the NERD Fonts <https://www.nerdfonts.com/font-downloads>. To see a small difference take a look on sceenshot below with Neovim.
+
+| [Hack Font (Standard)](https://sourcefoundry.org/hack/) | [Hack Nerd Font](https://www.nerdfonts.com/) (with powerline symbols) |
+| ------------------------------------------------------- | --------------------------------------------------------------------- |
+| `brew install font-hack`                                | `brew tap homebrew/cask-fonts; brew install font-hack-nerd-font`      |
+| ![hack-font][img-item2-with-hack-font-standard]         | ![hack-nerd-font][img-item2-with-hack-nerd-font]                      |
+
+<div class="alert alert-info" role="alert">
+    <p>
+        In case you have already downloaded dotfiles locally you can copy all fonts into your local user folder. Nerd Fonts are also there 😉.
+    </p>
+
+<pre>
+cp ~/privatespace/github.com/egel/dotfiles/assets/fonts/* ~/Library/Fonts
+</pre>
+</div>
+
+Below you will find some screenshots with configuration I usually setup.
+
+![iterm2-font][img-iterm2-font]
+
+![iterm2-window-theme][img-iterm2-window-theme]
+
+![iterm2-general-selection][imgiterm2-general-selection]
+
+**Colorscheme Gruvbox**
+
+```bash
+curl https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors -o ~/Downloads/gruvbox.itermcolors
+```
+
+Import downloaded gruvbox color preset into iTerm (2), and after importing activate theme (3).
+
+![iterm2-colorscheme][img-iterm2-import-gruvbox]
+
+**Iterate through the arguments of previous commands** - this is awesome feature of ZSH shell, so if you are interested follow my other post how to [loop through previous arguments][post-loop-through-previous-arguments-from-command-line].
+
+Finally you should see something like this:
+
+![iterm2-final-window][img-iterm2-final-window]
+
+### IDEs (VScode, IDEA)
+
+Download the basic editors and IDEs.
+
+-   [Sublime](https://www.sublimetext.com/download_thanks?target=mac) - best for fast small changes
+-   [VS Code](https://code.visualstudio.com/docs/?dv=osx) - personal coding IDE
+-   [IDEA](https://www.jetbrains.com/idea/download/?fromIDE=#section=mac) - work coding IDE (especially GoLand, DataGrip, WebStorm)
+
+**Mobile App development**:
+
+-   [Android Studio](https://developer.android.com/studio) - if you do some Android
+-   [Xcode](https://apps.apple.com/de/app/xcode/id497799835?l=en&mt=12) - if you do some iOS/macOS
+
+### Git
+
+I put this out of dotfiles as git is essectial to do any further steps. Later we will update `.gitconfig` to be in synch with our dotfiles repo.
+
+```bash
+wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig -P ~/
+wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig.local -P ~/
+wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig.local -O ~/.gitconfig.local_work
+```
+
+Later in GPG section, we will make sure that gpg keys will be properly added to `.local` & `.local_work` files, as they will be needed to sign the commits.
+
+For **linux** & **macOS (Intel)**, at this moment you would need to run this command `git config --global gpg.program $(which gpg)`, so the path to gpg program can be corectly updated in `.gitconfig`.
+
+### SSH
+
+#### Create ssh keys
+
+I love gitlab page for [configuration of SSH keys](https://docs.gitlab.com/ee/user/ssh.html).
+
+```bash
+ssh-keygen -t ed25519 -C "johndoe@example.com"
+```
+
+<div class="alert alert-info" role="alert">
+<p>If you forgot to add passphrase for your key use this command. See more at <a href="https://docs.gitlab.com/ee/user/ssh.html#update-your-ssh-key-passphrase">update your ssh-key passphrase</a>.</p>
+
+<pre>
+ssh-keygen -p -f /path/to/ssh_key
+</pre>
+</div>
+
+#### Configure ssh
+
+```bash
+# ~/.ssh/config
+
+# Connect to gitlab.com
+Host gitlab.com
+HostName gitlab.com
+Preferredauthentications publickey
+IdentityFile ~/.ssh/id_ed25519
+```
+
+<div class="alert alert-info" role="alert">
+<p>If you want you can also use <code>ssh-agent</code>, but if you plan to use GPG to sign messages, <code>ssh-agent</code> you can replace with <code>gpg-agent</code>.</p>
+
+<p>More information you can find in here: <a href="https://unix.stackexchange.com/a/250045">gpg-agent instead of ssh-agent</a>.</p>
+</div>
+
+### Synchonize your dotfiles
+
+I like to make my files synchronized with my remote repository - this helps me to update main origin when my local changes arise.
+
+```bash
+mkdir -p ~/privatespace/github.com/egel
+cd ~/privatespace/github.com/egel
+git clone git@github.com:egel/dotfiles.git
+```
+
+Re-linking the files that was directly downloaded from the repo, in order to get full synchonizarion with the private dotfiles repository.
+
+```bash
+# gitconfig
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gitconfig ~/.gitconfig
+
+# idea (for vim plugin)
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.ideavimrc ~/.ideavimrc
+```
+
+<div class="alert alert-info">
+<p><b>Optional:</b> In my configuration I setup few additional files, that help me manage my dotfiles. Like storing private passwords, having additional private configurations, ect. Those files by the design are meant NOT BE STORED under version control systems.</p>
+<p>Also make sure the files have correct permissions, only for you.</p>
+
+<pre>
+touch ~/.zshrc.local
+chmod 600 ~/.zshrc.local
+
+touch ~/.envpass.private
+chmod 600 ~/.envpass.private
+</pre>
+</div>
+
+#### Verify your connection
+
+At this moment you should check if your connection is established. Running the command the second time should give you message with your git user.
+
+```bash
+ssh -T git@gitlab.com
+
+# run it 2nd time, to get user
+$ ssh -T git@gitlab.com
+Welcome to GitLab, @john.doe!
+```
+
+### GPG
+
+<div class="alert alert-warning">
+    Before starting this section make sure you know and understand why signing your own commits may be so imporant for you. I better explain this in my another article: <a href="{{ site.baseurl }}{% link _posts/2019-03-24-the-lesson-of-verifying-git-commits.md %}">The lesson of verifying Git commits</a>.
+</div>
+
+Let's start with basics, like linking configuration folder with local directory.
+
+```bash
+mkdir -p ~/.gnupg
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/dirmngr.conf ~/.gnupg/dirmngr.conf
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/gpg.conf ~/.gnupg/gpg.conf
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/sks-keyservers.netCA.pem ~/.gnupg/sks-keyservers.netCA.pem
+```
+
+Now, download your gpg keys (private & public) for all your accounts private (or/and work), as we will add them to gpg configuration in order to sign your things (like commits, private emails).
+
+```bash
+gpg --import public_key.asc
+gpg --import private_key.asc
+```
+
+Get your gpg fingerprint as we will need to use in git. Execute command below and get "signingKey" = last 16 chars of your fingerprint key. (I add arrow, to make it easier for you).
+
+```bash
+$ gpg --list-secret-keys --with-fingerprint --keyid-format LONG your@email.com
+
+                     |- this would be your "signingKey" ------- |- or here
+                     ▼                                          |
+sec   rsa4096/RPGLBRKNFTAZ2S9K 2019-03-17 [SC]                  ▼
+      Key fingerprint = VXE7 T2QX FCJZ YQ6L BEGJ  MLMM RPGL BRKN FTAZ 2S9K
+uid                 [ unknown] John Doe <johndoe@example.com>
+ssb   rsa4096/EBEE77C5734494A6 2019-08-23 [E]
+```
+
+Restart `gpg-agent` in order to use latest configuration.
+
+```bash
+$ killall gpg-agent
+2023-03-27 15:13:12 gpg-agent[2253] SIGTERM received - shutting down ...
+2023-03-27 15:13:12 gpg-agent[2253] gpg-agent (GnuPG) 2.4.0 stopped
+
+$ gpg-agent --daemon
+2023-03-27 15:14:46 gpg-agent[2253] gpg-agent (GnuPG) 2.4.0 started
+```
+
+Fill the key in `~/.gitconfig.local`. So it's look more-less like:
+
+```ini
+[user]
+    user = "John Doe"
+    email = johndoe@example.com
+    signingKey = RPGLBRKNFTAZ2S9K
+
+[commit]
+    gpgsign = true
+```
+
+Test applied config by reloading terminal and commit something, to see if your commits are signed successfully.
+
+```bash
+git commit -S "test commit with signing"
+```
+
+If everything will went successfully, you should get pinentry window, like the one below:
+
+![GPG pinentry-mac][img-gpg-pinentry-mac]
+
+### Vim & Neovim
+
+Without a doubt vim is the king of simple text editors. Many of you may argue, but I don't want to lead you astray 😆. When I discoverd vim, I was so much confused "why the heck there is so much noice about this thing"! After looong time later, I understood why and I wrote [Is worth to know the Vim Editor and why?][post-is-worth-to-know-the-vim-editor-and-why] and [The Vim's hidden superpowers][post-the-vims-hidden-superpowers].
+
+Let's start as usual with configuring vim and neovim.
+
+```bash
+# nvim (my primary editor)
+mkdir -p ~/.config
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.config/nvim ~/.config/nvim
+
+# vim (after switch to nvim, using this config rarely)
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.vimrc ~/.vimrc
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.vim/ ~/.vim/
+
+# Open nvim & vim and install plugins via
+:PlugInstall
+```
+
+![iterm2-nvim][img-iterm2-tmux]
+
+### Tmux
+
+[Tmux](https://github.com/tmux/tmux/wiki) - terminal multiplexer and [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
+
+```bash
+# link configuration
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.tmux.conf ~/.tmux.conf
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.tmux-osx.conf ~/.tmux-osx.conf
+
+# install tmux-plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# type this in terminal if tmux is already running
+tmux source ~/.tmux.conf
+```
+
+Open new session abd type `tmux new -t new`. Next, install plugins from the `.tmux.conf` file via <kbd>prefix</kbd> + <kbd>I</kbd> (pay attention, it's big "i". Prefix = <kbd>ctrl</kbd> + <kbd>b</kbd>).
+
+![iterm2-tmux][img-iterm2-tmux]
+
+#### ZSH + oh-my-zsh
+
+I was positively surpried that by default M1 use zsh shell.
+
+![terminal-default-shell][img-terminal-default-shell]
+
+Install missing oh-my-zsh
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+##### Theme
+
+For years I use [honukai](https://github.com/oskarkrawczyk/honukai-iterm-zsh) theme, as it gives me best orientaion in the shell.
+
+```bash
+mkdir -p ~/.oh-my-zsh/custom/themes/
+curl https://raw.githubusercontent.com/oskarkrawczyk/honukai-iterm/master/honukai.zsh-theme -o ~/.oh-my-zsh/custom/themes/honukai.zsh-theme
+```
+
+Reopen terminal to apply changes.
+
+### System Preferences
+
+#### Screenshots
+
+For all types of screen records, I use default mac screenshot tool, with some combinations from Snagit. The combination of both give the fastest experiance to finish a sceenshot or record a screen for documentation.
+
+I like to have one path for all type of screen records and usually choose something like:
+
+```bash
+# Set new default path
+defaults write com.apple.screencapture $HOME/Documents/Screenrecords
+
+# kill current UI to apply new write path (no worries, it will not destroy anything)
+killall SystemUIServer
+```
+
+#### Finder
+
+Setup list view as a default view for all folders.
+
+1. Open harddrive view (usually it's called "Macintosh HD")
+1. Press <kbd>⌘</kbd> + <kbd>j</kbd>
+
+![Finder settings][img-finder-settings]
+
+Next after accepting "Use as Defaults", open terminal and remove all `.DS_Store` files from system used by the Finder, in order to remove all overrides (finder save all meta data about folders in .DS_Store).
+
+```bash
+sudo find / -name ".DS_Store"  -exec rm {} \;
+```
+
+#### Trackpad
+
+For the mac trackpad I like to setup 2 things I am so get used to, that I cannot imagine work without:
+
+**Swiping between screens with 4 fingers**
+
+![Preferences trackpad swipe screens][img-preferences-trackpad-swipe-screens]
+
+**dragging elements with 3 fingers**
+
+![preferences-accessibility-pointer-control][img-preferences-accessibility-pointer-control]
+
+#### Displays
+
+I think this is pretty standard, although having one screen in vertical position is very helpful as this sometimes enable to look on things from different perspective.
+
+![preferences-displays][img-preferences-displays]
+
+---
+
+## Additionals libs and setups
+
+### NVM & yarn
+
+```bash
+# install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+# install specific version of node
+nvm install 18
+nvm alias default 18
+
+# test
+which node
+node --version
+
+# apply changes
+source ~/.zshrc
+```
+
+#### yarn
+
+Yarn is connected to version of node running, so best way to install it is via current used node/npm.
+
+<div class="alert alert-info">
+<p><b>Info</b>: If you will use many node versions (via nvm), you also should to install yarn for each node version.</p>
+</div>
+
+```bash
+npm install -g yarn
+
+# test
+yarn -v
+```
+
+### Ruby
+
+Follow my other post how to setup ruby on macOS - [If possible do not use the ruby system version on mac osx][post-ruby-system-version-on-mac-osx]
+
+Standard link for configuration file
+
+```bash
+ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gemrc ~/.gemrc
+```
+
+### Python
+
+Follow my other post how to setup python on macOS - [How to properly set up Python project?][post-how-to-properly-set-up-python-project]
+
+### JAVA
+
+I did not found better way to install Java, like through [SDK-MAN](https://sdkman.io/). I am not much fan of Java but this is really awesome Java Version Manager similar to `rbenv`.
+
+To install it start with:
+
+```bash
+# install
+curl -s "https://get.sdkman.io" | bash`
+
+# test if succeeded (or reload terminal)
+skd version
+```
+
+<div class="alert alert-info">
+In case you wondering, my configuration for SDK-MAN you can find in my <a href="https://github.com/egel/dotfiles/blob/main/configuration/.zshrc">.zshrc</a>
+</div>
+
+### Apple Silicon - Rosetta
+
+Some programs may require installing Apple's rosetta
+
+```bash
+softwareupdate --install-rosetta
+```
+
+[img-iterm2-font]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-font.png
+[img-iterm2-window-theme]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-theme-minimal.png
+[imgiterm2-general-selection]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-general-selection.png
+[img-iterm2-final-window]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-final-window.png
+[img-iterm2-import-gruvbox]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-import-gruvbox.png
+[img-item2-with-hack-nerd-font]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/item2-with-hack-nerd-font.png
+[img-item2-with-hack-font-standard]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/item2-with-hack-font-standard.png
+[img-preferences-displays]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-displays.png
+[img-preferences-accessibility-pointer-control]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-accessibility-pointer-control.png
+[img-preferences-trackpad-swipe-screens]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-trackpad-swipe-screens.png
+[img-finder-settings]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/finder-settings.png
+[img-terminal-default-shell]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/terminal-default-shell.png
+[img-iterm2-tmux]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-tmux.png
+[img-iterm2-nvim]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-nvim.png
+[img-gpg-pinentry-mac]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/gpg-pinentry-mac.png
+
+[post-how-to-properly-set-up-python-project]: {{ site.baseurl }}{% link _posts/2022-01-30-how-to-properly-set-up-python-project.md %}
+[post-ruby-system-version-on-mac-osx]: {{ site.baseurl }}{% link _posts/2018-11-10-if-possible-do-not-use-the-ruby-system-version-on-mac-osx.md %}
+[post-is-worth-to-know-the-vim-editor-and-why]: {{ site.baseurl }}{% link _posts/2015-04-06-is-worth-to-know-the-vim-editor-and-why.md %}
+[post-the-vims-hidden-superpowers]: {{ site.baseurl }}{% link _posts/2020-11-29-the-vims-hidden-superpowers.md %}
+[post-loop-through-previous-arguments-from-command-line]: {{ site.baseurl }}{% link _posts/2022-03-27-loop-through-previous-arguments-from-command-line.md %}
