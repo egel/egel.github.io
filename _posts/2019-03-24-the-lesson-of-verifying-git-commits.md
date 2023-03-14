@@ -46,10 +46,10 @@ Before you do same, what the funny character from the cartoon already did, I wan
 
 To secure your commits, you will need:
 
-1. git (user apple Xcode tools or install via brew)
+1. git (user apple Xcode tools or install via brew `brew install git`)
 2. gpg (important to use version 2, install via `brew install gnupg`)
 3. dirmngr (it should be a part of gnupg installation via brew)
-3. repository to store public keys (e.g.: Github, Gitlab)
+4. repository to store public keys (e.g.: Github, Gitlab)
 
 ### PGP key
 
@@ -73,13 +73,13 @@ Now you can take the PGP key ID to use it in Git. In my case, the key looks like
 
 ```bash
 gpg --list-secret-keys --with-fingerprint --keyid-format LONG john.doe@gmail.com
-sec   rsa4096/10BC01EDA6827DC8 2019-03-17 [SC]
-      78CA0E181F71CFD6F02AC05E10BC01EDA6827DC8
-uid                 [ultimate] Maciej Sypien <john.doe@gmail.com>
+sec   rsa4096/EFJNQD3VCBZZBB9M 2019-03-17 [SC]
+      CY2U VVNI HKVX JGOP QIWU  E2NW EFJN QD3V CBZZ BB9M
+uid                 [ultimate] John Doe <john.doe@gmail.com>
 ssb   rsa4096/EBEE77C5734494A6 2019-03-17 [E]
 ```
 
-Use the PGP key ID, in my case, was `10BC01EDA6827DC8`.
+Use the PGP key ID, in my case, was `EFJNQD3VCBZZBB9M`.
 
 Ok, we have got the key, now we need to get your public key to make it public (anywhere, somewhere!).
 
@@ -96,7 +96,7 @@ We will get back later to GPG again in second when we get to the software config
 Now configuration of your git config file should be set up via below commands:
 
 ```bash
-git config --global user.signingKey 10BC01EDA6827DC8
+git config --global user.signingKey EFJNQD3VCBZZBB9M
 git config --global commit.gpgSign true
 ```
 
@@ -143,7 +143,7 @@ So what we can configure here?
     pinentry-program /usr/local/bin/pinentry-mac
     ```
 
-1.  Better GPG configuration with dirmngr
+1. Better GPG configuration with dirmngr
 
     ```ini
     # This tells gpg to use the gpg-agent
