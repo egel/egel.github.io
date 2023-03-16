@@ -34,8 +34,8 @@
   }
 
   nav {
-    // flex-direction: row;
-    list-style: none;
+    display: flex;
+    flex-direction: row;
     margin: 0;
     padding: 0;
 
@@ -50,22 +50,17 @@
     }
 
     li {
-      display: inline;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       float: left;
-      margin-right: 0.4em;
+      margin-right: 0.5em;
       min-height: 47px;
     }
 
     a {
       &:hover {
         color: $link-color;
-      }
-
-      &#menu-toggle {
-        i {
-          float: right;
-          margin-bottom: 20px;
-        }
       }
     }
   }
@@ -81,41 +76,52 @@
 }
 
 @include isTabletLayoutOrLess {
-  nav {
-    height: auto;
+  .site-header {
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
 
-    ul {
-      width: 100%;
-      display: none;
-
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-in-out;
-
-      &.open-menu {
-        max-height: 300px;
-      }
-    }
-
-    li {
-      width: 100%;
-      float: left;
-      position: relative;
-    }
-
-    a {
-      text-align: left;
-      width: 100%;
-
-      &#menu-toggle {
-        display: block;
+      ul {
         width: 100%;
-        position: relative;
+        display: block;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
 
-        &:after {
-          content: "";
-          display: inline-block;
-          position: absolute;
+        &.open-menu {
+          max-height: 200px;
+        }
+      }
+
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        float: left;
+        clear: left;
+        text-align: left;
+        min-height: 32px;
+        position: relative;
+        margin-top: 18px;
+      }
+
+      a {
+        text-align: left;
+
+        &#menu-toggle {
+          // position: absolute;
+          top: 20px;
+          right: 20px;
+          width: auto;
+          z-index: 100;
+
+          &:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+          }
         }
       }
     }
