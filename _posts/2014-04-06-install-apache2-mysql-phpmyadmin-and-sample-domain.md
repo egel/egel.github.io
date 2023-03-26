@@ -1,34 +1,33 @@
 ---
 layout: post
-title: Setup LAMP server with sample domain    
+title: Setup LAMP server with sample domain
 modified: 2015-06-27
 category: Development
 tags: [apache, mysql, php, domains]
 ---
 
-Every young IT person will at last faced with the challenge of creating his own website.  It could be a simple static site, managed by some static site generator (like [Jekkly](http://jekyllrb.com/), [Octopress](http://octopress.org/), [Pelican](http://docs.getpelican.com) or [some others examples](https://www.staticgen.com/)). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to [Joomla](https://www.joomla.com/), [Wordpress](https://wordpress.org) or even use a professional, enterprise-class frameworks like Laravel, Symfony or Zend.
+Every young IT person will at last faced with the challenge of creating his own website. It could be a simple static site, managed by some static site generator (like [Jekkly](http://jekyllrb.com/), [Octopress](http://octopress.org/), [Pelican](http://docs.getpelican.com) or [some others examples](https://www.staticgen.com/)). But few proud, claim that it's to easy and they would like to try something more complex like basic PHP CMS similar to [Joomla](https://www.joomla.com/), [Wordpress](https://wordpress.org) or even use a professional, enterprise-class frameworks like Laravel, Symfony or Zend.
 
 Whatever they choose, they will need some tools to deal with showing to the whole world their new website project.
 
-In this simple article, I'll show you how to build your own simple (and standard in these days) server configuration based on a LAMP, but those tools can be easily replaced with others technologies.  For example, if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end, setup will be made).
+In this simple article, I'll show you how to build your own simple (and standard in these days) server configuration based on a LAMP, but those tools can be easily replaced with others technologies. For example, if you're interested in Django you could replace PHP language with more mature Python (of course some setting will vary a bit from content presented in this article, but in the end, setup will be made).
 
 I think this is good, start example to play with :) Enjoy.
 
 > The examples refer to Ubuntu 14.04, but it should also work for other Debian based distros.
 
 ### Table of content
+
 -   [Apache 2](#apache)
-    *   [Add user to www-data group](#add-user-to-www-data-group)
+    -   [Add user to www-data group](#add-user-to-www-data-group)
 -   [MySQL](#mysql)
 -   [PHP](#php)
 -   [PHPMyAdmin](#phpmyadmin)
 -   [Common problems](#common-problems)
-    - [Add VirtualHost](#add-virtualhost)
-    - [Creating public_html directory for the user](#creating-public_html-directory-for-the-user)
-
+    -   [Add VirtualHost](#add-virtualhost)
+    -   [Creating public_html directory for the user](#creating-public_html-directory-for-the-user)
 
 Good [Polish article](http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/) and [English article][article_about_apache2_url].
-
 
 Let's begin from updating our Debian based system (Ubuntu):
 
@@ -37,6 +36,7 @@ sudo apt-get update
 ```
 
 ### Apache
+
 Installation Apache 2.4 with its useful dependencies:
 
 ```shell
@@ -57,9 +57,9 @@ Now, if all went well, you could start your web browser with `http://localhost/`
 
 > "It works!" page is actually simple `index.html` file stored in `/var/www/html/` directory, but details comes later :)
 
-
 #### Add user to www-data group
-Now we'd like to add your current user (`$USER`)  to `www-data` group used by apache server. We will do this to prevent you from some error-access failures like user owner.
+
+Now we'd like to add your current user (`$USER`) to `www-data` group used by apache server. We will do this to prevent you from some error-access failures like user owner.
 
 To check if your current user belongs to `www-data` group simply do:
 
@@ -124,6 +124,7 @@ sudo usermod -a -G $USER www-data
 > Should be something like `-D SERVER_CONFIG_FILE="apache2.conf"`
 
 #### Add a name to the server
+
 Basic Apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.
 
 ```shell
@@ -154,8 +155,8 @@ sudo service apache2 restart
 
 ...and now full smile should appear on your face :)
 
-
 ### MySQL
+
 MySQL is one of the most popular databases on the website market. So we will install it along.
 
 During the installation process program ask you for the root password, so we write it and **remember it** for later use.
@@ -172,21 +173,23 @@ mysql -V
 
 That's it for the database server :)
 
-
 ### PHP
+
 Installation of the PHP interpreter isn't hard. One important thing is to install all modules related to our new setup, enable it, and configure to suit your needs. I'll show you most commonly used setup to save your precious time searching it through Internet.
 
-####  Installation of PHP interpreter
+#### Installation of PHP interpreter
+
 Below we will install all useful modules, and enable them Apache server and PHP.
 
 ```shell
-$ sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
-$ sudo a2enmod php5
-$ sudo a2enmod rewrite
-$ sudo php5enmod mcrypt   # required by phpMyAdmin
+sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
+sudo a2enmod php5
+sudo a2enmod rewrite
+sudo php5enmod mcrypt   # required by phpMyAdmin
 ```
 
 #### Configuration files
+
 Into below Apache's PHP configuration file stored at `/etc/php5/apache2/php.ini`, it is worth to change the default parameters according to those presented below. There are most commonly changed variables for PHP for development purposes.
 
 ```ini
@@ -197,15 +200,13 @@ display_startup_errors = On
 track_errors = On
 ```
 
-
 #### Other useful configuration files
 
-- `/etc/apache2/sites-available/default`
+-   `/etc/apache2/sites-available/default`
 <!--- `/home/$USER/apache/conf/httpd.conf`-->
 
-
-
 ### PHPMyAdmin
+
 Installation of PHPMyAdmin is trivial.
 
 ```shell
@@ -255,14 +256,15 @@ sudo a2ensite blog.loc.conf
 Next, we need to tell the server to use our new ServerName.
 
 The best solution I know for development purposes involving `dnsmasq`, which I definitely recommend - you can find how to do it into article [How to install dnsmasq]({filename}install_dnsmask_linux.md) or just add the name of the server to the `/etc/hosts`:
+
 ```bash
 echo "127.0.0.1 blog.loc" | sudo tee /etc/hosts
 ```
 
 Then `sudo service apache2 reload` and open
 
-
 ### Creating public_html directory for the user
+
 Some people do not agree with it (mainly by security issues it can cause) but apache also support the old user catalog usually stored at `~/public_html`, and it can be working like `/var/www/html`.
 
 There are 2 different approaches to creating this directory.
@@ -275,7 +277,6 @@ There are 2 different approaches to creating this directory.
 To enable this magical directory we need to edit `/etc/apache2/mods-enabled/php5.conf` (it may require `sudo` privileges to save it).
 
 Into this file, we need to comment some lines (`##`) like in below snippet.
-
 
 ```apache
 <FilesMatch ".+\.ph(p[345]?|t|tml)$">
@@ -321,8 +322,8 @@ Now restart the Apache and since this moment we can easily use `~/public_html` i
 sudo /etc/init.d/apache2 restart
 ```
 
-
 ##### Setup the httpd.conf
+
 We locate our `httpd.conf` file.
 
 > ** For the different systems vary called **, for example, for Ubuntu 14.04 64-bit is a `apache2.conf`
@@ -337,12 +338,10 @@ apache   12846 14590  0 Oct20 ?        00:00:00 /usr/sbin/apache2
 Now we add `-V` flag
 
 ```shell
-$ /usr/sbin/apache2 -V | grep SERVER_CONFIG_FILE
--D SERVER_CONFIG_FILE="/etc/apache2/apache2.conf"
+$ /usr/sbin/apache2 -V | grep SERVER_CONFIG_FILE -D SERVER_CONFIG_FILE="/etc/apache2/apache2.conf"
 ```
 
 Next we are open the file and we can add our path to `public_html` inside:
-
 
 ```apache
 <Directory /home/maciej/public_html/>
@@ -366,19 +365,18 @@ Probably the cause of that is rewriting the URL into for example:
 
 -   Joomla: `Global config` > `Adjust rewriting URLs` and set for **OFF**
 
-
 ### Problem #1
 
 Once you install the module, the module will be available in the `/etc/apache2/mods-available` directory. You can use the `a2enmod` command to enable a module. You can use the `a2dismod` command to disable a module. Once you enable the module, the module will be available in the `/etc/apache2/mods-enabled` directory.
 
 Example: `sudo a2enmod rewrite`
 
-
 ### Problem #2
+
 [Apache2 on ubuntu - PHP downloading files insteed of run](http://stackoverflow.com/questions/6245895/apache2-on-ubuntu-php-files-downloading)
 
-
 ### Problem #3
+
 **Files** should have permissions rights **664**, while **directories 755**.
 
 > The exceptions are, of course, executable files.
@@ -386,12 +384,12 @@ Example: `sudo a2enmod rewrite`
 Example of changes for both types, files, and directories (recursively)
 
 ```shell
-$ find ~/public_html -type d -exec chmod 755 {} \;
-$ find ~/public_html -type f -exec chmod 644 {} \;
+find ~/public_html -type d -exec chmod 755 {} \;
+find ~/public_html -type f -exec chmod 644 {} \;
 ```
 
-
 ### Problem #4
+
 Updating all folders and files for `www-data` user into the `public_html` directory.
 
 ```bash
@@ -407,27 +405,18 @@ Save it inside `/home/$USER/bin` and make it executable using:
 sudo chmod +x /home/$USER/bin/public_html_fix.sh
 ```
 
-
- [jdownloader_shell_installer]: http://installer.jdownloader.org/jd_unix_0_9.sh
-
- [xmind_homepage]: http://www.xmind.net/
-
- [poedit_download_page]: https://launchpad.net/~schaumkeks/+archive/ppa/+sourcepub/2991913/+listing-archive-extra
-
- [sublime_home_page]: http://www.sublimetext.com/
- [sublime_blog_page_url]: http://dbader.org/blog/setting-up-sublime-text-for-python-development
- [sublime_package_control_installation_page]: https://sublime.wbond.net/installation
- [sublime_github_livereload_page]: https://github.com/dz0ny/LiveReload-sublimetext2
- [sublime_soda_theme_page]: http://buymeasoda.github.io/soda-theme/
- [sublime_tomorrow_theme]: https://github.com/theymaybecoders/sublime-tomorrow-theme
-
- [article_about_apache2_url]: https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin
- [textmaker_download_page_url]: http://www.xm1math.net/texmaker/download.html#linux
- [google_chrome_download_page_url]: http://www.google.pl/intl/pl/chrome/
- [dashboard_icon_link]: http://askubuntu.com/questions/68612/how-to-change-the-dash-icon-in-the-unity-launcher
-
- [wikipedia-daemon]: https://en.wikipedia.org/wiki/Daemon_%28computing%29
- [wikipedia-hir]: https://en.wikipedia.org/wiki/Hir_%28disambiguation%29
-
-
-
+[jdownloader_shell_installer]: http://installer.jdownloader.org/jd_unix_0_9.sh
+[xmind_homepage]: http://www.xmind.net/
+[poedit_download_page]: https://launchpad.net/~schaumkeks/+archive/ppa/+sourcepub/2991913/+listing-archive-extra
+[sublime_home_page]: http://www.sublimetext.com/
+[sublime_blog_page_url]: http://dbader.org/blog/setting-up-sublime-text-for-python-development
+[sublime_package_control_installation_page]: https://sublime.wbond.net/installation
+[sublime_github_livereload_page]: https://github.com/dz0ny/LiveReload-sublimetext2
+[sublime_soda_theme_page]: http://buymeasoda.github.io/soda-theme/
+[sublime_tomorrow_theme]: https://github.com/theymaybecoders/sublime-tomorrow-theme
+[article_about_apache2_url]: https://library.linode.com/web-servers/apache/installation/ubuntu-12.04-precise-pangolin
+[textmaker_download_page_url]: http://www.xm1math.net/texmaker/download.html#linux
+[google_chrome_download_page_url]: http://www.google.pl/intl/pl/chrome/
+[dashboard_icon_link]: http://askubuntu.com/questions/68612/how-to-change-the-dash-icon-in-the-unity-launcher
+[wikipedia-daemon]: https://en.wikipedia.org/wiki/Daemon_%28computing%29
+[wikipedia-hir]: https://en.wikipedia.org/wiki/Hir_%28disambiguation%29

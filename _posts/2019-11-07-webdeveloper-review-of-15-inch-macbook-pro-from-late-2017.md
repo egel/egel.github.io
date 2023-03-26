@@ -13,16 +13,16 @@ I would say that this is "almost" the most comfortable (provided that you're usi
 
 ### Tech specs:
 
-| name    | value |
-|---------|-------|
-| Model | MacBook Pro |
-| Size | 15 inches |
-| Year of produce | 2017 |
-| CPU     | 2,9 GHz Intel Core i7 |
-| Memory | 16GB 2133 MHz LPDDR3 |
-| Graphics | Intel HD Graphics 630 1536 MB |
+| name            | value                             |
+| --------------- | --------------------------------- |
+| Model           | MacBook Pro                       |
+| Size            | 15 inches                         |
+| Year of produce | 2017                              |
+| CPU             | 2,9 GHz Intel Core i7             |
+| Memory          | 16GB 2133 MHz LPDDR3              |
+| Graphics        | Intel HD Graphics 630 1536 MB     |
 | Keyboard Layout | (US) English International Layout |
-| Touchbar | yes |
+| Touchbar        | yes                               |
 
 Small disclaimer. I'm using the MacBooks since 2014. The reviewed MacBook I'm using is from October 2017. The whole article is my personal opinion about the professional usability of the product from the perspective of a webdeveloper. The review is not sponsored and I don't gain any profit from anyone mentioned in the post. The review by the design will be my truthful and honest opinion confirmed by the experience and time spent with the product.
 
@@ -36,18 +36,24 @@ The opening mechanism is rock solid. the lid is not wobbling even after 24-month
 
 From a subjective point of view, the touchpad in the reviewed version of the MacBook is too big. I would prefer something a bit smaller with more space between keyboard and touchpad because even if the touchpad forgives some accidentally made presses while typing, there is no possible place for your thumbs to rest (when laying on a computer they might do accidental presses on the trackpad).
 
-| [![Spacing between touchbar and keyboard in 15-inch macbook pro]({{ site.baseurl }}/assets/img/spacing-between-touchbar-and-keyboard-in-15-inch-macbook-pro-from-late-2017.jpg)]({{ site.baseurl }}/assets/img/spacing-between-touchbar-and-keyboard-in-15-inch-macbook-pro-from-late-2017.jpg) | [![QWERTY home keys position]({{ site.baseurl }}/assets/img/1280px-QWERTY-home-keys-position.png)]({{ site.baseurl }}/assets/img/1280px-QWERTY-home-keys-position.png) |
-|:--:|:--:|
-| Spacing between keyboard and touchpad with hands on home row | Hands position on Home row keys |
+| [![Spacing between touchbar and keyboard][img-spacing-between-touchbar-and-keyboard]][img-spacing-between-touchbar-and-keyboard] | [![qwerty home keys position][img-1280px-qwerty-home-keys-position]][img-1280px-qwerty-home-keys-position] |
+| :------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
+|                                   Spacing between keyboard and touchpad with hands on home row                                   |                                      Hands position on Home row keys                                       |
 
-> Small explanation for the picture on the left side:
->
-> - the red area marks a small distance between the touchpad and keyboard.
-> - the green area signify touching area when the hand lies naturally on the <code>ASDF</code> keys.
+<div class="alert alert-info">
+Small explanation for the picture on the left side:
+
+<ul>
+    <li>the red area marks a small distance between the touchpad and keyboard.</li>
+    <li>the green area signify touching area when the hand lies naturally on the <code>ASDF</code> keys.</li>
+</ul>
+</div>
 
 As you probably already noticed from the picture on the left side - when your hand is naturally laying on Home row keys, with this size of touchpad, you will sometime accidentally press it. Therefore during the office work, I prefer using a laptop stand with an external keyboard and touchpad, moreover, it gives a bit of more ergonomic to my sitting position behind the desk.
 
-The size of the trackpad in the reviewed model should have more usability than just a clickable surface with gestures. This size of space would be ideal to use as a small tablet (let's say even with Apple Pencil). As a webdeveloper then you could have an almost complete and movable workstation. That would be a killer feature for Apple competitors.
+The size of the trackpad in the reviewed model should have more usability than just a clickable surface with gestures. This size of space
+
+</ul>would be ideal to use as a small tablet (let's say even with Apple Pencil). As a webdeveloper then you could have an almost complete and movable workstation. That would be a killer feature for Apple competitors.
 
 I had the pleasure of using the previous generation of MacBook Pro from 2015 and the touchpad in the reviewed model is also equally great. There are no lags while pressing or using the gestures, also really close to the edges. The surface of the trackpad is smooth and pleasant to swipe on, even your fingers are a bit sweaty.
 
@@ -69,7 +75,7 @@ I'm not sure what I should start with because I feel, that so many bad things ha
 
 I'll start with the incomplete Apple's definition of typing, which has been sneaked with a new combination of keyboard and touchbar. I imagine, that Apple wishes that the keyboard will be enhanced by touchbar and vice versa. Yes, it might happen for some users, but not for all, not for the majority of users. For example, the typists or programmers who are using keyboards as primary interaction with the device may suffer if they will change how people should interact with this keyboard.
 
-Additionally, the missing <code>ESC</code> key is a real flaw in the design, which forces the heavies typists, to change their habit and muscle memory. This is pain and for some, it might be too much - they will just hate the keyboard.
+Additionally, the missing <kbd>Esc</kbd> key is a real flaw in the design, which forces the heavies typists, to change their habit and muscle memory. This is pain and for some, it might be too much - they will just hate the keyboard.
 
 The feeling of typing on this keyboard reminds me of typing to press something on a single, solid surface. There is a small bump reaction while pressing the keys, but it gives me no pleasure. Moreover, after a long and intensive typing session, my fingers just start hurting.
 
@@ -83,15 +89,15 @@ The touchbar. Well... As a webdeveloper, I couldn't find any good usage of this 
 
 Unfortunately, there is no "touch feedback" when you pressing something on touchbar, therefore **there is no way of using touchbar without looking at it**. For any person who types, this is unthinkable - imagine a "screen keyboard" without any tactile feedback while typing - I bet after a day, the level of frustration while typing on this kind of keyboard would reach the sky and you would rather throw this laptop out of window then gulp and say - _hey, next time they will do better_.
 
-Moreover, as you may notice or heard - the MacBook Pro doesn't have any physical <code>ESC</code> key. _What a big deal, I've never user using it anyway_ - you might say - but the for the typists (especially Vim users) it's a dead end. When the MacBook came out, a lot of people start making fun of that <a href="https://www.reddit.com/r/funny/comments/59klj4/new_macbook_pro_accessory_only_6999/">new MacBook Pro accessory</a>.
+Moreover, as you may notice or heard - the MacBook Pro doesn't have any physical <kbd>Esc</kbd> key. _What a big deal, I've never user using it anyway_ - you might say - but the for the typists (especially Vim users) it's a dead end. When the MacBook came out, a lot of people start making fun of that <a href="https://www.reddit.com/r/funny/comments/59klj4/new_macbook_pro_accessory_only_6999/">new MacBook Pro accessory</a>.
 
-Removing this essential key to becoming an iconic meme and importantly has been the worst possible movement for the majority of UNIX users, which use <code>ESC</code> key a thousand times each day. Now they have to change their habits or they are forced to use smaller and weaker 13-inch MacBook Pro versions with tiny, flattened ESC key (see picture below). I think this version is not anymore available on the official website.
+Removing this essential key to becoming an iconic meme and importantly has been the worst possible movement for the majority of UNIX users, which use <kbd>Esc</kbd> key a thousand times each day. Now they have to change their habits or they are forced to use smaller and weaker 13-inch MacBook Pro versions with tiny, flattened ESC key (see picture below). I think this version is not anymore available on the official website.
 
-![13inches MacBook Pro]({{ site.baseurl }}/assets/img/macbook_pro_13inches_no_touchbar.jpg)
+![13inches MacBook Pro][img-macbook_pro_13inches_no_touchbar]
 
 Checkmate! Now will come frustration, disappointment, helplessness and finally a wave of anger - the anger on the product and people who decided to release it. The main way of interaction with the device has been so drastically changed, even without having any option revert it or at least to get an old-school keyboard layout. Sorrow.
 
-A small solution to address this problem somehow is to remapped other physical key, e.g. <code>TAB</code> key, to behave as <code>ESC</code> key. I also did on my MacBook and now I catch myself on pressing <code>TAB</code> when I want to escape on any other keyboard 🤦‍♂️. Fun fact: Apple on their official website has a section exactly for <a href="https://support.apple.com/en-us/HT207358">"How to use another key as Esc</a>.
+A small solution to address this problem somehow is to remapped other physical key, e.g. <kbd>Tab</kbd> key, to behave as <kbd>Esc</kbd> key. I also did on my MacBook and now I catch myself on pressing <kbd>Tab</kbd> when I want to escape on any other keyboard 🤦‍♂️. Fun fact: Apple on their official website has a section exactly for <a href="https://support.apple.com/en-us/HT207358">"How to use another key as Esc</a>.
 
 ### Sound
 
@@ -109,7 +115,7 @@ The MacBook Pro has 4 USB-C ports. The Mac's charger is also using USB-C port, s
 
 It's also possible to build a good 4-monitors setup (as you can see below on my old setup from mid-2018), but to do so, you'll need a special adapter (~60-100€). I've connected 3 additional monitors with 2 USB-C to DisplayPort cables and one through HDMI port in the adapter.
 
-![4 monitors desk with 15-inch MacBook Pro]({{ site.baseurl }}/assets/img/4monitors-desk-with-macbook-pro-from-2017.jpg)
+![4 monitors desk with 15-inch MacBook Pro][img-4monitors-desk-with-macbook-pro-from-2017]
 
 This is an awkward time (and sometimes a bit frustrating) when we have an end of 2019, the new MacBooks starts using only new USB-C ports, but still, so many devices forcing us to use good, old, big USB-A/B ports. These difficult times create a strange era of requiring adapters for everything and because of that difficult times, you might be forced to always have some adapter with you (connect to a printer, read something from an old USB stick or connect with an external keyboard).
 
@@ -121,7 +127,7 @@ The reviewed model has 16GB of RAM, which is a lot for any standard web developm
 
 Sometimes when I have opened a couple of instances of IntelliJ apps (WebStorm/Rider) with multiple docker containers running and multiple browsers enhanced on 4 monitors (default + 3 additional), then occasionally I've noticed a small power drop in performance, but not in a responsiveness - the responsiveness of the system is rock solid - so nothing to worry!
 
-About the graphic in general. This mac is made to work. The graphic card in my model is the _Intel HD Graphics 630 1536 MB_. It's not a monster of graphic cards, but for all tasks I had to do so far, like UI/UX designing, photo editing or in my leisure time playing with 3D in Blender or run native game on it (I tried with _Pillars of Eternity_), then the device does everything as it suppose to - render it energetically on the screen. From the negative points, what I've only noticed so far, is a much higher heat increase and fan speed while running some demanding, graphic consuming tasks, like playing with Pillars of Eternity - I know this is game and should not be part of "webdeveloper review", but this  heat increase is significant which you'll hear and feel under your hands after some minutes from starting it.
+About the graphic in general. This mac is made to work. The graphic card in my model is the _Intel HD Graphics 630 1536 MB_. It's not a monster of graphic cards, but for all tasks I had to do so far, like UI/UX designing, photo editing or in my leisure time playing with 3D in Blender or run native game on it (I tried with _Pillars of Eternity_), then the device does everything as it suppose to - render it energetically on the screen. From the negative points, what I've only noticed so far, is a much higher heat increase and fan speed while running some demanding, graphic consuming tasks, like playing with Pillars of Eternity - I know this is game and should not be part of "webdeveloper review", but this heat increase is significant which you'll hear and feel under your hands after some minutes from starting it.
 
 ### Software
 
@@ -133,4 +139,9 @@ On the other side, there is a whole other story about macOS (not OSX anymore, th
 
 ### Conclusion
 
-In a summary, this device has some visible flaws like a keyboard or touchbar, but in the end, this device was the best available mobile laptop on the market at the time when I got it (Jan 2018). The quality of hardware and well-known software stability I'm getting while using the macOS, become the key factor for me. If you ask me - and if I would be able to choose between another brand with a bit better hardware specs (e.g.: more RAM, better CPU, more external ports) I would still stick to the MacBook. The reason is simple. The unification of usage between all applications available on macOS is addictive. So when you have to change the platform - to Linux for example - and you'll notice that each app is made in a bit different way, then you want to get back to well-known macOS environment where you don't have to fight with each new app - you can just use it like any other one before and this becomes a factor which comes only after some unknown time when you know to be more efficient  you have to strive to be lazy 😉. In general, I want to use the device that I have and not to fight with it whenever something is not working as I would expect.
+In a summary, this device has some visible flaws like a keyboard or touchbar, but in the end, this device was the best available mobile laptop on the market at the time when I got it (Jan 2018). The quality of hardware and well-known software stability I'm getting while using the macOS, become the key factor for me. If you ask me - and if I would be able to choose between another brand with a bit better hardware specs (e.g.: more RAM, better CPU, more external ports) I would still stick to the MacBook. The reason is simple. The unification of usage between all applications available on macOS is addictive. So when you have to change the platform - to Linux for example - and you'll notice that each app is made in a bit different way, then you want to get back to well-known macOS environment where you don't have to fight with each new app - you can just use it like any other one before and this becomes a factor which comes only after some unknown time when you know to be more efficient you have to strive to be lazy 😉. In general, I want to use the device that I have and not to fight with it whenever something is not working as I would expect.
+
+[img-1280px-QWERTY-home-keys-position]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/1280px-QWERTY-home-keys-position.png
+[img-spacing-between-touchbar-and-keyboard]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/spacing-between-touchbar-and-keyboard-in-15-inch-macbook-pro-from-late-2017.jpg
+[img-macbook_pro_13inches_no_touchbar]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/macbook_pro_13inches_no_touchbar.jpg
+[img-4monitors-desk-with-macbook-pro-from-2017]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/4monitors-desk-with-macbook-pro-from-2017.jpg

@@ -2,7 +2,7 @@
 layout: post
 title: Moving from Wordpress to Pelican
 category: Diary
-tags: [wordpress, pelican]
+tags: [wordpress, pelican, diary]
 summary: I'm talking a bit about "why I migrate my blog from Wordpress to pelican", the static pages web framework.
 ---
 
@@ -10,9 +10,9 @@ I have to start with words "I used Wordpress for 2 years constantly". During thi
 
 ## Objective of frameworks
 
-IMHO Wordpress is great for PR guys, not for programmers/hackers. PR guys usually want to quickly upload news with few sample photos, and they use for it some [WYSIWYG][wiki-WYSIWYG] HTML editors like [TinyMCE][tinymce-webpage] or [CKEditor][ckeditor-webpage]. These editors can be really "smart" and do an amazing job - saving text with HTML conventions, but after some time you will realize that this kind of making content may not suites you, your idea of writing, which was in my case.
+IMHO Wordpress is great for PR guys, not for programmers/hackers. PR guys usually want to quickly upload news with few sample photos, and they use for it some [WYSIWYG][wiki-wysiwyg] HTML editors like [TinyMCE][tinymce-webpage] or [CKEditor][ckeditor-webpage]. These editors can be really "smart" and do an amazing job - saving text with HTML conventions, but after some time you will realize that this kind of making content may not suites you, your idea of writing, which was in my case.
 
-I hope I would not say lie to you that programmers, web admins or hackers really loved Markdown syntax - I loved it. It has a very clean and simple syntax, which can allow you to focus on making some content and do not concern anything else (your content will always have the same generated HTML code).  Markdown power is especially visible for blogs and basic documentation (like simple README files) where you can mainly focus on content with some basic graphics which illustrate the whole content.
+I hope I would not say lie to you that programmers, web admins or hackers really loved Markdown syntax - I loved it. It has a very clean and simple syntax, which can allow you to focus on making some content and do not concern anything else (your content will always have the same generated HTML code). Markdown power is especially visible for blogs and basic documentation (like simple README files) where you can mainly focus on content with some basic graphics which illustrate the whole content.
 
 In time I realize that kind of magic what those WYSYWIG live editors are making is not for me, not for my profession - programmer. But here not profession is important, but the care about the code you are writing, and that is why programmers and hackers find in those web pages generators a true ally.
 
@@ -30,27 +30,28 @@ I will not favor any of those frameworks because it's pointless and actually dep
 
 As an advantage of migration to static web pages generators I can point:
 
-- Writing directly through your SSH connection.
-- Writing posts extremely fluent in Vim or Emacs - I realize that is not an advantage for all ;)
-- Improve performance of displaying your webpage (not a database framework is faster than static web generator)
-- Improve content visibility by adding many useful plugins (cloud tags, code syntax highlighting, and many more)
-- Host it anywhere
-- It likes to be [git][git-webpage]-ed ;)
-- Making articles in 3 types of text syntax (`.rst`, `.md` or `.adoc`)
-- Articles written in markdown can be easy to migrate almost any type of text processors like LaTeX or Word/Writer.
+-   Writing directly through your SSH connection.
+-   Writing posts extremely fluent in Vim or Emacs - I realize that is not an advantage for all ;)
+-   Improve performance of displaying your webpage (not a database framework is faster than static web generator)
+-   Improve content visibility by adding many useful plugins (cloud tags, code syntax highlighting, and many more)
+-   Host it anywhere
+-   It likes to be [git][git-webpage]-ed ;)
+-   Making articles in 3 types of text syntax (`.rst`, `.md` or `.adoc`)
+-   Articles written in markdown can be easy to migrate almost any type of text processors like LaTeX or Word/Writer.
 
 In the other side, disadvantages can be:
 
-- Face the problem of fast and clean migrating HTML content to reStructuredText, Markdown, or AsciiDoc
-- Change your habits of directly web editing content into CMS
-- Generate content after changes (there are some easy techniques, which constantly watch the content for any changes)
+-   Face the problem of fast and clean migrating HTML content to reStructuredText, Markdown, or AsciiDoc
+-   Change your habits of directly web editing content into CMS
+-   Generate content after changes (there are some easy techniques, which constantly watch the content for any changes)
 
 ## It is worth it?
+
 If you want to just write a blog or a blog-like page in easy to write syntax (like Markdown) I definitely say YES, it is worth the time.
 
 But if you expect whole next level of writing articles like you do in CMS, turn around and go back to your stuff, you will waste your time implementing it.
 
 [git-webpage]: https://git-scm.com/
-[wiki-WYSIWYG]: https://en.wikipedia.org/wiki/WYSIWYG
+[wiki-wysiwyg]: https://en.wikipedia.org/wiki/WYSIWYG
 [ckeditor-webpage]: http://ckeditor.com/
 [tinymce-webpage]: https://www.tinymce.com/

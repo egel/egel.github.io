@@ -39,7 +39,6 @@ So, now I split a bit rest of my drive space for 2 additional partitions.
 
 For more take a look at [partitioning page][arch-partitioning] on Arch wiki.
 
-
 ### Downloading basic packages
 
 > I have tried installation on my virtual box then again on my laptop. The problem that I face, was internet connection through WiFi. There are several ways of doing this. You can use `wifi-menu` to set up temporary connection for downloading packages and after installation setup `network-manager`.
@@ -130,8 +129,8 @@ To do it `logout` from root user just to safety purpose.
 >
 > It's a good approach - but hey, you already know this, right? ;)
 
-
 ### Further steps
+
 Now we'll install additional useful stuff. You may or may not want to install it, it's only up to you.
 
 My **must have** list.
@@ -152,7 +151,6 @@ The list:
 -   For SSH `openssh` is the obvious choice!
 -   For LaTeX I usually install all packages `texlive-most texlive-lang` and `texstudio`
 
-
 ### Install display manager
 
 I choose [Gnome3](https://www.gnome.org/gnome-3/) for my graphical environment because now many problems have been fixed by maintainers and it looks quite nice.
@@ -164,8 +162,8 @@ sudo systemctl enable gdm.service
 
 Reboot system with `sudo reboot` and we're done with installation of GUI.
 
-
 ### Install the Nvidia drivers
+
 First, we check which graphic card we have:
 
 ```bash
@@ -184,6 +182,7 @@ sudo systemctl enable nvidia-persistenced.service
 Then we have to reboot the system and check `lsmod | grep nvidia`.
 
 ### The end
+
 Now you should have full operational Arch Linux system - and yes, you should be proud of yourself!
 
 Thanks for staying with me to the end. I hope that little tutorial of mine, help you a bit during your journey of setting up you private Arch instance ;)

@@ -41,9 +41,9 @@ sudo raspi-config
 
     Then by clicking through further menu options connect to your network.
 
-    - Wi-fi
-    - SSID - Name of the network
-    - Password
+    -   Wi-fi
+    -   SSID - Name of the network
+    -   Password
 
 If you finally managed to get to your wifi now it's time to download `wicd-curses`
 
@@ -70,11 +70,11 @@ sudo wicd-curses
 
 1.  Put `X` nearby:
 
-    - `[X] Use DHCP Hostname`
-    - `[X] Automatically connect to this network`
-    - `[X] Use Encryption`
-    - Fill the password
-    - In the end **save** by pressing `Shift`+`S`
+    -   `[X] Use DHCP Hostname`
+    -   `[X] Automatically connect to this network`
+    -   `[X] Use Encryption`
+    -   Fill the password
+    -   In the end **save** by pressing `Shift`+`S`
 
 1.  Select the network and connect it by pressing enter.
 

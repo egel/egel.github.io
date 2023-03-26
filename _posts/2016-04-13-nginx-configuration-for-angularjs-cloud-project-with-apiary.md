@@ -8,9 +8,9 @@ Recently I have been working on some cloud project with my coworkers. We used [A
 
 The main goal for proper Nginx configuration was to serve `*.example.dev` domains, but with some exceptions (restrictions) for subdomains:
 
-*   `www` subdomain as a legacy restriction
-*   `api` subdomain reserved for final REST API
-*   `tests` this subdomain (for my purpose only) provides easy URL to code coverage with
+-   `www` subdomain as a legacy restriction
+-   `api` subdomain reserved for final REST API
+-   `tests` this subdomain (for my purpose only) provides easy URL to code coverage with
     unit tests
 
 > I used `dev` domain only on my local machine. Feel free to change it to whatever name you like.
@@ -21,11 +21,11 @@ While building frontend application I have made some basic Nginx configuration a
 
 This configuration provides 5 servers:
 
-*   First one is for frontend application, which may support organizations with some exceptions for `api`, `tests` and `www` (ex.: `companyname.example.dev`).
-*   Second for legacy domain `www` redirect.
-*   The third is for frontend application which may support only basic domain (ex.: `example.dev`).
-*   Next one is for REST backend domain redirect provided by apiary.
-*   The Last one provides easy access to auto-generated code coverage for
+-   First one is for frontend application, which may support organizations with some exceptions for `api`, `tests` and `www` (ex.: `companyname.example.dev`).
+-   Second for legacy domain `www` redirect.
+-   The third is for frontend application which may support only basic domain (ex.: `example.dev`).
+-   Next one is for REST backend domain redirect provided by apiary.
+-   The Last one provides easy access to auto-generated code coverage for
     fronted app.
 
 ```nginx

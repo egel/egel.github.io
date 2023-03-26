@@ -132,6 +132,9 @@ So what we can configure here?
 
     ```bash
     brew install pinentry-mac
+
+    # where pinentry-mac is stored
+    which pinentry-mac
     ```
 
     Then add the following configuration to your gpg-agent.
@@ -223,7 +226,7 @@ So what we can configure here?
 
     As you have noticed we used `hkp-cacert` option, but we still didn't get the file. In order to get the file, we have to download a cert file `~/.gnupg/sks-keyservers.netCA.pem` and right after, we should also validate if downloaded certificate match with "Key Identifier" from the original website <https://sks-keyservers.net/verify_tls.php>
 
-    ![HKSP Pool Verification]({{ site.baseurl }}/assets/img/hksp-pool-verification.png)
+    ![HKSP Pool Verification][img-hksp-pool-verification]
 
     ```bash
     wget ~/.gnupg/sks-keyservers.netCA.pem
@@ -236,3 +239,5 @@ So what we can configure here?
     ```
 
 Awesome! Now you have a complete overview and good configuration to start working. Have fun and stay secure!
+
+[img-hksp-pool-verification]: {{ site.baseurl }}/assets/img/hksp-pool-verification.png

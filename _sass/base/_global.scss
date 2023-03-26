@@ -146,6 +146,10 @@ div.alert {
     background-color: #ffc7cc;
     border: 1px solid #e63946;
   }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /* ---- Responsive ---- */
