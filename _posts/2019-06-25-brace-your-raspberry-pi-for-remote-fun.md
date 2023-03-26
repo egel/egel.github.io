@@ -23,7 +23,9 @@ Login to your Pi and of course, change the default password for your `pi` user. 
 | ---- | --------- |
 | pi   | raspberry |
 
-> TIP: to change the password for the current logged user just type: `passwd`
+<div class="alert alert-info">
+<p>Tip: to change the password for the current logged user just type: <code>passwd</code></p>
+</div>
 
 ### Get wicd-curses
 
@@ -37,7 +39,7 @@ sudo raspi-config
 
 1.  Network Options
 
-    ![raspi-config Network options]\({{ site.baseurl }}/assets/img/raspi-config-network-options.png)
+    ![raspi-config Network options][img-raspi-config-network-options]
 
     Then by clicking through further menu options connect to your network.
 
@@ -74,7 +76,7 @@ sudo wicd-curses
     -   `[X] Automatically connect to this network`
     -   `[X] Use Encryption`
     -   Fill the password
-    -   In the end **save** by pressing `Shift`+`S`
+    -   In the end **save** by pressing <kbd>shift</kbd> + <kbd>s</kbd>
 
 1.  Select the network and connect it by pressing enter.
 
@@ -89,7 +91,9 @@ sudo systemctl start ssh
 
 Now you can reboot the device and connect to it via SSH.
 
-> Additionally you can add your public key to `~/.ssh/authorized_keys`, so you can spare next time typing your password.
+<div class="alert alert-info">
+<p>Additionally you can add your public key to <code>~/.ssh/authorized_keys</code>, so you can spare next time typing your password.</p>
+</div>
 
 ## Useful packages
 
@@ -113,3 +117,5 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/maste
 ```
 
 That's it. Now you have a decent, minimalistic configuration to start playing with your Pi completely remote. Ha, you can be even smarter than this and prepare the image of your MicroSD card, so next time you can just flash it and use it immediately by starting the Pi. Awesome!
+
+[img-raspi-config-network-options]: {{ site.baseurl }}/assets/posts/brace-your-raspberry-pi-for-remote-fun/raspi-config-network-options.png

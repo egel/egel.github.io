@@ -9,7 +9,9 @@ Each profession has some niche of people who manifest their skills to the audien
 
 In this article, I would like to analyze what is web-development a favorable behavior, human model. Furthermore, I want to dispute what kind of factors advocate, that a person is promising or when the attitude could suggest to the others to be an anti-programmer type.
 
-> Disclaimer: this topic is huge and the man could write a book about it. In this article, I will try to emphasize some points which might be a bit different from the well-known stereotype (intelligent, educated, fast typist, fast thinker). This topic will also try to answer the question of how to discover some true potential even in a programming newbie.
+<div class="alert alert-info">
+<p><b>Disclaimer</b>: this topic is huge and the man could write a book about it. In this article, I will try to emphasize some points which might be a bit different from the well-known stereotype (intelligent, educated, fast typist, fast thinker). This topic will also try to answer the question of how to discover some true potential even in a programming newbie.</p>
+</div>
 
 ## Let's start with positive aspects
 
@@ -68,7 +70,7 @@ Having **no daily routine** could be one of the key features of inefficiency. Th
 
 **Low APM** (actions per minute) - this situation may affect people which are constantly connected with their social platforms (e.g.: watching Reddit, Instagram, or YouTube videos) that in the end distract them from being focused in their **productive window** (see picture below). But don't get me wrong, everything is for humans - e.g.: I'm listening to music on YT while working, but I don't watch the video. I just enjoy the music, so the video isn't distracting me. The problem arises when someone doesn't know the difference or simply can't stop - **easily distracted**, not a productive person.
 
-![Productivity vs. Hours Worked]({{ site.baseurl }}/assets/img/main-qimg-327de6b2d5c373535af71325d5f94eec.png)
+![Productivity vs. Hours Worked]({{ site.baseurl }}/assets/posts/what-makes-you-be-a-better-programmer/main-qimg-327de6b2d5c373535af71325d5f94eec.png)
 
 Source: Quora, "Is it better to work 5 eight-hour days or 4 twelve-hour day shifts?"
 

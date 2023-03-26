@@ -13,6 +13,8 @@ I would say that this is "almost" the most comfortable (provided that you're usi
 
 ### Tech specs:
 
+![MacBook Pro 15" from 2017][img-macbook-pro-15-2017-info]
+
 | name            | value                             |
 | --------------- | --------------------------------- |
 | Model           | MacBook Pro                       |
@@ -24,7 +26,9 @@ I would say that this is "almost" the most comfortable (provided that you're usi
 | Keyboard Layout | (US) English International Layout |
 | Touchbar        | yes                               |
 
-Small disclaimer. I'm using the MacBooks since 2014. The reviewed MacBook I'm using is from October 2017. The whole article is my personal opinion about the professional usability of the product from the perspective of a webdeveloper. The review is not sponsored and I don't gain any profit from anyone mentioned in the post. The review by the design will be my truthful and honest opinion confirmed by the experience and time spent with the product.
+<div class="alert alert-info">
+<p><b>Little disclaimer</b>: I'm using the MacBooks since 2014. The reviewed MacBook I'm using is from October 2017. The whole article is my personal opinion about the professional usability of the product from the perspective of a webdeveloper. The review is not sponsored and I don't gain any profit from anyone mentioned in the post. The review by the design, will be my truthful and honest opinion confirmed by the experience and time spent with the product.</p>
+</div>
 
 ### Design and appearance
 
@@ -141,6 +145,7 @@ On the other side, there is a whole other story about macOS (not OSX anymore, th
 
 In a summary, this device has some visible flaws like a keyboard or touchbar, but in the end, this device was the best available mobile laptop on the market at the time when I got it (Jan 2018). The quality of hardware and well-known software stability I'm getting while using the macOS, become the key factor for me. If you ask me - and if I would be able to choose between another brand with a bit better hardware specs (e.g.: more RAM, better CPU, more external ports) I would still stick to the MacBook. The reason is simple. The unification of usage between all applications available on macOS is addictive. So when you have to change the platform - to Linux for example - and you'll notice that each app is made in a bit different way, then you want to get back to well-known macOS environment where you don't have to fight with each new app - you can just use it like any other one before and this becomes a factor which comes only after some unknown time when you know to be more efficient you have to strive to be lazy 😉. In general, I want to use the device that I have and not to fight with it whenever something is not working as I would expect.
 
+[img-macbook-pro-15-2017-info]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/macbook_pro_15_2017_info.png
 [img-1280px-QWERTY-home-keys-position]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/1280px-QWERTY-home-keys-position.png
 [img-spacing-between-touchbar-and-keyboard]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/spacing-between-touchbar-and-keyboard-in-15-inch-macbook-pro-from-late-2017.jpg
 [img-macbook_pro_13inches_no_touchbar]: {{ site.baseurl }}/assets/posts/webdeveloper-review-of-15-inch-macbook-pro-from-late-2017/macbook_pro_13inches_no_touchbar.jpg
