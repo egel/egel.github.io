@@ -139,8 +139,9 @@ So what we can configure here?
     ```bash
     brew install pinentry-mac
 
-    # where pinentry-mac is stored
+    # check where pinentry-mac is stored
     which pinentry-mac
+    /usr/local/bin/pinentry-mac
     ```
 
     Then add the following configuration to your gpg-agent.

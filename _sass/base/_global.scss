@@ -55,6 +55,13 @@ dd {
   margin-left: 2em;
 }
 
+blockquote {
+  ul:last-child,
+  ol:last-child {
+    margin-bottom: 0;
+  }
+}
+
 p,
 ol,
 ul,
