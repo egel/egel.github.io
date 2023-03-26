@@ -7,7 +7,7 @@ tags: [osx, git, pgp, gpg, gitlab, github]
 
 When I saw for the first time a commits with the mysterious "Verified" sign and I was told that someone can do this on its own, I wanted to do the same. Yes, I know it was silly - but I felt just like a small boy in a big shop of toys.
 
-![Commit verified]({{ site.baseurl }}/assets/img/commit-verified.png)
+![Commit verified][img-commit-verified]
 
 After a moment when I was informed about this cool function, I started to wonder:
 
@@ -34,15 +34,17 @@ In this short definition (and also in further part), there is no phrase, which c
 
 We have come at last to the place where the PGP keys enter to the scene. A creation of the aforementioned PGP keys and obligatory making them public in a trusted, available to everyone place, should give to the world (in definition) a certain assurance that "you is really you". Only the person who has private and the public key can sign the data with that key, e.g.: someone using your public key can encrypt the his message and only you, the person with corresponding private key could decipher the message. Finally, the last and IMHO the hardest part of that process, to use those keys wherever possible to emphasize that "you is really you" or in our case, "you, not someone else who is claiming to be you" created this commit.
 
-![Always sign your commits!]({{ site.baseurl }}/assets/img/sign-your-commits.jpg)
+![Always sign your commits!][img-sign-your-commits]
 
 Before you do same, what the funny character from the cartoon already did, I want to show you a story why you should sign your commits (especially for programmers, which the creation of commits determine a daily basis) and what might happen in negative scenario when you will not sign them - [A Git Horror Story: Repository Integrity With Signed Commits](https://mikegerwitz.com/2012/05/a-git-horror-story-repository-integrity-with-signed-commits).
 
 ## Open sesame!
 
-> Disclaimer: the tutorial presented below has been made for OSX, but it should also be valid for Linux work stations. The idea is completely the same, only the name of some tools to generate keys or 3rd party libs might change.
->
-> Additionally and intentionally I didn't write directly my email address and I used a fake john.doe@gmail.com email.
+<div class="alert alert-info">
+<p><b>Disclaimer</b>: the tutorial presented below has been made for OSX, but it should also be valid for Linux work stations. The idea is completely the same, only the name of some tools to generate keys or 3rd party libs might change.</p>
+
+<p>Additionally and intentionally I didn't write directly my email address and I used a fake <i>john.doe@gmail.com</i> email.</p>
+</div>
 
 To secure your commits, you will need:
 
@@ -59,9 +61,11 @@ Let's start with creating your PGP key. You will use it to secure/identify the c
 gpg --full-gen-key
 ```
 
-You will get few questions to answer (e.g.: name, email, comment, passphrase) which will be stored in your key and visible to everyone (it's not a good place to make jokes there - would you trust the clown🤡? - me not 😉).
+You will get few questions to answer (e.g.: name, email, comment, passphrase) which will be stored in your key and visible to everyone (it's not a good place to make jokes there - would you trust the clown 🤡? - me not 😉).
 
-> Note: Personally, I never use an empty passphrase and I'm opting for a 4096-bit key.
+<div class="alert alert-info">
+<p><b>Note</b>: Personally, I do not recommend an empty passphrase and I'm opting for a 4096-bit key. The passphrase can be easily stored in gpg-agent for a desired period of time (e.g.: 1&nbsp;day, 5&nbsp;days, or more), so you do not need to type it all the time when signing something.</p>
+</div>
 
 Then we have to get a reference to your key so the git will understand which key he has to take in order to sign each commit. Below command will give them the list of all your public keys in the system, select the one you have entered.
 
@@ -114,16 +118,18 @@ So what we can configure here?
 
 1. For some people might be important to not enter the PGP passphrase every time they want to create a commit. To do so, we have to changed some default configuration of gpg (or gpg-agent, which I prefer). For example, if you set up the ttl to: 5184000 (60 days), after first successful sign, GPG won't ask you again to fill the passphrase until this period will expired (or until you'll restart your machine)
 
-    > It's not recommended to make the cache expiration long unless you know that this might reduce your security.
+    <div class="alert alert-info">
+    <p>It's not recommended to make the cache expiration long unless you know that this might reduce your security.</p>
+    </div>
 
     ```ini
     # ~/.gnupg/gpg-agent.conf
 
     # Set the maximum time a cache entry is valid to n seconds. After this time a cache entry will be expired even if it has been accessed recently or has been set using gpg-preset-passphrase. The default is 2 hours (7200 seconds).
-    max-cache-ttl 5184000
+    max-cache-ttl 2592000 # 2592000 = 1 months
 
     # Set the time a cache entry is valid to n seconds. The default is 600 seconds. Each time a cache entry is accessed, the entry’s timer is reset. To set an entry’s maximum lifetime, use max-cache-ttl. Note that a cached passphrase may not be evicted immediately from memory if no client requests a cache operation. This is due to an internal housekeeping function which is only run every few seconds.
-    default-cache-ttl 5184000
+    default-cache-ttl 2592000
     ```
 
 1. Use a secure program to enter your pin/passwords, like e.g.: [`pinentry`](https://www.gnupg.org/related_software/pinentry/index.html).
@@ -162,7 +168,9 @@ So what we can configure here?
 
     Since the gpg configuration deprecates `--keyserver` and an option in favor of using `dirmngr.conf` and set up those options there.
 
-    > This option is deprecated - please use the --keyserver in dirmngr.conf instead. - [reference link](https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html#GPG-Configuration-Options)
+    <div class="alert alert-warning">
+    <p>This option is deprecated - please use the <code>--keyserver</code> in <code>dirmngr.conf</code> instead. Here you have a <a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html#GPG-Configuration-Options">reference link</a>.</p>
+    </div>
 
     ```ini
     # ~/.gnupg/dirmngr.conf
@@ -240,4 +248,6 @@ So what we can configure here?
 
 Awesome! Now you have a complete overview and good configuration to start working. Have fun and stay secure!
 
-[img-hksp-pool-verification]: {{ site.baseurl }}/assets/img/hksp-pool-verification.png
+[img-commit-verified]: {{ site.baseurl }}/assets/posts/the-lesson-of-verifying-git-commits/commit-verified.png
+[img-sign-your-commits]: {{ site.baseurl }}/assets/posts/the-lesson-of-verifying-git-commits/sign-your-commits.jpg
+[img-hksp-pool-verification]: {{ site.baseurl }}/assets/posts/the-lesson-of-verifying-git-commits/hksp-pool-verification.png
