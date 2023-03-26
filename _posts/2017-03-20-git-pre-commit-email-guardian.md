@@ -60,6 +60,7 @@ This simple solution may save a lot of your time (and potential interactive reba
 So what might be some solution to this problem?
 
 ### Solution
+
 Below I present some solution and how to implement it using simple `pre-commit` hook script that is available in any Git version higher than v1.8.4.
 
 <script src="https://gist.github.com/egel/ca14ecaf73f2f1370942e650676c8368.js"></script>
@@ -67,9 +68,9 @@ Below I present some solution and how to implement it using simple `pre-commit` 
 What does it do? Basically before each commit (`git commit -m "whatever"`) then Git runs its hooks (if they're defined) and program checks what e-mail addresses are valid for this repository and allow or reject users with small information, that only a specific group of e-mails are allowed to commit in this repository.
 
 #### Installation
+
 Save above snippet save as `.git/hooks/pre-commit` into your Git repository and **don't forget to make the file executable** via `chmod +x .git/hooks/pre-commit`. In the final step, modify the list of e-mail addresses and that's it.
 
 I only hope that now you become much happier Git user then you ware before. Enjoy using this simple pre-commit e-mail guardian :)
 
 [github]: https://github.com
-

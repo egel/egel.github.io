@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Migrating blog content from Wordpress
-tags: [pelican, wordpress]
+tags: [pelican, wordpress, diary]
 ---
 
 Currently, I am in a phase of migrating my content from legacy Wordpress to
@@ -18,4 +18,4 @@ something interesting here.
 
 Thank you for your indulgence and stay tuned :)
 
-  [1]: https://gist.github.com
+[1]: https://gist.github.com

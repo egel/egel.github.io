@@ -24,12 +24,13 @@ For Linux distributions with `apt-get` package manager (basically all based on D
 <script src="https://gist.github.com/egel/74ecc84c8d6ccaf697f63e7202585ab1.js"></script>
 
 ### Before you start
+
 We need to check some related libraries and languages which Vim or Vim's plug-ins may require in order to work properly. Now we'll check only the most popular:
 
-*   Lua + LuaJIT
-*   Ruby
-*   Perl
-*   Python v2 & v3
+-   Lua + LuaJIT
+-   Ruby
+-   Perl
+-   Python v2 & v3
 
 > Scripts that should work for Ubuntu 16.04 look like this:
 >
@@ -84,6 +85,7 @@ $ which python3
 ```
 
 ### Installation for Linux
+
 The installation is relatively simple. Probably the scariest thing while installation of Vim is the configuration of flags, but I'll try to cover this topic to be more obvious.
 
 The flags are simple, but the hardest one might be `--with-python-config-dir` because the config directory can different depends on the system (different versions of Linux may have different locations for Python).
@@ -100,13 +102,12 @@ $ python3-config --configdir
 
 I my case they ware like those presented below:
 
-*   for python 2: `/usr/lib/python2.7/config-x86_64-linux-gnu`
-*   for python 3: `/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu`
+-   for python 2: `/usr/lib/python2.7/config-x86_64-linux-gnu`
+-   for python 3: `/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu`
 
 The downloaded version of Vim also matters. If a downloaded version of Vim is v7.4 you should write `vim74` or if the version is `v8.0` then you should write `vim80`. You're obligated to correct those paths with relevant `VIMRUNTIMEDIR` configuration variable. In the script below it's already set to `vim80`.
 
 > If you don't know which is the latest version (tag) from Vim's repository on GitHub and you downloaded repo via `git clone`, then run this command `$ git describe --abbrev=0 --tags` in order to check the latest tag.
-
 
 ```bash
 mkdir -p /tmp/vim
@@ -187,4 +188,3 @@ Linking: gcc   -L. -fstack-protector -rdynamic -Wl,-export-dynamic -Wl,-E   -L/u
 ```
 
 Awesome! Now you are ready to discover the Vim! Good luck hacker! See you on the grid ;)
-

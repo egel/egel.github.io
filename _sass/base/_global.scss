@@ -55,6 +55,13 @@ dd {
   margin-left: 2em;
 }
 
+blockquote {
+  ul:last-child,
+  ol:last-child {
+    margin-bottom: 0;
+  }
+}
+
 p,
 ol,
 ul,
@@ -145,6 +152,10 @@ div.alert {
   &.alert-danger {
     background-color: #ffc7cc;
     border: 1px solid #e63946;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
   }
 }
 

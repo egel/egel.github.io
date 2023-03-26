@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Is worth to know the Vim Editor and why?
-feature-img: 
+feature-img:
 tags: [vim, text-editor]
 summary: I'll try to gather all my current experience about writing the code, also writing in many text editors and finally express my opinion that is that worth to learn Vi/Vim.
 ---
@@ -10,10 +10,9 @@ This topic has been long on my mind, but in the end, I want to share with you wi
 
 I will also try to answer a few essential questions for those who would like to give it try, like:
 
-- Is it worth it to know the Vim editor and why?
-- The knowledge about Vim can be useful for me in real life, and if so, where?
-- Where should I start to quickly become a master ninja of Vim and how long it takes?
-
+-   Is it worth it to know the Vim editor and why?
+-   The knowledge about Vim can be useful for me in real life, and if so, where?
+-   Where should I start to quickly become a master ninja of Vim and how long it takes?
 
 ### Quick review about Vim
 
@@ -21,14 +20,13 @@ If we take some information from popular Wikipedia, we can find out, that Vim is
 
 Now, the world takes a lot of changes every day. Connecting to the Internet network, imprinted a giant leap on the software industry, including the software of text editors. There are constantly growing newer and newer text editors projects like:
 
-*   [Sublime][3],
-*   [Notepad++][2],
-*   or [Atom][4].
+-   [Sublime][3],
+-   [Notepad++][2],
+-   or [Atom][4].
 
 But, here I won't talk about huge IDEs, like [Eclipse](), [NetBeans](), [VisualStudio](), or [JetBrains editors family](). These aren't just common text editors, rather a big **I**ntegrated **D**evelopment **E**nvironments.
 
 Now is the time, to ask a question, which found the clear and objective answer can be a difficult task.
-
 
 ### Is it worth it to know the Vim editor and why?
 
@@ -73,7 +71,6 @@ Disadvantages:
 -   mastering takes time;
 -   find a perfect configuration, which suits your needs, may also take time;
 
-
 ### The knowledge about Vim can be useful for me in real life, and if so, where?
 
 Vim (Vi) is probably the most common text editor spread around the world (It is pre-installed by default in almost any kind of machine). This single phrase could be crucial to give it try. But referring to the question, the knowledge about Vim will be useful for you in real life? My answer is **definitely yes**, in fact, that you will bind your life with some kind of IT or educational sector. In other way, this knowledge is worth a lot (because not everyone knows Vim!), but probably it won't be appreciated by the environment co-workers or your boss. Shame!
@@ -84,13 +81,13 @@ When you will work with servers, in most cases you will have an opportunity to o
 
 I realize that may sound a bit childish, but this childishness disappears from the face of people that watching you when you suddenly switching between a dozen of terminal windows (ex.: tmux/vim). In this moment they might begin to believe and you can hear something like: "Ok, you have got some skills" ;)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kQJrgSML5hY?controls=0&amp;showinfo=0&amp;start=10" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kQJrgSML5hY?start=10" title="Ok, you have got some skills" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Where I should start to quickly become a master ninja of Vim and how long it takes?
 
 Practice, this is where you should start. And yes, there is no other quick way I know, if you want to get used to the hero of this article.
 
-At the beginning, there are always some basic questions, ie.: *how to install Vim?*. A bit later, after the first run, you will notice that the look of Vim does not knock on knees, and even then you find that: "After all, there is nothing at all! Why everyone says, that Vim it is the best. No, hell no!!!".
+At the beginning, there are always some basic questions, ie.: _how to install Vim?_. A bit later, after the first run, you will notice that the look of Vim does not knock on knees, and even then you find that: "After all, there is nothing at all! Why everyone says, that Vim it is the best. No, hell no!!!".
 
 If at this point your patience is not completely exhausted, the next step is keyboard controls and customize them to suit your needs (as you progress through learning).
 
@@ -100,7 +97,7 @@ In fact, this is the end. The only thing you need to do is to try to use Vim as 
 
 The following slight digression comparing **effort** (Y-axis) and **time** (X-axis) that must be put into a selective group of text editors. As you can see the most interesting curves of all are presented by curves of Emacs and Vim.
 
-![Learning curve of some text editors]({{ site.baseurl }}/assets/img/text_editors.jpg)
+![Learning curve of some text editors][img-text-editors]
 
 However, I cannot leave you without any kind of further hint or help. So for the beginners, (and also advanced hackers), I can recommend you my [`dotfiles`][8] Github repository, which I've made a while ago also for this kind of situations. Among other stuff, it stores my Vim configuration, so it is a good start to gets your own nice configuration.
 
@@ -110,13 +107,14 @@ This repository also contains my keyboard shortcuts in beautiful PDF to download
 
 Thank you for staying with me to the end. Now, give Vim a try, leave a comment and stay fresh!
 
+[1]: http://www.microsoft.com/microsoft-hololens/en-us
+[2]: http://notepad-plus-plus.org/
+[3]: http://www.sublimetext.com/
+[4]: https://atom.io/
+[5]: http://stackoverflow.com/questions/597077/is-learning-vim-worth-the-effort
+[6]: http://www.nano-editor.org/
+[7]: https://github.com/egel/code-wiki/blob/master/programs/vim/vim.md
+[8]: https://github.com/egel/dot-files
+[vimawesome-webpage]: http://vimawesome.com/
 
- [1]: http://www.microsoft.com/microsoft-hololens/en-us
- [2]: http://notepad-plus-plus.org/
- [3]: http://www.sublimetext.com/
- [4]: https://atom.io/
- [5]: http://stackoverflow.com/questions/597077/is-learning-vim-worth-the-effort
- [6]: http://www.nano-editor.org/
- [7]: https://github.com/egel/code-wiki/blob/master/programs/vim/vim.md
- [8]: https://github.com/egel/dot-files
- [vimawesome-webpage]: http://vimawesome.com/
+[img-text-editors]: {{ site.baseurl }}/assets/posts/is-worth-to-know-the-vim-editor-and-why/text_editors.jpg

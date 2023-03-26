@@ -17,11 +17,11 @@ My example will be base on creating a docker image with Node 8 and Chrome browse
 > docker login docker.example-domain.com:4567
 > ```
 
-
 ### Creating a Dockerfile
-Create a desired `Dockerfile` image. I used simple Node8 with <code>yarn</code>.
 
-> I used a custom name for the Dockerfile which is <code>Dockerfile.node_8</code> only to present how to also use it with a custom name. If you just use the default name <code>Dockerfile</code> then you don't have to specify a characteristic `--file` flag.
+Create a desired `Dockerfile` image. I used simple Node8 with `yarn`.
+
+> I used a custom name for the Dockerfile which is `Dockerfile.node_8` only to present how to also use it with a custom name. If you just use the default name `Dockerfile` then you don't have to specify a characteristic `--file` flag.
 
 ```dockerfile
 FROM node:8
@@ -38,7 +38,7 @@ CMD yarn && yarn run start
 
 ### Build and push the image to the registry
 
-Secondly, to build the <code>Dockerfile</code> image and tag it you have to use command:
+Secondly, to build the `Dockerfile` image and tag it you have to use command:
 
 ```bash
 docker build --tag my-private-node-8:latest ~/workspace/directory-with-dockerfile-inside/
@@ -64,7 +64,7 @@ The last step. Push this new tagged image to the docker registry:
 docker push docker.example-domain.com:4567/my-private-node-8:1.0.0
 ```
 
-or create a new image with tag directly from your <code>Dockerfile</code>. The `.` at the very end of the command is important.
+or create a new image with tag directly from your `Dockerfile`. The `.` at the very end of the command is important.
 
 ```bash
 docker build --file ./Dockerfile.node_8 -t docker.example-domain.com:4567/wobcom/cssp/my-private-node-8:1.0.0 .

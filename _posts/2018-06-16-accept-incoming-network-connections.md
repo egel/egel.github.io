@@ -8,9 +8,7 @@ date: 2018-06-16 11:22:00
 
 If you're a Golang developer and you're using Mac OSX as your daily programming battle-station with IDEA IntelliJ editor, then for sure you've noticed this annoying popup for incoming connection when you compile your go app (if you by default blocking all unwanted connections).
 
-![Do you want the application "__go_build_main_go" to accept incoming network connections?]({{ site.baseurl }}/assets/img/do-you-want-accept-incoming-connections.png)
-
-![](quiver-image-url/E066230B3222B6446E090E2F4B62DAC2.png =532x305)
+![Do you want the application "__go_build_main_go" to accept incoming network connections?][img-do-you-want-accept-incoming-connections]
 
 There is only one word for this if you see this 100 times a day and even when adding it to the Firewall exceptions didn't work - it's called "frustration".
 
@@ -28,6 +26,9 @@ http.ListenAndServe("localhost:" + strconv.Itoa(port), router))
 
 So, finally, you can say an ultimate "bye, bye" to this annoying notification 🙂
 
-> *Do you want the application "__go_build_main_go" to accept incoming network connections?*
->
-> *Clicking Deny may limit the application's behavior. This setting can be changed in the Firewall pane of Security & Privacy preferences.*
+<div class="alert alert-success">
+<p><b>Do you want the application "__go_build_main_go" to accept incoming network connections?</b><br/>
+Clicking Deny may limit the application's behavior. This setting can be changed in the Firewall pane of Security & Privacy preferences.</p>
+</div>
+
+[img-do-you-want-accept-incoming-connections]: {{ site.baseurl }}/assets/posts/accept-incomming-network-connections/do-you-want-accept-incoming-connections.png

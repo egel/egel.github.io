@@ -37,7 +37,7 @@ I recommend starting by creating a new folder with some obvious name for you (an
 
 Well, we've got a folder location for your thesis. This is important because LaTeX generates many meta files while preparing final result - in our way it'll be a PDF file. The structure of files is essential for managing your project in future.
 
-The most commonly used files that we'll create and maintain during the writing will be: `.tex` and `.bib`.  
+The most commonly used files that we'll create and maintain during the writing will be: `.tex` and `.bib`.
 
 The `.tex` is actually a plain text file with TeX macros inside.
 
@@ -45,14 +45,14 @@ The `.bib` files are related with bibliography and store all positions which can
 
 We create 4 simple text files:
 
-*   `main.tex`
-*   `chap_one.tex`
-*   `chap_two.tex`
-*   and `chap_three.tex`
+-   `main.tex`
+-   `chap_one.tex`
+-   `chap_two.tex`
+-   and `chap_three.tex`
 
 The first one (`main.tex`) will store the whole configuration for our document.
 
-> It is good practice to separate chapters to different files, mainly for a further quick feature of enabling or disabling it.  Because of it, later in time, you can change the order of chapters in a fly. Moreover, you can collaborate on a document with other people and they can focus only on their's part without having so many conflicts into the document (yes, Git I'm talking to you). 
+> It is good practice to separate chapters to different files, mainly for a further quick feature of enabling or disabling it. Because of it, later in time, you can change the order of chapters in a fly. Moreover, you can collaborate on a document with other people and they can focus only on their's part without having so many conflicts into the document (yes, Git I'm talking to you).
 
 Probably, as you already noticed, the names of files which represents chapters begin with `chap`. It's not required to work (because you can define any name for your files), but this convention is also known as namespace or pointers and it's commonly used in LaTeX documents - more on [LaTeX labels and cross referencing][wiki-latex-labels-and-cross-ref].
 
@@ -67,18 +67,18 @@ so-called **preamble** and the **document**.
 > This name `document` can be a tricky word for the first time. Because in lazy thinking "document" is a physical document that you can hold. But in the meaning of LaTeX syntax, "document" refers to the content of a document written by the author.
 
 Preamble
-:   This is a collation of rules which program must know before it generates
+: This is a collation of rules which program must know before it generates
 final document.
 
 Document
-:   This is a place where author writing a text of the document and using proper commands for formatting text.
+: This is a place where author writing a text of the document and using proper commands for formatting text.
 
 The standard and also the simplest preamble (not quite for thesis) looks similar to this below:
 
 ```latex
 \documentclass[12pt, oneside, a4paper]{report}
 \usepackage[OT4, plmath]{polski}  % definition of using platex
-\usepackage[utf8]{inputenc}            % UTF-8 for multiple languages
+\usepackage[utf8]{inputenc}       % UTF-8 for multiple languages
 \usepackage[OT4]{fontenc}
 \usepackage{url}
 \title{Project and implementation of content management system}
@@ -86,19 +86,19 @@ The standard and also the simplest preamble (not quite for thesis) looks similar
 \date{\today}
 ```
 
-Commonly, the preamble is being inserted into the main file of our work, the `main.tex` file (as I told you, the name can different, as you like, but conventionally it's the name of the main file). 
+Commonly, the preamble is being inserted into the main file of our work, the `main.tex` file (as I told you, the name can different, as you like, but conventionally it's the name of the main file).
 
 Chapters will contain only the content of the document (without preamble) because they will be directly included in the main document - it helps a lot in further maintenance.
 
 It is worth mentioning something about classes. The class generally is in short a set of rules that define how the document will look like. LaTeX already contains predefined classes, for example, a few of them are mentioned earlier:
 
-*   book
-*   report
-*   article
-*   letter
+-   book
+-   report
+-   article
+-   letter
 
 Fairly well illustrated, this a line
-`\documentclass[12pt, oneside, a4paper]{report}`, which is clearly written a definition of  class `report` and its optional arguments as **font size**, **type of printing** and **the document size** of the resulting paper.
+`\documentclass[12pt, oneside, a4paper]{report}`, which is clearly written a definition of class `report` and its optional arguments as **font size**, **type of printing** and **the document size** of the resulting paper.
 
 This is only a small part of the wide range of available options, because each of these classes (book, report, etc.) may contain the same optional arguments, but also other not defined in any of the core classes.
 
@@ -270,14 +270,14 @@ Dividing of our whole document into separate fragments didn't bring us some asto
 
 I think that pretty much it for this part. Thank you for your attention and leave a comment if you like it.
 
-* * *
+---
 
 But if you didn't hate LaTeX yet, and you still want to get know it better, I'll be pleased to invite to next, a third part which will contain:
 
-*   we will discuss LaTeX's elements (environments)
-*   how to add and use new packages?
-*   essential **good practices** during writing in LaTeX
-*   and we will produce a title page for our thesis
+-   we will discuss LaTeX's elements (environments)
+-   how to add and use new packages?
+-   essential **good practices** during writing in LaTeX
+-   and we will produce a title page for our thesis
 
 ...well, fun will be guaranteed ;)
 
