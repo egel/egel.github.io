@@ -384,13 +384,20 @@ Setup list view as a default view for all folders.
 1. Open harddrive view (usually it's called "Macintosh HD")
 1. Press <kbd>⌘</kbd> + <kbd>j</kbd>
 
-![Finder settings][img-finder-settings]
+![Finder harddrive settings][img-finder-harddrive-settings]
 
 Next after accepting "Use as Defaults", open terminal and remove all `.DS_Store` files from system used by the Finder, in order to remove all overrides (finder save all meta data about folders in .DS_Store).
 
 ```bash
 sudo find / -name ".DS_Store"  -exec rm {} \;
 ```
+
+Additionally, I like to **display file extensions** and **sort folder first**, therfore my usuall setting for finder window is like following:
+
+1. Open finder
+1. Press <kbd>⌘</kbd> + <kbd>,</kbd> to open window "Finder Settings"
+
+![Finder settings][img-finder-settings]
 
 #### Trackpad
 
@@ -497,6 +504,7 @@ softwareupdate --install-rosetta
 [img-preferences-displays]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-displays.png
 [img-preferences-accessibility-pointer-control]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-accessibility-pointer-control.png
 [img-preferences-trackpad-swipe-screens]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-trackpad-swipe-screens.png
+[img-finder-harddrive-settings]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/finder-harddrive-settings.png
 [img-finder-settings]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/finder-settings.png
 [img-terminal-default-shell]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/terminal-default-shell.png
 [img-iterm2-tmux]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-tmux.png
