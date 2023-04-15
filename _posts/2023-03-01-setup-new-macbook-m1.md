@@ -5,16 +5,16 @@ tags: [diary, macos, macbook, profession]
 feature-img: "assets/img/feature/macbook_pro_m1_2021.jpg"
 ---
 
-Setuping mac is definatelly not an every day task. It's usually long process, in order to get an efficient work station. In this article, I want to show you, how I approach to configure M1. I will share the process with the programs and the preferences I use.
+Setuping mac is definitely not an every day task. It's usually long process, in order to get an efficient work station. In this article, I want to show you, how I approach to configure M1. I will share the process with the programs and the preferences I use.
 
 <div class="alert alert-info" role="alert">
-    <b>Little dislcaimer</b>: I am not setting up macs every day, so when you may read this article, some things may outdate. If something will not work, toot me <a href="https://twitter.com/MaciejSypien">tweet me</a> or let me know in the comments, so I could fix it. Thanks! 🤘
+    <b>Little disclaimer</b>: I am not setting up macs every day, so when you may read this article, some things may outdate. If something will not work, toot me <a href="https://twitter.com/MaciejSypien">tweet me</a> or let me know in the comments, so I could fix it. Thanks! 🤘
 </div>
 
 ## Prerequisite
 
 -   prepare some time ~1-2h
--   good internet connection (as there will be planty things to download)
+-   good internet connection (as there will be plenty things to download)
 -   something to drink
 -   positive mood 😉 - I will try to make it as easy as possible for you
 
@@ -32,7 +32,7 @@ Setuping mac is definatelly not an every day task. It's usually long process, in
 
 ### Apple Developer Tools
 
-Unfortunatelly many programs will need Apple developer tools, so we install them as well via terminal command. Pay attention as this step might take a while... (this step took me ~10-15min)
+Unfortunately many programs will need Apple developer tools, so we install them as well via terminal command. Pay attention as this step might take a while... (this step took me ~10-15min)
 
 ```bash
 xcode-select --install
@@ -79,7 +79,7 @@ Installed via brew. In case use: `brew install --cask iterm2`
 
 **font, size, window theme**
 
-If you like hack font, do not rush with installing it via: `brew install font-hack`. Instead you may want to have **Hack Font with Powerline symbols** from the NERD Fonts <https://www.nerdfonts.com/font-downloads>. To see a small difference take a look on sceenshot below with Neovim.
+If you like hack font, do not rush with installing it via: `brew install font-hack`. Instead you may want to have **Hack Font with Powerline symbols** from the NERD Fonts <https://www.nerdfonts.com/font-downloads>. To see a small difference take a look on screenshot below with Neovim.
 
 | [Hack Font (Standard)](https://sourcefoundry.org/hack/) | [Hack Nerd Font](https://www.nerdfonts.com/) (with powerline symbols) |
 | ------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -135,7 +135,7 @@ Download the basic editors and IDEs.
 
 ### Git
 
-I put this out of dotfiles as git is essectial to do any further steps. Later we will update `.gitconfig` to be in synch with our dotfiles repo.
+I put this out of dotfiles as git is essential to do any further steps. Later we will update `.gitconfig` to be in synch with our dotfiles repo.
 
 ```bash
 wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig -P ~/
@@ -145,7 +145,7 @@ wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconf
 
 Later in GPG section, we will make sure that gpg keys will be properly added to `.local` & `.local_work` files, as they will be needed to sign the commits.
 
-For **linux** & **macOS (Intel)**, at this moment you would need to run this command `git config --global gpg.program $(which gpg)`, so the path to gpg program can be corectly updated in `.gitconfig`.
+For **linux** & **macOS (Intel)**, at this moment you would need to run this command `git config --global gpg.program $(which gpg)`, so the path to gpg program can be correctly updated in `.gitconfig`.
 
 ### SSH
 
@@ -183,7 +183,7 @@ IdentityFile ~/.ssh/id_ed25519
 <p>More information you can find in here: <a href="https://unix.stackexchange.com/a/250045">gpg-agent instead of ssh-agent</a>.</p>
 </div>
 
-### Synchonize your dotfiles
+### Synchronize your dotfiles
 
 I like to make my files synchronized with my remote repository - this helps me to update main origin when my local changes arise.
 
@@ -193,7 +193,7 @@ cd ~/privatespace/github.com/egel
 git clone git@github.com:egel/dotfiles.git
 ```
 
-Re-linking the files that was directly downloaded from the repo, in order to get full synchonizarion with the private dotfiles repository.
+Re-linking the files that was directly downloaded from the repo, in order to get full synchronization with the private dotfiles repository.
 
 ```bash
 # gitconfig
@@ -231,7 +231,7 @@ Welcome to GitLab, @john.doe!
 ### GPG
 
 <div class="alert alert-warning">
-    Before starting this section make sure you know and understand why signing your own commits may be so imporant for you. I better explain this in my another article: <a href="{{ site.baseurl }}{% link _posts/2019-03-24-the-lesson-of-verifying-git-commits.md %}">The lesson of verifying Git commits</a>.
+    Before starting this section make sure you know and understand why signing your own commits may be so important for you. I better explain this in my another article: <a href="{{ site.baseurl }}{% link _posts/2019-03-24-the-lesson-of-verifying-git-commits.md %}">The lesson of verifying Git commits</a>.
 </div>
 
 Let's start with basics, like linking configuration folder with local directory.
@@ -299,7 +299,7 @@ If everything will went successfully, you should get pinentry window, like the o
 
 ### Vim & Neovim
 
-Without a doubt vim is the king of simple text editors. Many of you may argue, but I don't want to lead you astray 😆. When I discoverd vim, I was so much confused "why the heck there is so much noice about this thing"! After looong time later, I understood why and I wrote [Is worth to know the Vim Editor and why?][post-is-worth-to-know-the-vim-editor-and-why] and [The Vim's hidden superpowers][post-the-vims-hidden-superpowers].
+Without a doubt vim is the king of simple text editors. Many of you may argue, but I don't want to lead you astray 😆. When I discoverd vim, I was so much confused "why the heck there is so much noise about this thing"! After looong time later, I understood why and I wrote [Is worth to know the Vim Editor and why?][post-is-worth-to-know-the-vim-editor-and-why] and [The Vim's hidden superpowers][post-the-vims-hidden-superpowers].
 
 Let's start as usual with configuring vim and neovim.
 
@@ -340,7 +340,7 @@ Open new session abd type `tmux new -t new`. Next, install plugins from the `.tm
 
 #### ZSH + oh-my-zsh
 
-I was positively surpried that by default M1 use zsh shell.
+I was positively surprised that by default M1 use zsh shell.
 
 ![terminal-default-shell][img-terminal-default-shell]
 
@@ -352,7 +352,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ##### Theme
 
-For years I use [honukai](https://github.com/oskarkrawczyk/honukai-iterm-zsh) theme, as it gives me best orientaion in the shell.
+For years I use [honukai](https://github.com/oskarkrawczyk/honukai-iterm-zsh) theme, as it gives me best orientation in the shell.
 
 ```bash
 mkdir -p ~/.oh-my-zsh/custom/themes/
@@ -365,7 +365,7 @@ Reopen terminal to apply changes.
 
 #### Screenshots
 
-For all types of screen records, I use default mac screenshot tool, with some combinations from Snagit. The combination of both give the fastest experiance to finish a sceenshot or record a screen for documentation.
+For all types of screen records, I use default mac screenshot tool, with some combinations from Snagit. The combination of both give the fastest experience to finish a screenshot or record a screen for documentation.
 
 I like to have one path for all type of screen records and usually choose something like:
 
@@ -381,10 +381,10 @@ killall SystemUIServer
 
 Setup list view as a default view for all folders.
 
-1. Open harddrive view (usually it's called "Macintosh HD")
+1. Open hard drive view (usually it's called "Macintosh HD")
 1. Press <kbd>⌘</kbd> + <kbd>j</kbd>
 
-![Finder harddrive settings][img-finder-harddrive-settings]
+![Finder hard drive settings][img-finder-harddrive-settings]
 
 Next after accepting "Use as Defaults", open terminal and remove all `.DS_Store` files from system used by the Finder, in order to remove all overrides (finder save all meta data about folders in .DS_Store).
 
@@ -392,7 +392,7 @@ Next after accepting "Use as Defaults", open terminal and remove all `.DS_Store`
 sudo find / -name ".DS_Store"  -exec rm {} \;
 ```
 
-Additionally, I like to **display file extensions** and **sort folder first**, therfore my usuall setting for finder window is like following:
+Additionally, I like to **display file extensions** and **sort folder first**, therefore my usually setting for finder window is like following:
 
 1. Open finder
 1. Press <kbd>⌘</kbd> + <kbd>,</kbd> to open window "Finder Settings"
@@ -419,7 +419,7 @@ I think this is pretty standard, although having one screen in vertical position
 
 ---
 
-## Additionals libs and setups
+## Additional libs and setups
 
 ### NVM & yarn
 
