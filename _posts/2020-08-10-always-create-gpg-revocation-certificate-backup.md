@@ -120,4 +120,4 @@ Links used while writing:
 -   <https://www.linode.com/docs/security/encryption/gpg-keys-to-send-encrypted-messages/>
 -   <https://gpgtools.tenderapp.com/kb/gpg-services-faq/how-to-decrypt-and-verify-text-or-files-with-gpg-services>
 
-[img-thank-you-qrcode]: {{ site.baseurl }}/assets/img/posts/always-create-gpg-revocation-certificate-backup/thank_you.png
+[img-thank-you-qrcode]: {{ site.baseurl }}/assets/posts/always-create-gpg-revocation-certificate-backup/thank_you.png
