@@ -26,7 +26,7 @@ brew instal pyenv
 
 > If you using ZSH you may need to add to your `.zshrc` & `.zprofile`.
 >
-> ``` bash
+> ```bash
 > echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
 > echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 > ```
@@ -36,12 +36,13 @@ brew instal pyenv
 In case of further readings, follow installation instructions in the official documentation <https://github.com/pyenv/pyenv#how-it-works>.
 
 ### Install python via pyenv
+
 Now, we want to install a version of python, which we will be using for our application or also for other applications (it is like reusable python executives which can be shared).
 
 I will pick the latest version just for demo purposes `3.9.7`.
 
 ```bash
-# pyenv install --list`   # list all available python versions to install
+# pyenv install --list   # list all available python versions to install
 pyenv install 3.9.7
 ```
 
@@ -66,12 +67,12 @@ $ which python
 We finally using a version of python, which is not a system default version and we have the full access/freedom to install/modify anything, by not using `sudo`! Let's install `virtualenv`
 
 ```bash
-pip install virtualenv   # FYI: under the hood, it's should use pip3 
+pip install virtualenv   # FYI: under the hood, it's should use pip3
 ```
 
 > If you need to use `sudo` to install some packages, you are possibly doing something wrong. I.e. you as "the user" is not owning "the python", which later may cause some troubles while the development process.
 
-### Initialize new virtal environemnt
+### Initialize new virtual environemnt
 
 Now, when we set up everything, we are ready to massively produce new projects in python.
 
@@ -80,15 +81,15 @@ cd /to/your/desired/location
 virtualenv venv   # will create new venv directory in your location.
 ```
 
-new directory `venv` is a directory (you can change the name to anything else, although I usually use always `venv`), which should be kept out of the repository. In venv directory, there is all information on how to set up a virtual environment for your executable python version. you don't need to modify it, it's only just FYI. 
+new directory `venv` is a directory (you can change the name to anything else, although I usually use always `venv`), which should be kept out of the repository. In venv directory, there is all information on how to set up a virtual environment for your executable python version. you don't need to modify it, it's only just FYI.
 
 At the moment, everything is ready to activate the virtual environment and start the fun!
 
 ```bash
-$ source venv/bin/activate 
+$ source venv/bin/activate
 
-(venv) 
-$ 
+(venv)
+$
 ```
 
 After activating, your prompt will change, and at the top, you will get printed the virtual environment name you are using. It's expected and it will remind you that you are still it.
@@ -99,11 +100,11 @@ If you want to quit this virtual environment and do something else, you can quit
 (venv)
 $ deactivate
 
-$ 
+$
 ```
 
 ## Conclusion
 
-That's all. As in all programming languages, there are always some nuances that are good to know before start working - as in general, they may save some time/frustration/problems and help you focus on developing things instead of fighting with them. 
+That's all. As in all programming languages, there are always some nuances that are good to know before start working - as in general, they may save some time/frustration/problems and help you focus on developing things instead of fighting with them.
 
 Thanks for reading, hope you enjoy it. Wish you happy coding sessions and with that knowledge create something great!
