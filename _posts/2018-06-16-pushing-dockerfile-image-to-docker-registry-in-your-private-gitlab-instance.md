@@ -67,7 +67,7 @@ docker push docker.example-domain.com:4567/my-private-node-8:1.0.0
 or create a new image with tag directly from your `Dockerfile`. The `.` at the very end of the command is important.
 
 ```bash
-docker build --file ./Dockerfile.node_8 -t docker.example-domain.com:4567/wobcom/cssp/my-private-node-8:1.0.0 .
+docker build --file ./Dockerfile.node_8 -t docker.example-domain.com:4567/my-private-node-8:1.0.0 .
 ```
 
 In the end, you should have your new image in the registry and everyone else who can have access to your Gitlab project can use this container.
