@@ -3,6 +3,7 @@ layout: post
 title: Setup macbook M1 for web developer
 tags: [diary, macos, macbook, profession]
 feature-img: "assets/img/feature/macbook_pro_m1_2021.jpg"
+modified: 2023-10-07
 ---
 
 Setuping mac is definitely not an every day task. It's usually long process, in order to get an efficient work station. In this article, I want to show you, how I approach to configure M1. I will share the process with the programs and the preferences I use.
@@ -417,6 +418,15 @@ I think this is pretty standard, although having one screen in vertical position
 
 ![preferences-displays][img-preferences-displays]
 
+#### Desktop & Stage Manager
+
+In new version of macOS Sonoma, they introduce widgets on the desktop. One of the new default
+features is when user will click on the background it reveals the desktop.
+
+I prefere to disable this feature and below paste small video-tutorial.
+
+![disable-stage-manage-on-desktop][gif-desktop-and-stage-manager]
+
 ---
 
 ## Additional libs and setups
@@ -444,10 +454,11 @@ source ~/.zshrc
 Yarn is connected to version of node running, so best way to install it is via current used node/npm.
 
 <div class="alert alert-info">
-<p><b>Info</b>: If you will use many node versions (via nvm), you also should to install yarn for each node version.</p>
+<p><b>Info</b>: If you will use many node versions (via <a href="https://github.com/nvm-sh/nvm" target="_blank">nvm</a>), you also should to install yarn for each node version.</p>
 </div>
 
 ```bash
+# install yarn globaly
 npm install -g yarn
 
 # test
@@ -461,6 +472,7 @@ Follow my other post how to setup ruby on macOS - [If possible do not use the ru
 Standard link for configuration file
 
 ```bash
+# create symlink from dotfiles dotfiles repository
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gemrc ~/.gemrc
 ```
 
@@ -510,9 +522,12 @@ softwareupdate --install-rosetta
 [img-iterm2-tmux]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-tmux.png
 [img-iterm2-nvim]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-nvim.png
 [img-gpg-pinentry-mac]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/gpg-pinentry-mac.png
+[gif-desktop-and-stage-manager]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-desktop-and-stage-manager-disable.png
 
 [post-how-to-properly-set-up-python-project]: {{ site.baseurl }}{% link _posts/2022-01-30-how-to-properly-set-up-python-project.md %}
 [post-ruby-system-version-on-mac-osx]: {{ site.baseurl }}{% link _posts/2018-11-10-if-possible-do-not-use-the-ruby-system-version-on-mac-osx.md %}
 [post-is-worth-to-know-the-vim-editor-and-why]: {{ site.baseurl }}{% link _posts/2015-04-06-is-worth-to-know-the-vim-editor-and-why.md %}
 [post-the-vims-hidden-superpowers]: {{ site.baseurl }}{% link _posts/2020-11-29-the-vims-hidden-superpowers.md %}
 [post-loop-through-previous-arguments-from-command-line]: {{ site.baseurl }}{% link _posts/2022-03-27-loop-through-previous-arguments-from-command-line.md %}
+
+[weblink-nvm]: https://github.com/nvm-sh/nvm
