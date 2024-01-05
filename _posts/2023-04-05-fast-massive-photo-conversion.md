@@ -27,7 +27,7 @@ brew install libheif imagemagick
 Now you just need to specify a directory where your images are stored and execute the command:
 
 ```bash
-magick mogrify --format jpg -quality 60 *.HEIC
+magick mogrify -format jpg -quality 60 *.HEIC
 ```
 
 <div class="alert alert-info" role="alert">
