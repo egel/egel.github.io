@@ -111,4 +111,9 @@
 
   <!-- seo tags from jekyll-seo-tag plugin -->
   {% seo %}
+
+  <!-- fix: for not showing og:image from seo-tag  -->
+  {% if page.url == "/" and site.image %}
+  <meta property="og:image" content="{{ site.baseurl }}/{{ site.image }}" />
+  {% endif %}
 </head>
