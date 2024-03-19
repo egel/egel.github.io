@@ -54,7 +54,7 @@
   padding: $padding-small $padding-large;
 
   @media (max-width: 1000px) {
-    padding: $padding-small * 1.5 $padding-large / 1.6;
+    padding: calc($padding-small * 1.5) calc($padding-large / 1.6);
   }
 
   @media (max-width: 576px) {
