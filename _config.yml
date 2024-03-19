@@ -1,16 +1,19 @@
+---
 # SITE CONFIGURATION
 baseurl: ""
 url: "https://egel.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
 title: Maciej Sypien
-tagline: Software engineer blog # jekyll-seo-tag
-description: "Personal blog about life as the software engineer." # used by search engines
+tagline: Software engineer blog  # jekyll-seo-tag
+description: "Personal blog about life as the software engineer."  # used by search engines
 author: Maciej Sypien
-logo: assets/img/logo_black.svg # jekyll-seo-tag
+logo: assets/img/logo_black.svg   # jekyll-seo-tag
 avatar: assets/img/logo_black.svg
 favicon: assets/img/logo.svg
-gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d # Email MD5 hash
+gravatar: 4d66c5a2d6be57e7cb9bdef200417b4d  # Email MD5 hash
+image: assets/img/pexels/pexels-aleksandar-pasaric-2603463_s1.jpg  # jekyll-seo-tag
+locale: en_US
 
 # Header and footer text
 header_text: > #two or three lines to describe your site
@@ -21,17 +24,18 @@ footer_text: >
   Made with ♥ by Maciej Sypien since 2014 · All copyrights reserved.
 
 # Blog
-excerpt: true # Or "truncate" (first 250 characters), "false" to disable
+excerpt: true   # Or "truncate" (first 250 characters), "false" to disable
 post_navigation: true
-color_image: assets/img/lineart.png # A bit transparent for color posts.
+color_image: assets/img/lineart.png  # A bit transparent for color posts.
 
 # Features
 # More in the _data folder for social icons, share buttons, author and language
-# For layout customization, go to the "_sass > base" folder, and check "_variables.scss"
-katex: true # Enable if using math markup
-mermaid: true # Enable mermaid-js for sequence and diagrams
-google_analytics: "G-ESLPQ4415Z" # GA4 Tracking ID
-cookie_consent: false # To respect the usage of cookies
+# For layout customization, go to the "_sass > base" folder,
+# and check "_variables.scss"
+katex: true   # Enable if using math markup
+mermaid: true   # Enable mermaid-js for sequence and diagrams
+google_analytics: "G-ESLPQ4415Z"  # GA4 Tracking ID
+cookie_consent: false   # To respect the usage of cookies
 disqus_shortname: "egel"
 
 # Colours, typography and padding
