@@ -427,6 +427,20 @@ I prefere to disable this feature and below paste small video-tutorial.
 
 ![disable-stage-manage-on-desktop][gif-desktop-and-stage-manager]
 
+#### Disable dictation
+
+![do-you-want-to-enable-dictation][img-do-you-want-to-enable-dictation]
+
+<div class="alert alert-info">
+<p><b>Disclaimer:</b> at the moment of writing macOS Sonoma recently removed the option to complately disable this annoying dictation feature on M1 macbooks.</p>
+</div>
+
+The least annoying option I found so far, is to change the current key to the custom mapping that is difficult to click. For example <kbd>Ctrl</kbd> + <kbd>Option</kbd> + <kbd>Shift</kbd> + <kbd>⌘</kbd> + <kbd>&#92;</kbd>
+
+This simple soliution is also proposed in [Permanently disable "Enable Dictation" keyboard shortcut in Monterey](https://apple.stackexchange.com/a/445750/236340).
+
+![preferences-keyboard-dictation][img-preferences-keyboard-dictation]
+
 ---
 
 ## Additional libs and setups
@@ -523,6 +537,8 @@ softwareupdate --install-rosetta
 [img-iterm2-nvim]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/iterm2-nvim.png
 [img-gpg-pinentry-mac]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/gpg-pinentry-mac.png
 [gif-desktop-and-stage-manager]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-desktop-and-stage-manager-disable.png
+[img-do-you-want-to-enable-dictation]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/do-you-want-to-enable-dictation.png
+[img-preferences-keyboard-dictation]: {{ site.baseurl }}/assets/posts/setup-macbook-m1/preferences-keyboard-dictation.png
 
 [post-how-to-properly-set-up-python-project]: {{ site.baseurl }}{% link _posts/2022-01-30-how-to-properly-set-up-python-project.md %}
 [post-ruby-system-version-on-mac-osx]: {{ site.baseurl }}{% link _posts/2018-11-10-if-possible-do-not-use-the-ruby-system-version-on-mac-osx.md %}
