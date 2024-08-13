@@ -13,7 +13,7 @@ install_mac:
 
 	@ech "Updating ruby"
 	gem update --system
-	gem install bundler jekyll
+	gem install bundler -v 2.4.22
 	bundle install
 
 .PHONY: dev
