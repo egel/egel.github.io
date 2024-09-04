@@ -1,6 +1,8 @@
+.PHONY: start
 start:
 	bundle exec jekyll serve --livereload --trace
 
+.PHONY: install_mac
 install_mac:
 	brew install rbenv
 	@printf "\nINFO: Display list of all possible versions"
