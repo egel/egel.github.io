@@ -4,6 +4,7 @@ start:
 
 .PHONY: install_mac
 install_mac:
+	brew install awk
 	brew install rbenv
 	@printf "\nINFO: Display list of all possible versions"
 	rbenv install --list
@@ -18,4 +19,14 @@ install_mac:
 	gem install bundler -v 2.4.22
 	bundle install
 
-.PHONY: dev
+.PHONY: list_tags
+list_tags:
+	@# find all tags in blog files
+	find . -name "*.md" -not -path "_drafts" \
+		| xargs grep -rnw . -e "tags:" \
+		| awk '{$$1=""; print $$0}' \
+		| tr -d '[]' \
+		| tr ' ' '\n' \
+		| tr -d ',' \
+		| sort \
+		| uniq
