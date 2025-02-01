@@ -3,6 +3,7 @@ layout: post
 title: The lesson of verifying Git commits
 published: true
 tags: [osx, git, pgp, gpg, gitlab, github]
+modified: 2025-02-01
 ---
 
 When I saw for the first time a commits with the mysterious "Verified" sign and I was told that someone can do this on its own, I wanted to do the same. Yes, I know it was silly - but I felt just like a small boy in a big shop of toys.
@@ -56,6 +57,15 @@ To secure your commits, you will need:
 ### PGP key
 
 Let's start with creating your PGP key. You will use it to secure/identify the content has been made by you.
+
+> If you already used some configuration and see something like:
+>
+> ```
+> gpg: Sorry, no terminal at all requested - can't get input
+> ```
+>
+> Then go `~/.gnupg/gpg.conf` and temporally comment `no-tty` option that block creating anything on
+> machine (for security purpose, after this enable it again)
 
 ```bash
 gpg --full-gen-key
@@ -209,7 +219,8 @@ So what we can configure here?
     # If exactly two keyservers are configured and only one is a Tor hidden
     # service, Dirmngr selects the keyserver to use depending on whether
     # Tor is locally running or not (on a per session base).
-    keyserver hkp://pool.sks-keyservers.net
+    # keyserver hkp://pool.sks-keyservers.net # DEPRECATED DO NOT USE
+    keyserver hkps://keyserver.ubuntu.com
 
     # --hkp-cacert FILENAME
     #
@@ -219,7 +230,7 @@ So what we can configure here?
     # root certificates here.  If that file is in PEM format a ".pem"
     # suffix is expected.  This option may be given multiple times to add
     # more root certificates.  Tilde expansion is supported.
-    hkp-cacert ~/.gnupg/sks-keyservers.netCA.pem
+    # hkp-cacert ~/.gnupg/sks-keyservers.netCA.pem
 
     # This option enables OCSP support if requested by the client.
     #
@@ -233,19 +244,38 @@ So what we can configure here?
     log-file /var/log/dirmngr/dirmngr.log
     ```
 
-    As you have noticed we used `hkp-cacert` option, but we still didn't get the file. In order to get the file, we have to download a cert file `~/.gnupg/sks-keyservers.netCA.pem` and right after, we should also validate if downloaded certificate match with "Key Identifier" from the original website <https://sks-keyservers.net/verify_tls.php>
+## Secure your private and public keys
 
-    ![HKSP Pool Verification][img-hksp-pool-verification]
+After creating new pgp keys, when it are still new and shing it is recommended to secure your keys, together with you passphrase! Store all of them them in a save place (e.g.: in your password manager or print it on the paper and store in save place). Otherwise if you loose the private key or loose passphrase you may regret not doing it.
 
-    ```bash
-    wget ~/.gnupg/sks-keyservers.netCA.pem
+To create a file with **public key** you do:
 
-    # print details and verify the "Key Identifier" field with key on the website
-    openssl x509 -in ~/.gnupg/sks-keyservers.netCA.pem -text | grep keyid
+```bash
+gpg --output public-key.pgp --armor --export username@email.com
+```
 
-    # or check cert directly with given fingerprint also available on the website
-    openssl x509 -text -noout -fingerprint -sha1 -inform pem -in ~/.gnupg/sks-keyservers.netCA.pem | grep "SHA1 Fingerprint"
-    ```
+then export much more valuable **private key** with command:
+
+```bash
+gpg --output private-key.pgp --armor --export-secret-key username@email.com
+```
+
+## Optional publish your key
+
+If you want that your key to be recognized by others, or to communicate with you, you can send your
+public key to some servers. But before this make sure to create **revocation certificate**! Do not
+ignore it as if your key has unlimited expiry period and after uploading to external servers you
+will loose it (key or passphrase) it will be almost impossible to get it back.
+
+```bash
+gpg --keyserver keyserver.ubuntu.com --send-keys yourkeyID
+```
+
+then you can check if the server has the key (it might take few minutes)
+
+```bash
+gpg --keyserver hkp://keyserver.ubuntu.com --search-key 'username@mail.com'
+```
 
 Awesome! Now you have a complete overview and good configuration to start working. Have fun and stay secure!
 
