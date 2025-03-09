@@ -7,26 +7,37 @@ modified: 2025-02-23
 
 ## Hardware
 
--   3 x HP Elitedesk 800 G3 i5-6500T 2.5GHz 16GB 128GB SSD
--   3 x Network cable 50cm
--   1 x Network cable 5m
--   1 x Switch (5 ports is enough)
--   1 x Router (best with function to assign static IP) - I used my FritzBox
+- 3 x HP Elitedesk 800 G3 i5-6500T 2.5GHz 16GB 128GB SSD
+- 3 x Network cable 50cm
+- 1 x Network cable 5m
+- 1 x Switch (5 ports is enough)
+- 1 x Router (best with function to assign static IP) - I used my FritzBox
 
 ## Software
 
--   Kubernetes 1.31
--   ssh, ssh-copy-id
+- Kubernetes 1.31
+- ssh, ssh-copy-id
 
 ## Before you start
 
--   connect your machines to together
-    -   4 times network cables
-    -   switch
+- connect your machines to together
+    - 4 times network cables
+    - switch
 
 ## Start setup cluster
 
 I assume you...
+
+- install ubuntu 24.02
+
+    ```bash
+    $ lsb_release -a
+    No LSB modules are available.
+    Distributor ID: Ubuntu
+    Description:    Ubuntu 24.04.2 LTS
+    Release:        24.04
+    Codename:       nobles
+    ```
 
 ### Set up proper hostnames
 
@@ -40,8 +51,6 @@ Workers
 
 ```bash
 sudo hostnamectl set-hostname worker1 # worker 1
-
-sudo hostnamectl set-hostname worker2 # worker 2
 ```
 
 Add to /ect/hosts
@@ -49,7 +58,6 @@ Add to /ect/hosts
 ```
 192.168.178.200     cplane1
 192.168.178.201     worker1
-192.168.178.202     worker2
 ```
 
 Test from each, example from `cplane1` to `worker1`
@@ -76,15 +84,15 @@ Master
 
 **IMPORTANT INFO:**
 
-If you just want to:
+If you want to:
 
--   learn k8s
--   or/and for example you just begin your journey with exploring k8s (maybe Linux, and command line as well) for the first times
--   or/and using them in your local network
+- learn to kubernetes course (CKAD/)
+- or/and for example you just begin your journey with exploring kubernetes (maybe Linux, and command line as well) for the first times
+- or/and using them in your local network
 
-I would recommend to **disable the firewall completely, unless you know what you do**. Both for
-master and for worker nodes.
-I am aware this is not secure approach, but we are just start learning now and we should not put too many obstacles in the first shot.
+I would recommend to **disable the firewall completely, unless you know what you do**. Both for master and for the worker nodes.
+I am aware this is maybe not secure approach, although if you are just start learning you should focus on learning new thing. The proper configuration of and not put too many obstacles in the first shot.
+
 Disabling the firewall can remove many problems with local networking and accessing to cluster resources.
 
 ```
@@ -157,7 +165,7 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 
 ### Enable kernel modules & disable swap
 
-Enable on all modulesl
+Enable kernel modules and add them to file for permament effect after reboot
 
 ```bash
 $ sudo modprobe overlay
@@ -166,36 +174,67 @@ $ cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
 br_netfilter
 EOF
-overlay
-br_netfilter
+```
 
-#
+```bash
+# add kernel parametes to load with k8s configuration
 $ cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
 
+# load modules above
 $ sudo sysctl --system
+```
 
+### Disable swap
+
+To not have hicckups in our cluster it's recommended to disable the swap.
+
+```bash
+# disable with command
+$ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+# or comment the line manually
 $ sudo vim /etc/fstab # disable /swap
 
-$sudo swapoff -a
-$free -m
+
+$ sudo swapoff -a
+$ free -m
                total        used        free      shared  buff/cache   available
 Mem:           15783         261       15085           1         436       15255
 Swap:              0           0           0
 ```
 
-Repeat for other worker
-
-```bash
-
-```
+- Repeat same for other worker(s)
 
 ### Installing Containerd
 
 ```bash
+$ sudo apt -y update && sudo apt -y upgrade
+Hit:1 http://de.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://de.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://de.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu noble-security InRelease
+Get:5 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease [1,189 B]
+Err:5 https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease
+  The following signatures were invalid: EXPKEYSIG 234654DA9A296436 isv:kubernetes OBS Project <isv:kubernetes@build.opensuse.org>
+Fetched 1,189 B in 1s (1,819 B/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://prod-cdn.packages.k8s.io/repositories/isv:/kubernetes:/core:/stable:/v1.31/deb  InRelease: The following signatures were invalid: EXPKEYSIG 234654DA9A296436 isv:kubernetes OBS Project <isv:kubernetes@build.opensuse.org>
+W: Failed to fetch https://pkgs.k8s.io/core:/stable:/v1.31/deb/InRelease  The following signatures were invalid: EXPKEYSIG 234654DA9A296436 isv:kubernetes OBS Project <isv:kubernetes@build.opensuse.org>
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+# if having info about outdated gpg do following
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/containerd.gpg
 sudo apt -y update && sudo apt -y upgrade
 
 # Prepare for new repos
@@ -219,7 +258,7 @@ sudo apt install containerd.io # docker-ce docker-ce-cli docker-buildx-plugin do
 # stop containers
 sudo systemctl stop containerd
 
-# copy configuration
+# copy orginal configuration
 sudo mv /etc/containerd/config.toml /etc/containerd/config.toml.orig
 sudo containerd config default > /etc/containerd/config.toml
 -bash: /etc/containerd/config.toml: Permission denied
@@ -228,9 +267,10 @@ sudo su
 root@worker1:/home/maciej# sudo containerd config default > /etc/containerd/config.toml
 exit
 
+# replace "SystemdCgroup = false" to "SystemdCgroup = true".
+sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+# or do it manually
 sudo vim /etc/containerd/config.toml
-
-# "SystemdCgroup = false" to "SystemdCgroup = true".
 
 # start
 sudo systemctl start containerd
@@ -259,33 +299,41 @@ Apr 19 23:05:59 worker1 containerd[2286]: time="2023-04-19T23:05:59.576792721Z" 
 Apr 19 23:05:59 worker1 containerd[2286]: time="2023-04-19T23:05:59.576807855Z" level=info msg="Start cni network conf syncer fo>
 Apr 19 23:05:59 worker1 containerd[2286]: time="2023-04-19T23:05:59.576816067Z" level=info msg="Start streaming server"
 
-
-sudo systemctl is-enabled containerd
-sudo systemctl status containerd
+$ sudo systemctl is-enabled containerd
 ```
 
 ### Install Kubernetes (kubeadm kubelet kubectl)
 
 Kubeadm:
 
--   min 2GB <= RAM, min 2 <= CPU
--   disable swap
+- min 2GB <= RAM, min 2 <= CPU
+- disable swap
 
 ```bash
-$ lsb_release -c
-Codename:	jammy
+lsb_release -c
+No LSB modules are available.
+Codename:       noble
 
+# add / refresh gpg key
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-sudo apt update
+$ sudo apt update
+
 
 sudo apt install kubelet kubeadm kubectl
 
 # check installed versions
 $ kubelet --version
+Kubernetes v1.31.6
+
 $ kubectl version
+Client Version: v1.31.6
+Kustomize Version: v5.4.2
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
 $ kubeadm version
+kubeadm version: &version.Info{Major:"1", Minor:"31", GitVersion:"v1.31.6", GitCommit:"6b3560758b37680cb713dfc71da03c04cadd657c", GitTreeState:"clean", BuildDate:"2025-02-12T21:31:09Z", GoVersion:"go1.22.12", Compiler:"gc", Platform:"linux/amd64"}
 
 # Prevent kubernetes packages from being upgraded between versions
 $ sudo apt-mark hold kubelet kubeadm kubectl
@@ -299,19 +347,30 @@ kubectl set on hold.
 sudo systemctl enable --now kubelet
 ```
 
-## CNI - Flannel
+## Installing CNI Plugin
 
-Install Container Network Interface (CNI). I simply use [flannel](https://github.com/flannel-io/flannel), but you can use other. The list you can
-find here ()
+Install Container Network Interface (CNI).
 
-```bash
-sudo mkdir -p /opt/bin/
-sudo curl -fsSLo /opt/bin/flanneld https://github.com/flannel-io/flannel/releases/download/v0.25.5/flanneld-amd64
+> NOTE: When I for the first time Install Kubernetes I use CNI flannel. It was good but it didn't work with the NetworkPolicy. Therefore, I could not accomplish some of the exercises I with it. If you're setting up the Kubernetes cluster also for learning for the CKAD I encourage you to use Calico CNI.
 
-sudo chmod +x /opt/bin/flanneld
-```
+- [Flannel][weblink-flannel-github] (simple, although `NetworkPolicy` is not working with it)
 
-Now setup kubeadm init and later finish with running CNI
+    If you want to use flannel then you You have to install flanneld program
+
+    ```bash
+    sudo mkdir -p /opt/bin/
+    sudo curl -fsSLo /opt/bin/flanneld https://github.com/flannel-io/flannel/releases/download/v0.25.5/flanneld-amd64
+
+    sudo chmod +x /opt/bin/flanneld
+    ```
+
+- Calico (advance, recommended for K8s course)
+
+    Setup will come later
+
+## Installing kubernetes
+
+Now setup `kubeadm init` and later finish with running CNI
 
 ```bash
 $ kubeadm init
@@ -335,7 +394,7 @@ root@cplane1:/home/root# kubeadm config images pull
 [config/images] Pulled registry.k8s.io/pause:3.10
 [config/images] Pulled registry.k8s.io/etcd:3.5.15-0
 
-# kubeadm and save the output for later use (with tee)
+# kubeadm and save the output text for later use (thanks to tee)
 root@cplane1:/home/root# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.178.200 --cri-socket=unix:///run/containerd/containerd.sock | tee kubeadm_init_store.txt
 [init] Using Kubernetes version: v1.31.0
 [preflight] Running pre-flight checks
@@ -415,24 +474,111 @@ kubeadm join 192.168.178.200:6443 --token 8o34w9.jyhtv2av6l2ozv5d \
         --discovery-token-ca-cert-hash sha256:ab1a9a94e63fd993ba5b4959af0cea371cbb2339637bc1662de5f8121803bcbd
 ```
 
-configure flannel
+### configure CNI
 
-```bash
-root@cplane1:/home/root# cat <<EOF | tee /run/flannel/subnet.env
-FLANNEL_NETWORK=10.244.0.0/16
-FLANNEL_SUBNET=10.244.0.0/16
-FLANNEL_MTU=1450
-FLANNEL_IPMASQ=true
-EOF
+- Flannel
 
-root@cplane1:/home/root# kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
-namespace/kube-flannel created
-serviceaccount/flannel created
-clusterrole.rbac.authorization.k8s.io/flannel created
-clusterrolebinding.rbac.authorization.k8s.io/flannel created
-configmap/kube-flannel-cfg created
-daemonset.apps/kube-flannel-ds created
-```
+    ```bash
+    root@cplane1:/home/root# cat <<EOF | tee /run/flannel/subnet.env
+    FLANNEL_NETWORK=10.244.0.0/16
+    FLANNEL_SUBNET=10.244.0.0/16
+    FLANNEL_MTU=1450
+    FLANNEL_IPMASQ=true
+    EOF
+
+    root@cplane1:/home/root# kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+    namespace/kube-flannel created
+    serviceaccount/flannel created
+    clusterrole.rbac.authorization.k8s.io/flannel created
+    clusterrolebinding.rbac.authorization.k8s.io/flannel created
+    configmap/kube-flannel-cfg created
+    daemonset.apps/kube-flannel-ds created
+    ```
+
+- Calico
+  configure NetworkManager
+
+    ```bash
+    $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/tigera-operator.yaml
+    namespace/tigera-operator created
+    customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/bgpfilters.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/caliconodestatuses.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/ipreservations.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/tiers.crd.projectcalico.org created
+    customresourcedefinition.apiextensions.k8s.io/adminnetworkpolicies.policy.networking.k8s.io created
+    customresourcedefinition.apiextensions.k8s.io/apiservers.operator.tigera.io created
+    customresourcedefinition.apiextensions.k8s.io/imagesets.operator.tigera.io created
+    customresourcedefinition.apiextensions.k8s.io/installations.operator.tigera.io created
+    customresourcedefinition.apiextensions.k8s.io/tigerastatuses.operator.tigera.io created
+    serviceaccount/tigera-operator created
+    clusterrole.rbac.authorization.k8s.io/tigera-operator created
+    clusterrolebinding.rbac.authorization.k8s.io/tigera-operator created
+    deployment.apps/tigera-operator created
+
+    # Install Calico by creating the necessary custom resource. For more information on
+    # configuration options available in this manifest, see the installation reference.
+    # https://docs.tigera.io/calico/latest/reference/installation/api
+
+    # I used differnt cidr and need to be replaced
+    # 10.244.0.0/16
+    $ curl https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml >> custom-resources.yaml
+    $ sed -i 's/192.168.0.0\/16/10.244.0.0\/16/g' custom-resources.yaml
+
+    # apply modified config
+    kubectl create -f custom-resources.yaml
+
+    # check if working
+    watch kubectl get pods -n calico-system
+    Every 2.0s: kubectl get pods -n calico-system                                                                                                                                                                                cplane1: Tue Feb 25 15:43:40 2025
+
+    NAME                                       READY   STATUS    RESTARTS   AGE
+    calico-kube-controllers-56bf547c9f-nrn42   1/1     Running   0          40s
+    calico-node-mf56l                          1/1     Running   0          41s
+    calico-typha-6854bfcb4d-6bhh5              1/1     Running   0          41s
+    csi-node-driver-mbqcl                      2/2     Running   0          40s
+
+    # check taint
+    $ kubectl describe nodes | grep -i taint
+    Taints: node-role.kubernetes.io/control-plane:NoSchedule
+    Taints: <none>
+
+    # untained control plane
+    kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+    node/cplane1 untainted
+
+    # recheck taint
+    $ kubectl describe nodes | grep -i taint
+    Taints:             <none>
+    Taints:             <none>
+
+    # check nodes
+    kubectl get nodes -o wide
+    ```
+
+    calicoctl
+
+    ```bash
+    curl -L https://github.com/projectcalico/calico/releases/download/v3.29.2/calicoctl-linux-amd64 -o calicoctl
+    chmod +x ./calicoctl
+
+    # move calicoctl to accessible on system path
+    mv calicoctl /usr/local/bin/
+    ```
 
 ---
 
@@ -446,11 +592,49 @@ vim /etc/containerd/config.toml
 
 # after restart service to apply
 systemctl restart containerd
+```
 
-# after that you can do kubeadm reset and repeat seteps (recommend)
+### Have you made a mistake and need reset?
+
+after that you can do kubeadm reset and repeat seteps (recommend)
+
+```bash
+# delete calico
+kubectl delete -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml
+kubectk delete deploy tigera-operator -n tigera-operator
+
+# reset cplane or worker
 kubeadm reset
 
+sudo apt-get purge kubeadm kubectl kubelet kubernetes-cni
+sudo apt-get autoremove
+
+# Remove Related Files and Directories
+sudo rm -rf ~/.kube
+sudo rm -rf /etc/cni /etc/kubernetes rm -f /etc/apparmor.d/docker /etc/systemd/system/etcd*
+sudo rm -rf /var/lib/dockershim /var/lib/etcd /var/lib/kubelet \
+         /var/lib/etcd2/ /var/run/kubernetes
+
+# Clear out the Firewall Tables and Rules (for some must be root user)
+#
+# flushing and deleting the filter table
+sudo iptables -F && iptables -X
+# lush and delete the NAT (Network Address Translation) table
+sudo iptables -t nat -F && iptables -t nat -X
+# flush and remove the chains and rules in the raw table
+sudo iptables -t raw -F && iptables -t raw -X
+# remove the chains and rules in the mangle table
+sudo iptables -t mangle -F && iptables -t mangle -X
+
+# optional: remove containerd
+sudo apt-get remove containerd.io
+sudo apt-get purge --auto-remove containerd
+
+# if cplane continue to init
 kubeadm init ... # and rest of flags
+# if worker continue to join
+sudo apt-get purge --auto-remove containerd
+kubeadm join ... # and rest from kubeadm init
 ```
 
 ### Installing useful tools
@@ -479,7 +663,7 @@ Stay save and until the next time.
 ### After shutting down Nodes
 
 ```bash
-$ kubectl get pv
+maciej@cplane1:~$ kubectl get pv
 E1225 20:37:45.232733    7857 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"https://192.168.178.200:6443/api?timeout=32s\": dial tcp 192.168.178.200:6443: connect: connection refused"
 E1225 20:37:45.234160    7857 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"https://192.168.178.200:6443/api?timeout=32s\": dial tcp 192.168.178.200:6443: connect: connection refused"
 E1225 20:37:45.235670    7857 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"https://192.168.178.200:6443/api?timeout=32s\": dial tcp 192.168.178.200:6443: connect: connection refused"
@@ -501,11 +685,14 @@ vol2   200Mi      RWO            Retain           Bound    default/nginx-claim0 
 
 ## Resources
 
--   <https://www.servethehome.com/introducing-project-tinyminimicro-home-lab-revolution/hp-elitedesk-705-g3-kubernetes/>
--   <https://www.howtoforge.com/how-to-setup-kubernetes-cluster-with-kubeadm-on-ubuntu-22-04/>
--   <https://www.linuxtechi.com/install-kubernetes-on-ubuntu-22-04/>
--   <https://docs.docker.com/engine/install/ubuntu/>
+- <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
+- <https://www.servethehome.com/introducing-project-tinyminimicro-home-lab-revolution/hp-elitedesk-705-g3-kubernetes/>
+- <https://www.howtoforge.com/how-to-setup-kubernetes-cluster-with-kubeadm-on-ubuntu-22-04/>
+- <https://www.linuxtechi.com/install-kubernetes-on-ubuntu-22-04/>
+- <https://docs.docker.com/engine/install/ubuntu/>
+- <https://www.baeldung.com/ops/kubernetes-uninstall>
 
 [weblink-imagemagic]: https://imagemagick.org/
 [weblink-libheif-macos]: https://www.libde265.org/
 [weblink-libheif-alternative]: https://github.com/strukturag/libheif
+[weblink-flannel-github]: https://github.com/flannel-io/flannel
