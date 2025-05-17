@@ -12,7 +12,7 @@ In the last month, I had a serious problem with my home internet connection for 
 
 One major challenge in developer daily work, apart from regular online meetings and constant communication, is access to required documentation of services often working with. Many of documentation project are usually easily available online, so normally nobody even think about use them without internet. But what if you would have a very limited internet access or even not at all?
 
-The situation I'd been get into, encouraged me to find a fast solution in order to my limited mobile bandwidth and not use all all at once. I started by finding all the documentation for the services I mist working with nd putting them into single lists for later download.
+This situation I'd been get into, encouraged me to quickly find a solution in order to my limited mobile bandwidth and not use all at once. I started by finding all the documentation for the services I mist working with and putting them into single lists for later download.
 
 I get the list and promptly reached the place with the nearest stable internet connection. I get started pulling all docs with the neat plan to compile them and serve them on my local machine using docker containers.
 
