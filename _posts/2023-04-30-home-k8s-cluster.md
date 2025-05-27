@@ -1,43 +1,57 @@
 ---
 layout: post
-title: Creating Home Kubernetes Cluster Lab
+title: Creating the first home kubernetes cluster lab
 tags: [macos, linux, k8s]
 modified: 2025-02-23
 ---
 
+I always wanted to learn more about kubernetes and be able to see how is to manage larger clusters.
+At moment to learn kubernetes, you just need spend several dollars per month, and you might buy own cluster to play. Although instead of spending money on online service, I wanted to buy own hardware and try it the hard way with full setup.
+
+Here I document my the whole process of setup own cluster from scratch. It was important to me to also show the outputs of some command, so you might better understand the whole process.
+
+This cluster I also used to preparing for the CKAD exam.
+
 ## Hardware
 
-- 3 x HP Elitedesk 800 G3 i5-6500T 2.5GHz 16GB 128GB SSD
-- 3 x Network cable 50cm
-- 1 x Network cable 5m
-- 1 x Switch (5 ports is enough)
-- 1 x Router (best with function to assign static IP) - I used my FritzBox
+What hardware I used:
+
+-   3 x HP Elitedesk 800 G3 i5-6500T 2.5GHz 16GB 128GB SSD
+-   3 x Network cable 50cm
+-   1 x Network cable 5m
+-   1 x Switch (5 ports is enough)
+-   1 x Router (best with function to assign static IP) - I used my FritzBox
+
+I bought 3 small Elitedesk as I've heard this is a recommended to use 3 nodes. After starting, I decided in the tutorial I will use only 2 (master and worker) as this is totally enough. FYI: the 3rd one, I left for later, as my testing machine for Window applications.
 
 ## Software
 
-- Kubernetes 1.31
-- ssh, ssh-copy-id
+-   Kubernetes 1.31
+-   ssh, ssh-copy-id
 
 ## Before you start
 
-- connect your machines to together
-    - 4 times network cables
-    - switch
+In this part you might want to spend some time and connect your all hardware together, to prepare for installing the cluster.
+
+Next comes the installation of the OS. For the first installation I used the Ubuntu 24.02.
+
+```bash
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 24.04.2 LTS
+Release:        24.04
+Codename:       nobles
+```
+
+TIP: Although if I would start again, next time I would use some stable version of Debian instead.
+Yes, debian is boring and not most edge like ubuntu, but very it is very, very stable, and this is what would be the best foundation for the long-term cluster health.
 
 ## Start setup cluster
 
-I assume you...
+I recommend:
 
-- install ubuntu 24.02
-
-    ```bash
-    $ lsb_release -a
-    No LSB modules are available.
-    Distributor ID: Ubuntu
-    Description:    Ubuntu 24.04.2 LTS
-    Release:        24.04
-    Codename:       nobles
-    ```
+-   setup ssh to authorize with the keys - for security and quicker access
 
 ### Set up proper hostnames
 
@@ -50,17 +64,20 @@ sudo hostnamectl set-hostname cplane1
 Workers
 
 ```bash
-sudo hostnamectl set-hostname worker1 # worker 1
+sudo hostnamectl set-hostname worker1
 ```
 
-Add to /ect/hosts
+Add to `/ect/hosts` to each one. During the setup I assign static IPs for the given machines on my FritzBox router. There is also an option to setup static IP directly on the machines (and if you prefer you can do it), although I used this nice feature from FritzBox, and I did it on the router level via DHCP.
+
+-   master = XXX.XXX.178.200
+-   worker1 = XXX.XXX.178.201
 
 ```
 192.168.178.200     cplane1
 192.168.178.201     worker1
 ```
 
-Test from each, example from `cplane1` to `worker1`
+Test for each connection. For example connection from `cplane1` to `worker1` and vice versa.
 
 ```bash
 maciej@cplane1:~$ ping worker1 -c3
@@ -70,7 +87,7 @@ PING worker1 (192.168.178.201) 56(84) bytes of data.
 64 bytes from worker1 (192.168.178.201): icmp_seq=3 ttl=64 time=0.581 ms
 ```
 
-```
+```sh
 maciej@worker1:~$ ping cplane1 -c3
 PING cplane1 (192.168.178.200) 56(84) bytes of data.
 64 bytes from cplane1 (192.168.178.200): icmp_seq=1 ttl=64 time=0.606 ms
@@ -86,12 +103,12 @@ Master
 
 If you want to:
 
-- learn to kubernetes course (CKAD/)
-- or/and for example you just begin your journey with exploring kubernetes (maybe Linux, and command line as well) for the first times
-- or/and using them in your local network
+-   learn to kubernetes course (CKAD/)
+-   or/and for example you just begin your journey with exploring kubernetes (maybe Linux, and command line as well) for the first times
+-   or/and using them in your local network
 
 I would recommend to **disable the firewall completely, unless you know what you do**. Both for master and for the worker nodes.
-I am aware this is maybe not secure approach, although if you are just start learning you should focus on learning new thing. The proper configuration of and not put too many obstacles in the first shot.
+I am aware this is not secure approach, although if you are just start learning you should focus on learning new thing. The proper configuration of security things can be difficult and you should not put too many obstacles for yourself in the first shot.
 
 Disabling the firewall can remove many problems with local networking and accessing to cluster resources.
 
@@ -165,7 +182,7 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 
 ### Enable kernel modules & disable swap
 
-Enable kernel modules and add them to file for permament effect after reboot
+Enable kernel modules and add them to the file for a permanent effect after rebooting the machine.
 
 ```bash
 $ sudo modprobe overlay
@@ -177,7 +194,7 @@ EOF
 ```
 
 ```bash
-# add kernel parametes to load with k8s configuration
+# add kernel parameter to load with k8s configuration
 $ cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -190,7 +207,7 @@ $ sudo sysctl --system
 
 ### Disable swap
 
-To not have hicckups in our cluster it's recommended to disable the swap.
+In oder to not have any hiccups in our cluster, it's recommended to disable the swap.
 
 ```bash
 # disable with command
@@ -206,11 +223,11 @@ Mem:           15783         261       15085           1         436       15255
 Swap:              0           0           0
 ```
 
-- Repeat same for other worker(s)
+Now please repeat the same actions for other worker(s) machines.
 
 ### Installing Containerd
 
-```bash
+```sh
 $ sudo apt -y update && sudo apt -y upgrade
 Hit:1 http://de.archive.ubuntu.com/ubuntu noble InRelease
 Hit:2 http://de.archive.ubuntu.com/ubuntu noble-updates InRelease
@@ -306,8 +323,8 @@ $ sudo systemctl is-enabled containerd
 
 Kubeadm:
 
-- min 2GB <= RAM, min 2 <= CPU
-- disable swap
+-   min 2GB <= RAM, min 2 <= CPU
+-   disable swap
 
 ```bash
 lsb_release -c
@@ -318,10 +335,11 @@ Codename:       noble
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
+# update
 $ sudo apt update
 
-
-sudo apt install kubelet kubeadm kubectl
+# install
+$ sudo apt install kubelet kubeadm kubectl
 
 # check installed versions
 $ kubelet --version
@@ -351,9 +369,9 @@ sudo systemctl enable --now kubelet
 
 Install Container Network Interface (CNI).
 
-> NOTE: When I for the first time Install Kubernetes I use CNI flannel. It was good but it didn't work with the NetworkPolicy. Therefore, I could not accomplish some of the exercises I with it. If you're setting up the Kubernetes cluster also for learning for the CKAD I encourage you to use Calico CNI.
+> NOTE: When I for the first time Install Kubernetes I use CNI flannel. It was good and had no problems with it. Although during learning to the CKAD I noticed that defining custom NetworkPolicy is not work with Flannel. Therefore, I could not accomplish some of the exercises I with it. So if you're setting up the Kubernetes cluster and also for learning for the CKAD examp, I encourage you to use Calico CNI instead of Flannel.
 
-- [Flannel][weblink-flannel-github] (simple, although `NetworkPolicy` is not working with it)
+-   [Flannel][weblink-flannel-github] (simple, although `NetworkPolicy` is not working with it)
 
     If you want to use flannel then you You have to install flanneld program
 
@@ -364,7 +382,7 @@ Install Container Network Interface (CNI).
     sudo chmod +x /opt/bin/flanneld
     ```
 
-- Calico (advance, recommended for K8s course)
+-   Calico (advance, recommended for K8s course)
 
     Setup will come later
 
@@ -470,13 +488,13 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.178.200:6443 --token 8o34w9.jyhtv2av6l2ozv5d \
-        --discovery-token-ca-cert-hash sha256:ab1a9a94e63fd993ba5b4959af0cea371cbb2339637bc1662de5f8121803bcbd
+$ kubeadm join 192.168.178.200:6443 --token 8o34w9.jyhtv2av6l2ozv5d \
+        --discovery-token-ca-cert-hash sha256:ab1a9a94e63fd993ba5b4939af0cea371cbb2339637bc1662de5f8121803bcbd
 ```
 
 ### configure CNI
 
-- Flannel
+-   Flannel
 
     ```bash
     root@cplane1:/home/root# cat <<EOF | tee /run/flannel/subnet.env
@@ -495,8 +513,8 @@ kubeadm join 192.168.178.200:6443 --token 8o34w9.jyhtv2av6l2ozv5d \
     daemonset.apps/kube-flannel-ds created
     ```
 
-- Calico
-  configure NetworkManager
+-   Calico
+    configure NetworkManager
 
     ```bash
     $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/tigera-operator.yaml
@@ -685,12 +703,12 @@ vol2   200Mi      RWO            Retain           Bound    default/nginx-claim0 
 
 ## Resources
 
-- <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
-- <https://www.servethehome.com/introducing-project-tinyminimicro-home-lab-revolution/hp-elitedesk-705-g3-kubernetes/>
-- <https://www.howtoforge.com/how-to-setup-kubernetes-cluster-with-kubeadm-on-ubuntu-22-04/>
-- <https://www.linuxtechi.com/install-kubernetes-on-ubuntu-22-04/>
-- <https://docs.docker.com/engine/install/ubuntu/>
-- <https://www.baeldung.com/ops/kubernetes-uninstall>
+-   <https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/>
+-   <https://www.servethehome.com/introducing-project-tinyminimicro-home-lab-revolution/hp-elitedesk-705-g3-kubernetes/>
+-   <https://www.howtoforge.com/how-to-setup-kubernetes-cluster-with-kubeadm-on-ubuntu-22-04/>
+-   <https://www.linuxtechi.com/install-kubernetes-on-ubuntu-22-04/>
+-   <https://docs.docker.com/engine/install/ubuntu/>
+-   <https://www.baeldung.com/ops/kubernetes-uninstall>
 
 [weblink-imagemagic]: https://imagemagick.org/
 [weblink-libheif-macos]: https://www.libde265.org/
