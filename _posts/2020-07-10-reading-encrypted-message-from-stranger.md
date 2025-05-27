@@ -42,7 +42,7 @@ Ok, there is an encrypted message. The best would be to save this message in som
 
 Now, is the time to check if this person who sends us the message has a public key in one of the public PGP servers. So I am checking it, and there is a mystery guy.
 
-```bash
+```sh
 → gpg --search-keys matbit@secmail.pro
 gpg: data source: http://83.227.87.55:11371
 (1)	Hu2020 (Hu <matbit@secmail.pro>) <matbit@secmail.pro>
@@ -58,13 +58,13 @@ Ok, let's download a public key of our stranger, and read this message.
 Just in case you're wondering how to get <b>the keyID</b> of a key in the Command Prompt, (I ran into this :). It's the last 8 characters of your public key, which you could easily get printed by using the following commands.
 </div>
 
-```bash
+```sh
 gpg --receive-keys CBFD27BAA73638F2
 ```
 
 Tada! The message is decrypted and I can finally read it!
 
-```bash
+```sh
 → gpg --decrypt ~/encrypted_message.txt.gpg
 gpg: encrypted with 4096-bit RSA key, ID EBEE77C5734494A6, created 2019-03-17
       "Maciej Sypien <maciejsypien@gmail.com>"

@@ -20,13 +20,13 @@ Next, I've read somewhere on the Web on my mobile phone, that the problem could 
 
 > TIP: for 4k monitors it's a good practice to change grub screen size, because the text on the screen is much bigger and far better visible.
 
-```bash
+```sh
 sudo cp /etc/default/grub /etc/default/grub.bak
 ```
 
 Now edit the grub file by entering
 
-```bash
+```sh
 sudo vim /etc/default/grub
 ```
 
@@ -41,13 +41,13 @@ GRUB_GFXMODE=640x480
 
 Save the file and run `update-grub` to apply changes
 
-```bash
+```sh
 sudo update-grub
 ```
 
 Now, I had to resolve which display manager do I have on my Mint?
 
-```bash
+```sh
 cat /etc/X11/default-display-manager
 ```
 
@@ -55,7 +55,7 @@ In my case, it was `mdm`, so then I've uninstalled all available NVIDIA drivers,
 
 > Important part of installation NVIDIA drivers is (at least for all my cases) to be logged in as `root` user, not using `sudo`, but literally perform all commands of installation as root.
 
-```bash
+```sh
 sudo apt-get purge nvidia-*
 sudo su
 service mdm stop

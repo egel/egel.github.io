@@ -46,7 +46,7 @@ Instalation through Package Manager: Install Package > Less Syntax
 
 Repository of plug-in: [CoffeeScript Sublime Plugin][25]
 
-```bash
+```sh
 cd ~/.config/sublime-text-3/Packages \
   && rm -rf CoffeeScript \
   && git clone https://github.com/Xavura/CoffeeScript-Sublime-Plugin.git CoffeeScript
@@ -56,7 +56,7 @@ cd ~/.config/sublime-text-3/Packages \
 
 Repository of plug-in: [Github repo][26]
 
-```bash
+```sh
 cd ~/.config/sublime-text-3/Packages \
   && rm -rf LiveReload \
   && git clone -b devel https://github.com/dz0ny/LiveReload-sublimetext2.git LiveReload
@@ -129,7 +129,7 @@ To activate it go to `Preferences` > `Gruvbox Dark` and choose `gruvbox`.
 
 The website of plug-in: <https://github.com/jugyo/SublimeColorSchemeSelector>
 
-```shell
+```sh
 cd ~/.config/sublime-text-3/Packages \
   && rm -rf "ColorSchemeSelector" \
   && git clone https://github.com/jugyo/SublimeColorSchemeSelector.git "ColorSchemeSelector"

@@ -11,7 +11,7 @@ If you previously used `/etc/hosts` to manage your local domains and didn't yet 
 
 Using the `apt-get` manager we will install core program.
 
-```bash
+```sh
 sudo apt-get install dnsmasq
 ```
 
@@ -19,7 +19,7 @@ sudo apt-get install dnsmasq
 
 Then when we have the program installed, now we can get directly to the configuration. But before, we'll create a backup file.
 
-```bash
+```sh
 sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 ```
 
@@ -32,13 +32,13 @@ address=/loc/127.0.0.1
 
 That is pretty much it. Next, restart the service by:
 
-```bash
+```sh
 sudo service dnsmasq restart
 ```
 
 Finally, check if everything went OK and you are good to go.
 
-```bash
+```sh
 ping example.loc
 PING example.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms

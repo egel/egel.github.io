@@ -15,7 +15,7 @@ We'll start from creating desired directories where we'll store our configs.
 
 > Default Nginx installation did not provide those directories, but in few quick steps we'll achieve this, that you can benefit from instantly. (Some example code snippet comes from [this gist][1]).
 
-```bash
+```sh
 mkdir -p /usr/local/etc/nginx/sites-{enabled,available}
 cd /usr/local/etc/nginx/sites-enabled
 ln -s ../sites-available/default.conf

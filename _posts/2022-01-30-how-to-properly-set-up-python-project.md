@@ -20,13 +20,13 @@ I will be basing my example on the macOS system, but I believe it can be also tr
 
 Install `pyenv` in your system. It will install a program that will be managing your python versions. I.e.: it's something similar like `nvm` for NodeJS or `rbenv` for Ruby.
 
-```bash
+```sh
 brew instal pyenv
 ```
 
 > If you using ZSH you may need to add to your `.zshrc` & `.zprofile`.
 >
-> ```bash
+> ```sh
 > echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
 > echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 > ```
@@ -41,20 +41,20 @@ Now, we want to install a version of python, which we will be using for our appl
 
 I will pick the latest version just for demo purposes `3.9.7`.
 
-```bash
+```sh
 # pyenv install --list   # list all available python versions to install
 pyenv install 3.9.7
 ```
 
 I also like to change my default/system Python version and use the one from `pyenv`, therefore in pyenv I set up a global system version and thanks extending `.zshrc` and `.zprofile`, each time I will open a new terminal I will be using the version of python I set as global system version in `pyenv`. Awesome!
 
-```bash
+```sh
 pyenv global 3.9.7
 ```
 
 Reload a terminal again, and try out if everything has been set correctly. You should get something like this.
 
-```bash
+```sh
 $ pyenv global
 3.9.7
 
@@ -66,7 +66,7 @@ $ which python
 
 We finally using a version of python, which is not a system default version and we have the full access/freedom to install/modify anything, by not using `sudo`! Let's install `virtualenv`
 
-```bash
+```sh
 pip install virtualenv   # FYI: under the hood, it's should use pip3
 ```
 
@@ -76,7 +76,7 @@ pip install virtualenv   # FYI: under the hood, it's should use pip3
 
 Now, when we set up everything, we are ready to massively produce new projects in python.
 
-```bash
+```sh
 cd /to/your/desired/location
 virtualenv venv   # will create new venv directory in your location.
 ```
@@ -85,7 +85,7 @@ new directory `venv` is a directory (you can change the name to anything else, a
 
 At the moment, everything is ready to activate the virtual environment and start the fun!
 
-```bash
+```sh
 $ source venv/bin/activate
 
 (venv)
@@ -96,7 +96,7 @@ After activating, your prompt will change, and at the top, you will get printed 
 
 If you want to quit this virtual environment and do something else, you can quit by typing (see below), and your prompt will quit the venv.
 
-```bash
+```sh
 (venv)
 $ deactivate
 

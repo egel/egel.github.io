@@ -4,12 +4,12 @@ Blog in Jekyll that works without template generation with user's default GitHub
 
 ## install
 
-```bash
+```sh
 make install_mac
 ```
 
 ## development
 
-```bash
+```sh
 make start
 ```

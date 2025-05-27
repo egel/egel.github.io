@@ -47,7 +47,7 @@ Except for the pieces of advice I posted at the end of the previous section, I w
 
 Let's do this. First, list your GPG fingerprints to reveal (you can have much more entries)
 
-```bash
+```sh
 $ gpg --fingerprint
 --------------------------------------
 pub   rsa4096 2019-03-17 [SC]
@@ -58,14 +58,14 @@ sub   rsa4096 2019-03-17 [E]
 
 Create a certificate using your e-mail address:
 
-```bash
+```sh
 $ gpg --output ~/revocation-certificate.asc --armor --gen-revoke your@email.com
 gpg: Sorry, no terminal at all requested - can't get input
 ```
 
 What's that? I've made another search for the given error message and [found the problem](https://stackoverflow.com/a/51174117/1977012). As I'm using a macOS and I've configured my [Automatic Git commit signing with GPG on macOS](https://egel.github.io/2019/03/24/the-lesson-of-verifying-git-commits.html), I have to temporally comment `no-tty` in my `~/.gnupg/gpg.conf`.
 
-```bash
+```sh
 $ gpg --output ~/revocation-certificate.asc --armor --gen-revoke your@email.com
 
 sec  rsa4096/10BC01EDA6827DC8 2019-03-17 Maciej Sypien <maciejsypien@gmail.com>
@@ -97,13 +97,13 @@ Now, when you have your key revocation certificate time to secure it in a protec
 
 Using macOS, install a library that helps us to generate a QRCode locally on my machine.
 
-```bash
+```sh
 brew install qrencode
 ```
 
 Generating the QRCode is really simple, important is to get a good quality of the output format, therefore I like to use SVG.
 
-```bash
+```sh
 qrencode --output revcert.svg --dpi=600 --size=20 --type=SVG --read-from=~/revocation-certificate.txt # SVG ~10cm
 ```
 

@@ -24,7 +24,7 @@ But it would be too perfect to be true, if this great feature would be available
 In your `~/.zshrc` paste the following code below. This will adjust your configuration to have correct
 key binding in your terminal.
 
-```shell
+```sh
 # ZSH key-bindings
 # specyfic for OS
 case $(uname -s) in

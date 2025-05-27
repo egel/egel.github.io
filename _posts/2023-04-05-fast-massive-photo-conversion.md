@@ -20,13 +20,13 @@ With this tool, you can in a good well spirit of automation convert all images f
 
 Install [`imagemagic`][weblink-imagemagic] on your computer (it's free and available on all platforms). If you like my editing, especially the `heic` type of images, you may need to install an additional library called [`libheif`][weblink-libheif-macos]. For other platforms use [alternative][weblink-libheif-alternative].
 
-```bash
+```sh
 brew install libheif imagemagick
 ```
 
 Now you just need to specify a directory where your images are stored and execute the command:
 
-```bash
+```sh
 magick mogrify -format jpg -quality 60 *.HEIC
 ```
 

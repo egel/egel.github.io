@@ -13,7 +13,7 @@ My example will be base on creating a docker image with Node 8 and Chrome browse
 >
 > You also need to login to your docker registry. The example login would look like:
 >
-> ```bash
+> ```sh
 > docker login docker.example-domain.com:4567
 > ```
 
@@ -40,19 +40,19 @@ CMD yarn && yarn run start
 
 Secondly, to build the `Dockerfile` image and tag it you have to use command:
 
-```bash
+```sh
 docker build --tag my-private-node-8:latest ~/workspace/directory-with-dockerfile-inside/
 ```
 
 Next, check if the image works as you expected via:
 
-```bash
+```sh
 docker run --interactive --tag my-private-node-8:latest /bin/bash
 ```
 
 Later, re-tag the image with the name that will be visible on your docker hub. For example, your docker hub is available at URL `docker.example-domain.com:4567`, then you have to create an image and add the version of this image.
 
-```bash
+```sh
 docker tag my-private-node-8:latest docker.example-domain.com:4567/my-private-node-8:1.0.0
 ```
 
@@ -60,13 +60,13 @@ docker tag my-private-node-8:latest docker.example-domain.com:4567/my-private-no
 
 The last step. Push this new tagged image to the docker registry:
 
-```bash
+```sh
 docker push docker.example-domain.com:4567/my-private-node-8:1.0.0
 ```
 
 or create a new image with tag directly from your `Dockerfile`. The `.` at the very end of the command is important.
 
-```bash
+```sh
 docker build --file ./Dockerfile.node_8 -t docker.example-domain.com:4567/my-private-node-8:1.0.0 .
 ```
 
@@ -76,6 +76,6 @@ In the end, you should have your new image in the registry and everyone else who
 
 To test if everything working, you can run and examine the image if everything working as desired.
 
-```bash
+```sh
 docker exec -it docker.example-domain.com:4567/my-private-node-8:1.0.0 /bin/bash
 ```

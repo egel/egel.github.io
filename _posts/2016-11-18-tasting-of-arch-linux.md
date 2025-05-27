@@ -20,7 +20,7 @@ Below I would like to share my whole process and preferences during the setting 
 
 Display all drives on PC. I have only one drive called `/dev/sda`.
 
-```bash
+```sh
 fdisk -l
 cfdisk /dev/sda
 ```
@@ -45,7 +45,7 @@ For more take a look at [partitioning page][arch-partitioning] on Arch wiki.
 
 In this part we will format our partitions and enable Linux SWAP:
 
-```bash
+```sh
 mksf.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 mkswap /dev/sda1
@@ -55,14 +55,14 @@ pacstrap /mnt base base-devel # most basic packages
 
 If you don't want to install anything more, for now, you can omit packages, but I recommend to install them also just for more efficient usage before setting up the `network-manager`.
 
-```bash
+```sh
 pacstrap /mnt dialog wpa_supplicant network-manager-applet ldns # for connecting via wifi-menu after install
 pacstrap /mnt sudo zsh wget curl # additional packages
 ```
 
 ### Configuring the installation
 
-```bash
+```sh
 arch-chroot /mnt
 passwd root
 vi /etc/locale.gen    # uncoment all for you lang: en_US
@@ -91,7 +91,7 @@ umount -R /mnt
 
 ### Connect to internet
 
-```bash
+```sh
 ip link
 systemctl enable dhcpcd.service
 systemctl start dhcpcd.service
@@ -100,7 +100,7 @@ ping google.com
 
 or copy profile from examples
 
-```bash
+```sh
 cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/
 vim /etc/netctl/ethernet-dhcp    # change Interface=enp0s3
 netctl enable ethernet-dhcp
@@ -109,14 +109,14 @@ netctl start ethernet-dhcp
 
 > If above not work try manual install upon result from `ip link`, in my case the Ethernet device name is called `enp0s3`
 >
-> ```bash
+> ```sh
 > ip link
 > dhcpcd enp0s3
 > ```
 
 ### Create user
 
-```bash
+```sh
 useradd -m -g users -G wheel,storage,power,sys,adm -s /bin/zsh maciej
 passwd maciej
 vim /etc/sudoers    # Uncomment: wheel ALL=(ALL) ALL
@@ -135,7 +135,7 @@ Now we'll install additional useful stuff. You may or may not want to install it
 
 My **must have** list.
 
-```bash
+```sh
 sudo pacman -Syu
 sudo pacman -S gvim git tmux htop jack2
 ```
@@ -155,7 +155,7 @@ The list:
 
 I choose [Gnome3](https://www.gnome.org/gnome-3/) for my graphical environment because now many problems have been fixed by maintainers and it looks quite nice.
 
-```bash
+```sh
 sudo pacman -S gnome gnome-extra gnome-tweek-tool
 sudo systemctl enable gdm.service
 ```
@@ -166,7 +166,7 @@ Reboot system with `sudo reboot` and we're done with installation of GUI.
 
 First, we check which graphic card we have:
 
-```bash
+```sh
 lspci -k | grep -A 2 -E "(VGA|3D)"
 ```
 
@@ -174,7 +174,7 @@ In my laptop I've got **GeForce GT 425m**, so according to [Arch Linux wiki abou
 
 > It might want to uninstall `mesa-libgl` package (this package have some problems with handling animations for some graphics cards), so agree for that by pressing (Y).
 
-```bash
+```sh
 sudo pacman -S nvidia nvidia-utils nvidia-libgl
 sudo systemctl enable nvidia-persistenced.service
 ```

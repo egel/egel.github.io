@@ -18,12 +18,12 @@ I get the list and promptly reached the place with the nearest stable internet c
 
 Some fragment of the documentation list you can find below:
 
-- [jsdoc.github.io][weblink-jsdoc-github-io]
-- [SVGOGM][weblink-svgomg] a missing GUI for [svgo]
-- [tailwind][weblink-tailwind-github] for [v3](https://v3.tailwindcss.com/) (and [v4](https://tailwindcss.com))
-- [material UI][weblink-material-ui-github]
-- [react-hook-form][weblink-react-hook-form]
-- [react-icons][weblink-react-icons]
+-   [jsdoc.github.io][weblink-jsdoc-github-io]
+-   [SVGOGM][weblink-svgomg] a missing GUI for [svgo]
+-   [tailwind][weblink-tailwind-github] for [v3](https://v3.tailwindcss.com/) (and [v4](https://tailwindcss.com))
+-   [material UI][weblink-material-ui-github]
+-   [react-hook-form][weblink-react-hook-form]
+-   [react-icons][weblink-react-icons]
 
 <div class="alert alert-info">
     Psst... All Docker containers that I've created for myself are ready to use and you can find them all at the end of this article with info how to run them.
@@ -41,8 +41,8 @@ Let's take a look at the first example with the JS docs, available at [jsdoc.git
 
 Also, before dive deeper into example, it's worth mentioning that for creating `Dockerfiles` (or actually, in the end, Docker images), there are two major ways of doing this:
 
-- The faster way, but less elegant and sometimes faulty - usually done by utilizing a spinning dev server inside the container. Those images are relatively much larger due to containing all of the dependencies required for running the server.
-- The slower way, although producing smaller and more efficient images - by compiling source files and serving them statically with reliable servers like Nginx, for example.
+-   The faster way, but less elegant and sometimes faulty - usually done by utilizing a spinning dev server inside the container. Those images are relatively much larger due to containing all of the dependencies required for running the server.
+-   The slower way, although producing smaller and more efficient images - by compiling source files and serving them statically with reliable servers like Nginx, for example.
 
 I will start with the first way, also known as the "quick and dirty" method, to get some fast results. Later, I will do another example using a more efficient way of compiling and serving the content with previously mentioned Nginx.
 
@@ -50,7 +50,7 @@ I will start with the first way, also known as the "quick and dirty" method, to 
 
 As I mentioned, this way of creating containers is fast, although big and dirty as well. **I would not recommend using it in production environments**. Usually, the images are very large and inappropriate for end-consumer users. Although, for our purposes to serve documentation locally, it's totally fine.
 
-```bash
+```sh
 cd workspace
 git clone git@github.com:jsdoc/jsdoc.github.io.git
 
@@ -91,7 +91,7 @@ node_modules
 
 Now build the documentation and start a Docker container on port `9001`.
 
-```bash
+```sh
 docker build -f Dockerfile -t jsdoc:latest . && docker run --name jsdoc-offline -p 9001:8080 jsdoc:latest
 ```
 
@@ -189,7 +189,7 @@ http {
 
 All done together and now we can get into the last part, the build of the final Docker image.
 
-```bash
+```sh
 docker rm jsdoc-offline; docker build -f Dockerfile_v2 -t jsdoc:latest . && docker run --name jsdoc-offline --rm -p 9002:80 jsdoc:latest
 ```
 
@@ -201,7 +201,7 @@ But let's not prolong this, and the final results you can find below for my loca
 
 {% raw %}
 
-```bash
+```sh
 → docker images jsdoc-dirty:latest --format "{{.Repository}}:{{.Tag}} -> {{.Size}}"
 
 jsdoc-dirty:latest -> 1.85GB
@@ -225,7 +225,7 @@ Thank you for your time, staying with me and reading until the very end. Hope yo
 
 Here is also a little hint (for me in future) how to quickly setup and build images for multiple architectures on Mac M-serie.
 
-```bash
+```sh
 # create new builder
 docker buildx create --name mybuilder --use --bootstrap
 
@@ -248,7 +248,7 @@ I compiled the images for two architectures: [arm64v8][weblink-docker-arm64v8] a
     - [Dockerfile]({{ site.baseurl }}/assets/posts/building-offline-docs/jsdoc/Dockerfile)
     - [nginx.conf]({{ site.baseurl }}/assets/posts/building-offline-docs/jsdoc/nginx.conf)
 
-    ```bash
+    ```sh
     docker run -d -p 9001:80 egel/jsdoc:latest
     ```
 
@@ -257,7 +257,7 @@ I compiled the images for two architectures: [arm64v8][weblink-docker-arm64v8] a
     - [Dockerfile]({{ site.baseurl }}/assets/posts/building-offline-docs/svgomg/Dockerfile)
     - [nginx.conf]({{ site.baseurl }}/assets/posts/building-offline-docs/svgomg/nginx.conf)
 
-    ```bash
+    ```sh
     docker run -d -p 9002:80 egel/svgomg:latest
     ```
 
@@ -266,7 +266,7 @@ I compiled the images for two architectures: [arm64v8][weblink-docker-arm64v8] a
     - [Dockerfile]({{ site.baseurl }}/assets/posts/building-offline-docs/tailwind/Dockerfile)
     - [.dockerignore]({{ site.baseurl }}/assets/posts/building-offline-docs/tailwind/dockerignore)
 
-    ```bash
+    ```sh
     docker run -d -p 9003:8080 egel/tailwind:v3
     ```
 
@@ -275,7 +275,7 @@ I compiled the images for two architectures: [arm64v8][weblink-docker-arm64v8] a
     - [Dockerfile]({{ site.baseurl }}/assets/posts/building-offline-docs/mui/Dockerfile)
     - [.dockerignore]({{ site.baseurl }}/assets/posts/building-offline-docs/mui/dockerignore)
 
-    ```bash
+    ```sh
     docker run -d -p 9005:8080 egel/mui-docs:latest
     ```
 
@@ -284,7 +284,7 @@ I compiled the images for two architectures: [arm64v8][weblink-docker-arm64v8] a
     - [Dockerfile]({{ site.baseurl }}/assets/posts/building-offline-docs/react-hook-form/Dockerfile)
     - [.dockerignore]({{ site.baseurl }}/assets/posts/building-offline-docs/react-hook-form/dockerignore)
 
-    ```bash
+    ```sh
     docker run -d -p 9006:8080 egel/react-hook-form-docs:latest
     ```
 
@@ -292,7 +292,7 @@ I compiled the images for two architectures: [arm64v8][weblink-docker-arm64v8] a
 
     - [Dockerfile]({{ site.baseurl }}/assets/posts/building-offline-docs/react-icons/Dockerfile)
 
-    ```bash
+    ```sh
     docker run -d -p 9007:8080 egel/react-icons:v5.4.0
     ```
 

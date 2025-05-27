@@ -11,7 +11,7 @@ If you previously used `/etc/hosts` to manage your local domains and didn't yet 
 
 Using the `apt-get` manager we will install core program.
 
-```bash
+```sh
 brew install dnsmasq
 sudo cp -v $(brew --prefix dnsmasq)/homebrew.mxcl.dnsmasq.plist /Library/LaunchDaemons
 ```
@@ -22,14 +22,14 @@ Nowadays, there are so many new global domains like `.dev`, `.build`, `.systems`
 
 Let's add now a resolver for our dnsmasq:
 
-```bash
+```sh
 [ -d /etc/resolver ] || sudo mkdir -v /etc/resolver
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/loc'
 ```
 
 ### Add service to start with system
 
-```bash
+```sh
 sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
 sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 ```
@@ -38,7 +38,7 @@ sudo chown root /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
 Afterwards, when we have the program installed, we can go directly to its configuration. But before further actions, we'll create a backup file.
 
-```bash
+```sh
 sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 ```
 
@@ -51,20 +51,20 @@ address=/loc/127.0.0.1
 
 Next, restart the service:
 
-```bash
+```sh
 sudo launchctl load -w /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 ```
 
 The last thing we have to do, is to reset `mDNSResponser` service.
 
-```bash
+```sh
 sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
 ```
 
 Finally check if everything went OK and you are good to go.
 
-```bash
+```sh
 ping example.loc
 PING example.loc (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.010 ms

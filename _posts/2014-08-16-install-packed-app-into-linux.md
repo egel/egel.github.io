@@ -21,7 +21,7 @@ To do so:
 -   Download the icon program (format `png` or `xpa`) and save in `/usr/share/pixmaps/` directory to with `chmod 644`.
 -   Create new file for ex: `sqlitestudio.desktop` into `/usr/share/application` and paste below entry:
 
-    ```bash
+    ```sh
     [Desktop Entry]
     Name=SqliteStudio
     Comment=SQLite editor

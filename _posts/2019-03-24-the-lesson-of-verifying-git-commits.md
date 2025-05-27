@@ -67,7 +67,7 @@ Let's start with creating your PGP key. You will use it to secure/identify the c
 > Then go `~/.gnupg/gpg.conf` and temporally comment `no-tty` option that block creating anything on
 > machine (for security purpose, after this enable it again)
 
-```bash
+```sh
 gpg --full-gen-key
 ```
 
@@ -79,13 +79,13 @@ You will get few questions to answer (e.g.: name, email, comment, passphrase) wh
 
 Then we have to get a reference to your key so the git will understand which key he has to take in order to sign each commit. Below command will give them the list of all your public keys in the system, select the one you have entered.
 
-```bash
+```sh
 gpg --list-secret-keys --keyid-format LONG <your-email>
 ```
 
 Now you can take the PGP key ID to use it in Git. In my case, the key looks like this:
 
-```bash
+```sh
 gpg --list-secret-keys --with-fingerprint --keyid-format LONG john.doe@gmail.com
 sec   rsa4096/EFJNQD3VCBZZBB9M 2019-03-17 [SC]
       CY2U VVNI HKVX JGOP QIWU  E2NW EFJN QD3V CBZZ BB9M
@@ -99,7 +99,7 @@ Ok, we have got the key, now we need to get your public key to make it public (a
 
 Below command will store the key to file and save it in your home directory.
 
-```bash
+```sh
 gpg --armor --export <your-email> > ~/public_pgp_key_your_name.asc
 ```
 
@@ -109,7 +109,7 @@ We will get back later to GPG again in second when we get to the software config
 
 Now configuration of your git config file should be set up via below commands:
 
-```bash
+```sh
 git config --global user.signingKey EFJNQD3VCBZZBB9M
 git config --global commit.gpgSign true
 ```
@@ -146,7 +146,7 @@ So what we can configure here?
 
     In order to install pinentry on OSX use brew:
 
-    ```bash
+    ```sh
     brew install pinentry-mac
 
     # check where pinentry-mac is stored
@@ -250,13 +250,13 @@ After creating new pgp keys, when it are still new and shing it is recommended t
 
 To create a file with **public key** you do:
 
-```bash
+```sh
 gpg --output public-key.pgp --armor --export username@email.com
 ```
 
 then export much more valuable **private key** with command:
 
-```bash
+```sh
 gpg --output private-key.pgp --armor --export-secret-key username@email.com
 ```
 
@@ -267,13 +267,13 @@ public key to some servers. But before this make sure to create **revocation cer
 ignore it as if your key has unlimited expiry period and after uploading to external servers you
 will loose it (key or passphrase) it will be almost impossible to get it back.
 
-```bash
+```sh
 gpg --keyserver keyserver.ubuntu.com --send-keys yourkeyID
 ```
 
 then you can check if the server has the key (it might take few minutes)
 
-```bash
+```sh
 gpg --keyserver hkp://keyserver.ubuntu.com --search-key 'username@mail.com'
 ```
 

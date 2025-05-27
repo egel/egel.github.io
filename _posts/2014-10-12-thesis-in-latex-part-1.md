@@ -116,7 +116,7 @@ For Windows and Mac OSX installation is trivial. You're downloading an installer
 
 For Linux users full installation looks even simpler:
 
-```bash
+```sh
 # Debian based systems
 sudo apt-get install texlive-full biber
 ```

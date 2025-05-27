@@ -166,13 +166,9 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 
 ---
 
-<<<<<<< Updated upstream
-
 ## Keyboard
 
-# <kbd>cmd</kbd> + <kbd>r</kbd>
-
-> > > > > > > Stashed changes
+<kbd>cmd</kbd> + <kbd>r</kbd>
 
 ## Code
 

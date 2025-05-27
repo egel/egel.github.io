@@ -11,7 +11,7 @@ To be honsest with You, I was never a ruby guy, so I always approach the minimal
 
 Recently the ruby system version (<code>ruby 2.3.7p456 (2018-03-28 revision 63024) [universal.x86_64-darwin18]</code>) showed me the error like this:
 
-```bash
+```sh
 ERROR:  While executing gem ... (Gem::FilePermissionError)
 You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
 ```
@@ -22,14 +22,14 @@ Apart of the problem with ruby, I mainly work with JavaScript, so `nvm` (Node Ve
 
 Following [the official tutorial to integrate the `rbenv` with my shell](<](https://github.com/rbenv/rbenv#installation)>) (ZSH), I did:
 
-```bash
+```sh
 brew install rbenv
 echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ```
 
 Then restart of my terminal and `rbenv` is there. Lovely!
 
-```bash
+```sh
 $ rbenv --version
 rbenv 1.1.1
 
@@ -51,7 +51,7 @@ $ gem install bundler # or other important gems
 
 Although, that wasn't the end of my problems with ruby.
 
-```bash
+```sh
 bundle install
 Traceback (most recent call last):
     1: from /usr/local/bin/bundle:23:in `<main>'

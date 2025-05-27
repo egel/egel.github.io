@@ -35,7 +35,7 @@ Setuping mac is definitely not an every day task. It's usually long process, in 
 
 Unfortunately many programs will need Apple developer tools, so we install them as well via terminal command. Pay attention as this step might take a while... (this step took me ~10-15min)
 
-```bash
+```sh
 xcode-select --install
 ```
 
@@ -49,7 +49,7 @@ The [brew](https://brew.sh/index_de) is de facto standard macOS Package Manager.
 
 Following <https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f>
 
-```bash
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # disable analytics
@@ -107,7 +107,7 @@ Below you will find some screenshots with configuration I usually setup.
 
 **Colorscheme Gruvbox**
 
-```bash
+```sh
 curl https://raw.githubusercontent.com/herrbischoff/iterm2-gruvbox/master/gruvbox.itermcolors -o ~/Downloads/gruvbox.itermcolors
 ```
 
@@ -138,7 +138,7 @@ Download the basic editors and IDEs.
 
 I put this out of dotfiles as git is essential to do any further steps. Later we will update `.gitconfig` to be in synch with our dotfiles repo.
 
-```bash
+```sh
 wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig -P ~/
 wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig.local -P ~/
 wget https://raw.githubusercontent.com/egel/dotfiles/main/configuration/.gitconfig.local -O ~/.gitconfig.local_work
@@ -154,7 +154,7 @@ For **linux** & **macOS (Intel)**, at this moment you would need to run this com
 
 I love gitlab page for [configuration of SSH keys](https://docs.gitlab.com/ee/user/ssh.html).
 
-```bash
+```sh
 ssh-keygen -t ed25519 -C "johndoe@example.com"
 ```
 
@@ -168,7 +168,7 @@ ssh-keygen -p -f /path/to/ssh_key
 
 #### Configure ssh
 
-```bash
+```sh
 # ~/.ssh/config
 
 # Connect to gitlab.com
@@ -188,7 +188,7 @@ IdentityFile ~/.ssh/id_ed25519
 
 I like to make my files synchronized with my remote repository - this helps me to update main origin when my local changes arise.
 
-```bash
+```sh
 mkdir -p ~/privatespace/github.com/egel
 cd ~/privatespace/github.com/egel
 git clone git@github.com:egel/dotfiles.git
@@ -196,7 +196,7 @@ git clone git@github.com:egel/dotfiles.git
 
 Re-linking the files that was directly downloaded from the repo, in order to get full synchronization with the private dotfiles repository.
 
-```bash
+```sh
 # gitconfig
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gitconfig ~/.gitconfig
 
@@ -221,7 +221,7 @@ chmod 600 ~/.envpass.private
 
 At this moment you should check if your connection is established. Running the command the second time should give you message with your git user.
 
-```bash
+```sh
 ssh -T git@gitlab.com
 
 # run it 2nd time, to get user
@@ -237,7 +237,7 @@ Welcome to GitLab, @john.doe!
 
 Let's start with basics, like linking configuration folder with local directory.
 
-```bash
+```sh
 mkdir -p ~/.gnupg
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/dirmngr.conf ~/.gnupg/dirmngr.conf
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
@@ -247,14 +247,14 @@ ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gnupg/sks-keyserve
 
 Now, download your gpg keys (private & public) for all your accounts private (or/and work), as we will add them to gpg configuration in order to sign your things (like commits, private emails).
 
-```bash
+```sh
 gpg --import public_key.asc
 gpg --import private_key.asc
 ```
 
 Get your gpg fingerprint as we will need to use in git. Execute command below and get "signingKey" = last 16 chars of your fingerprint key. (I add arrow, to make it easier for you).
 
-```bash
+```sh
 $ gpg --list-secret-keys --with-fingerprint --keyid-format LONG your@email.com
 
                      |- this would be your "signingKey" ------- |- or here
@@ -267,7 +267,7 @@ ssb   rsa4096/EBEE77C5734494A6 2019-08-23 [E]
 
 Restart `gpg-agent` in order to use latest configuration.
 
-```bash
+```sh
 $ killall gpg-agent
 2023-03-27 15:13:12 gpg-agent[2253] SIGTERM received - shutting down ...
 2023-03-27 15:13:12 gpg-agent[2253] gpg-agent (GnuPG) 2.4.0 stopped
@@ -290,7 +290,7 @@ Fill the key in `~/.gitconfig.local`. So it's look more-less like:
 
 Test applied config by reloading terminal and commit something, to see if your commits are signed successfully.
 
-```bash
+```sh
 git commit -S "test commit with signing"
 ```
 
@@ -304,7 +304,7 @@ Without a doubt vim is the king of simple text editors. Many of you may argue, b
 
 Let's start as usual with configuring vim and neovim.
 
-```bash
+```sh
 # nvim (my primary editor)
 mkdir -p ~/.config
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.config/nvim ~/.config/nvim
@@ -323,7 +323,7 @@ ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.vim/ ~/.vim/
 
 [Tmux](https://github.com/tmux/tmux/wiki) - terminal multiplexer and [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).
 
-```bash
+```sh
 # link configuration
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.tmux.conf ~/.tmux.conf
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.tmux-osx.conf ~/.tmux-osx.conf
@@ -347,7 +347,7 @@ I was positively surprised that by default M1 use zsh shell.
 
 Install missing oh-my-zsh
 
-```bash
+```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -355,7 +355,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 For years I use [honukai](https://github.com/oskarkrawczyk/honukai-iterm-zsh) theme, as it gives me best orientation in the shell.
 
-```bash
+```sh
 mkdir -p ~/.oh-my-zsh/custom/themes/
 curl https://raw.githubusercontent.com/oskarkrawczyk/honukai-iterm/master/honukai.zsh-theme -o ~/.oh-my-zsh/custom/themes/honukai.zsh-theme
 ```
@@ -370,7 +370,7 @@ For all types of screen records, I use default mac screenshot tool, with some co
 
 I like to have one path for all type of screen records and usually choose something like:
 
-```bash
+```sh
 # Set new default path
 defaults write com.apple.screencapture $HOME/Documents/Screenrecords
 
@@ -389,7 +389,7 @@ Setup list view as a default view for all folders.
 
 Next after accepting "Use as Defaults", open terminal and remove all `.DS_Store` files from system used by the Finder, in order to remove all overrides (finder save all meta data about folders in .DS_Store).
 
-```bash
+```sh
 sudo find / -name ".DS_Store"  -exec rm {} \;
 ```
 
@@ -447,7 +447,7 @@ This simple soliution is also proposed in [Permanently disable "Enable Dictation
 
 ### NVM & yarn
 
-```bash
+```sh
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
@@ -471,7 +471,7 @@ Yarn is connected to version of node running, so best way to install it is via c
 <p><b>Info</b>: If you will use many node versions (via <a href="https://github.com/nvm-sh/nvm" target="_blank">nvm</a>), you also should to install yarn for each node version.</p>
 </div>
 
-```bash
+```sh
 # install yarn globaly
 npm install -g yarn
 
@@ -485,7 +485,7 @@ Follow my other post how to setup ruby on macOS - [If possible do not use the ru
 
 Standard link for configuration file
 
-```bash
+```sh
 # create symlink from dotfiles dotfiles repository
 ln -sf ~/privatespace/github.com/egel/dotfiles/configuration/.gemrc ~/.gemrc
 ```
@@ -500,7 +500,7 @@ I did not found better way to install Java, like through [SDK-MAN](https://sdkma
 
 To install it start with:
 
-```bash
+```sh
 # install
 curl -s "https://get.sdkman.io" | bash`
 
@@ -516,7 +516,7 @@ In case you wondering, my configuration for SDK-MAN you can find in my <a href="
 
 Some programs may require installing Apple's rosetta
 
-```bash
+```sh
 softwareupdate --install-rosetta
 ```
 

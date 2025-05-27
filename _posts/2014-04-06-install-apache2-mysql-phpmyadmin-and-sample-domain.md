@@ -31,7 +31,7 @@ Good [Polish article](http://www.ubuntu-pomoc.org/instalacja-apache-php5-mysql/)
 
 Let's begin from updating our Debian based system (Ubuntu):
 
-```shell
+```sh
 sudo apt-get update
 ```
 
@@ -39,13 +39,13 @@ sudo apt-get update
 
 Installation Apache 2.4 with its useful dependencies:
 
-```shell
+```sh
 sudo apt-get install apache2 apache2-doc apache2-utils apache2-mpm-worker
 ```
 
 Then restart the service with:
 
-```shell
+```sh
 sudo service apache2 restart
 ```
 
@@ -63,13 +63,13 @@ Now we'd like to add your current user (`$USER`) to `www-data` group used by apa
 
 To check if your current user belongs to `www-data` group simply do:
 
-```shell
+```sh
 groups $USER
 ```
 
 Now add existing user to `www-data` group.
 
-```shell
+```sh
 sudo usermod -a -G $USER www-data
 ```
 
@@ -127,7 +127,7 @@ sudo usermod -a -G $USER www-data
 
 Basic Apache configuration does not impose add the server name, but I really don't like to see some text like this below, when I reloading the server.
 
-```shell
+```sh
  * Restarting web server apache2
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
  ...done.
@@ -135,20 +135,20 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 
 That's why we will name it :)
 
-```shell
+```sh
 echo "ServerName localhost" | sudo tee /etc/apache2/conf-available/servername.conf
 ```
 
 Then we enable its name in for apache config by
 
-```shell
+```sh
 sudo a2enconf servername
 ```
 
 Just restart the server to make sure that all is done correctly.
 
-```shell
-sudo service apache2 restart
+```sh
+$ sudo service apache2 restart
  * Restarting web server apache2
   ...done.
 ```
@@ -161,13 +161,13 @@ MySQL is one of the most popular databases on the website market. So we will ins
 
 During the installation process program ask you for the root password, so we write it and **remember it** for later use.
 
-```shell
+```sh
 sudo apt-get install mysql-server
 ```
 
 Check the installed version
 
-```bash
+```sh
 mysql -V
 ```
 
@@ -181,7 +181,7 @@ Installation of the PHP interpreter isn't hard. One important thing is to instal
 
 Below we will install all useful modules, and enable them Apache server and PHP.
 
-```shell
+```sh
 sudo apt-get install php5 php5-cli php5-common php5-gd libapache2-mod-php5 php5-mysql libapache2-mod-auth-mysql apache2-mpm-prefork libapache2-mod-php5 php5-mcrypt
 sudo a2enmod php5
 sudo a2enmod rewrite
@@ -209,7 +209,7 @@ track_errors = On
 
 Installation of PHPMyAdmin is trivial.
 
-```shell
+```sh
 sudo apt-get install phpmyadmin
 ```
 
@@ -224,7 +224,7 @@ During the installation, the wizard will ask you for:
 
 > **Good practice:** If you want to create site ex: `egel.pl`, write config file like this `egel.pl.conf`
 
-```shell
+```sh
 cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/blog.loc.conf
 ```
 
@@ -248,7 +248,7 @@ And create something like this
 
 Save it.
 
-```shell
+```sh
 sudo ln -s $HOME/workspace/blog/output/ /var/www/blog.loc/public_html
 sudo a2ensite blog.loc.conf
 ```
@@ -257,7 +257,7 @@ Next, we need to tell the server to use our new ServerName.
 
 The best solution I know for development purposes involving `dnsmasq`, which I definitely recommend - you can find how to do it into article [How to install dnsmasq]({filename}install_dnsmask_linux.md) or just add the name of the server to the `/etc/hosts`:
 
-```bash
+```sh
 echo "127.0.0.1 blog.loc" | sudo tee /etc/hosts
 ```
 
@@ -310,7 +310,7 @@ Into this file, we need to comment some lines (`##`) like in below snippet.
 
 Now we set server so that we can throw files into the `~/public_html` directory. It may be necessary to give the appropriate rights for the directory, so we need to take this into consideration as well.
 
-```shell
+```sh
 mkdir ~/public_html
 chmod 775 ~/public_html
 sudo a2enmod userdir
@@ -318,7 +318,7 @@ sudo a2enmod userdir
 
 Now restart the Apache and since this moment we can easily use `~/public_html` in all user's catalogs like the server's one.
 
-```shell
+```sh
 sudo /etc/init.d/apache2 restart
 ```
 
@@ -330,14 +330,14 @@ We locate our `httpd.conf` file.
 
 We remember the path for running apache2
 
-```shell
+```sh
 $ ps -ef | grep apache
 apache   12846 14590  0 Oct20 ?        00:00:00 /usr/sbin/apache2
 ```
 
 Now we add `-V` flag
 
-```shell
+```sh
 $ /usr/sbin/apache2 -V | grep SERVER_CONFIG_FILE -D SERVER_CONFIG_FILE="/etc/apache2/apache2.conf"
 ```
 
@@ -383,7 +383,7 @@ Example: `sudo a2enmod rewrite`
 
 Example of changes for both types, files, and directories (recursively)
 
-```shell
+```sh
 find ~/public_html -type d -exec chmod 755 {} \;
 find ~/public_html -type f -exec chmod 644 {} \;
 ```
@@ -392,7 +392,7 @@ find ~/public_html -type f -exec chmod 644 {} \;
 
 Updating all folders and files for `www-data` user into the `public_html` directory.
 
-```bash
+```sh
 #!/bin/bash
 sudo adduser $USER www-data
 sudo chown -R www-data:www-data /home/$USER/public_html
@@ -401,7 +401,7 @@ sudo chmod -R 775 /home/$USER/public_html
 
 Save it inside `/home/$USER/bin` and make it executable using:
 
-```shell
+```sh
 sudo chmod +x /home/$USER/bin/public_html_fix.sh
 ```
 

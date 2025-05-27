@@ -34,7 +34,7 @@ We need to check some related libraries and languages which Vim or Vim's plug-in
 
 > Scripts that should work for Ubuntu 16.04 look like this:
 >
-> ```bash
+> ```sh
 > sudo apt-get update -y
 > sudo apt-get remove -y --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common
 > sudo apt-get install -y liblua5.1-dev luajit libluajit-5.1
@@ -43,22 +43,22 @@ We need to check some related libraries and languages which Vim or Vim's plug-in
 
 The results of checking I've presented below, because I think that it might be helpful for many beginners as I was once ;)
 
-```bash
+```sh
 $ lua -v
 Lua 5.1.3  Copyright (C) 1994-2013 Lua.org, PUC-Rio
 ```
 
-```bash
+```sh
 $ luajit -v
 LuaJIT 2.0.2 -- Copyright (C) 2005-2013 Mike Pall. http://luajit.org/
 ```
 
-```bash
+```sh
 $ ruby -v
 ruby 2.2.1p85 (2015-02-26 revision 49769) [x86_64-linux]
 ```
 
-```bash
+```sh
 $ perl -v
 
 This is perl 5, version 18, subversion 2 (v5.18.2) built for x86_64-linux-gnu-thread-multi
@@ -74,12 +74,12 @@ this system using "man perl" or "perldoc perl".  If you have access to the
 Internet, point your browser at http://www.perl.org/, the Perl Home Page.
 ```
 
-```bash
+```sh
 $ which python
 /usr/bin/python
 ```
 
-```bash
+```sh
 $ which python3
 /usr/bin/python3
 ```
@@ -92,11 +92,11 @@ The flags are simple, but the hardest one might be `--with-python-config-dir` be
 
 To check it, run:
 
-```bash
+```sh
 $ python-config --configdir
 ```
 
-```bash
+```sh
 $ python3-config --configdir
 ```
 
@@ -109,7 +109,7 @@ The downloaded version of Vim also matters. If a downloaded version of Vim is v7
 
 > If you don't know which is the latest version (tag) from Vim's repository on GitHub and you downloaded repo via `git clone`, then run this command `$ git describe --abbrev=0 --tags` in order to check the latest tag.
 
-```bash
+```sh
 mkdir -p /tmp/vim
 git clone https://github.com/vim/vim /tmp/vim
 cd /tmp/vim

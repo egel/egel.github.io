@@ -33,7 +33,7 @@ There are many ways to automatically configure a WiFi connection. I will try to 
 
 At the moment you don't have any wireless connection in order to download the program which simplifies our further network configuration. So for now, we will use a default raspberry tool to temporarily connect to wifi and download `wicd-curses`. Yes, we make it temporarily because `raspi-config` can't remember the network connections and/or automatically connect to them.
 
-```bash
+```sh
 sudo raspi-config
 ```
 
@@ -49,20 +49,20 @@ sudo raspi-config
 
 If you finally managed to get to your wifi now it's time to download `wicd-curses`
 
-```bash
+```sh
 sudo apt-get install wicd-curses
 ```
 
 Since we installed `wicd-curses` and we can disable default raspberry `dhcpcd` service.
 
-```bash
+```sh
 sudo systemctl disable dhcpcd
 sudo systemctl stop dhcpcd
 ```
 
 Let's start setting up our permanent WiFi connection with `wicd-curses`.
 
-```bash
+```sh
 sudo wicd-curses
 ```
 
@@ -84,7 +84,7 @@ Done. Now if you reboot your Pi it should automatically connect to the network. 
 
 ## Enable SSH access
 
-```bash
+```sh
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
@@ -99,7 +99,7 @@ Now you can reboot the device and connect to it via SSH.
 
 Additionally, I usually also install:
 
-```bash
+```sh
 sudo apt-get update
 sudo apt-get -y install \
     vim \
