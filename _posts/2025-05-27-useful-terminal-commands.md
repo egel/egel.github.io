@@ -29,6 +29,16 @@ Take all `mp4` files from current directory (`.`) and paste into `~/Music`.
 find . -name '*.mp4' -type f | xargs -I '{}' mv '{}' ~/Music
 ```
 
+## Updating
+
+### Update all git repositories from current path
+
+Take current directory (`.`) and search for all git repositories underneath (not nested) and fetch the latest changes from the origin.
+
+```sh
+find . -name .git -type d -prune | xargs -I {} sh -c 'cd {} && cd .. && printf "Repo: %s\n\n" $(realpath) && git fetch'
+```
+
 ## Testing
 
 ### Benchmark server effectiveness
