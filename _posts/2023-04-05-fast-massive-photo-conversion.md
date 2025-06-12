@@ -21,7 +21,7 @@ With this tool, you can in a good well spirit of automation convert all images f
 Install [`imagemagic`][weblink-imagemagic] on your computer (it's free and available on all platforms). If you like my editing, especially the `heic` type of images, you may need to install an additional library called [`libheif`][weblink-libheif-macos]. For other platforms use [alternative][weblink-libheif-alternative].
 
 ```sh
-brew install libheif imagemagick
+brew install libheif imagemagick parallel
 ```
 
 Now you just need to specify a directory where your images are stored and execute the command:
@@ -34,6 +34,12 @@ magick mogrify -format jpg -quality 60 *.HEIC
     <p>Pay attention to the case sensitivity of the letters in the image extension, as it may be different than in my command.</p>
     <p>You can also use instead full of <code>magick mogrify ...</code>, just <code>mogrify ...</code> because after the installation of imagemagic all its sub-programs should be available for you directly in the command line.</p>
 </div>
+
+The `mogrify` program use only 1 CPU at the time. If you have a lot of pictures to convert, you may want to utilize more of your CPUs with GNU `parallel`. I wrapped the command above with `parallel` and if you execute it the conversion should happen much faster.
+
+```sh
+parallel magick mogrify -format jpg -quality 60 ::: *.HEIC
+```
 
 Yay! A few seconds later all images are converted and they're ready for upload. Thanks, that's all 🤘. Have fun further exploring imagemagic secrets. It's definitely extremely helpful software.
 
