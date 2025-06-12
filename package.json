@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "postcss": "^8.5.5",
+    "concurrently": "^8.2.2",
+    "tailwindcss": "^4.0.14"
+  }
+}
