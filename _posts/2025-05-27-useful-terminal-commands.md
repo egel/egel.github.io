@@ -50,3 +50,18 @@ Spawn 12 threads with 400 simultaneous connections for 10s to `http://127.0.0.1:
 ```bash
 wrk -t12 -c400 -d10s http://127.0.0.1:9000
 ```
+
+## Saving
+
+### Opening file with vim without sudo privileges
+
+imagine situation when you open file, do lot of work and try saving but it tells you `E45: 'readonly' option is set (add ! to override)`. Trying with `w!` but this also not work. If this is the case, try this:
+
+```
+:w !sudo tee %
+```
+
+-   `w` - save
+-   `!` - execute
+-   `sudo tee` - programs
+-   `%` - current buffer
