@@ -13,22 +13,22 @@ In this article I want to cover a full, fresh installation and preparation of De
 
 Hardware:
 
--   USB stick with minimum 4GB or more
--   PC (I used one from spec below):
-    -   Model: HP Elitedesk 800 G3 DM 35W
-    -   CPU: Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
-    -   Mem: 16384 MB
--   Additional screen
--   Additional keyboard
+- USB stick with minimum 4GB or more
+- PC (I used one from spec below):
+  - Model: HP Elitedesk 800 G3 DM 35W
+  - CPU: Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
+  - Mem: 16384 MB
+- Additional screen
+- Additional keyboard
 
 Software:
 
--   Etcher (to flash)
--   Debian ISO
+- Etcher (to flash)
+- Debian ISO
 
 ## Prepare the USB stick
 
--   download image from [Debian download][weblink-debian-download] page. At the time of writing this article I used `Iso-DVD` of **Debian 12.11.0 Bookworm**.
+- download image from [Debian download][weblink-debian-download] page. At the time of writing this article I used `Iso-DVD` of **Debian 12.11.0 Bookworm**.
 
 [Select the mirror](https://www.debian.org/CD/http-ftp/#mirrors) closest to your location and download image.
 
@@ -64,8 +64,8 @@ We are now boot up again and we are ready for configuration.
 
 Depend on your resources there are 2 ways we want to setup IP address.
 
--   Dynamic, via assigning static IP via router DHCP (you may need MAC address of your device)
--   Static, via old school assign static IP address
+- Dynamic, via assigning static IP via router DHCP (you may need MAC address of your device)
+- Static, via old school assign static IP address
 
 #### Dynamic via router static IP
 
@@ -77,11 +77,11 @@ At first you might get error with "Your connection is not private". This is expe
 
 Let's jump to configuration:
 
--   go to `Home Network`
--   Find and open `cplane1` device
-    -   in tab `Network`:
-        -   select desired IP, I used `XXX.YYY.ZZZ.200`
-        -   enable `Assign permanent IPv4 address`
+- go to `Home Network`
+- Find and open `cplane1` device
+  - in tab `Network`:
+    - select desired IP, I used `XXX.YYY.ZZZ.200`
+    - enable `Assign permanent IPv4 address`
 
 If you cannot find it as have many devices you can check the MAC address after logging in with command `ip addr` (usually it come after word `ether` in some of networks).
 
@@ -175,7 +175,8 @@ deb cdrom:[Debian GNU/Linux 12.11.0 _Bookworm_ - Official amd64 DVD Binary-1 wit
 
 Edit file `vi /etc/apt/sources.list`, remove all, and paste something like this:
 
-```
+```sh
+root@cplane1:~# tee /etc/apt/sources.list >/dev/null <<EOF
 deb https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
 # deb-src https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
 
@@ -190,6 +191,7 @@ deb https://ftp.debian.org/debian/ bookworm-backports contrib main non-free non-
 
 deb https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
 # deb-src https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
+EOF
 ```
 
 Now, we can update and ready to install software
@@ -247,6 +249,8 @@ sudo timedatectl set-timezone Europe/Berlin
 
 ### Enable automatic updates
 
+(no ansible)
+
 Depend on who is reading and how hardcore security freak is, but we want to our server perform some security patches automatically. In second command below, we will get prompt to enable automatic updates.
 
 ```sh
@@ -254,14 +258,13 @@ sudo apt install unattended-upgrades
 sudo dpkg-reconfigure --priority=low unattended-upgrades
 ```
 
-```sh
-# copy folder from PC to laptop
-scp -r maciej@192.168.178.200:/home/maciej/ckad-training-ground .
-```
-
 ### Secure root account
 
+(yes ansible: `debian_secure_root_user.yaml`)
+
 Best practice is to disable login as `root` via SSH and prevent from direct login.
+
+> Before making this change, make sure your regular user has sudo privilages!! Otherwise you will need to reset your root pass with for example <https://linuxconfig.org/recover-reset-forgotten-linux-root-password>
 
 ```sh
 sudo passwd -l root
@@ -289,7 +292,7 @@ sudo apt install rsyslog -y
 systemctl status rsyslog
 
 # edit config
-sudo vi /etc/rsyslog.conf
+sudo vi /etc/rsyslog.confsudo vi /etc/rsyslog.conf
 ```
 
 Make sure section below is uncommented:
@@ -355,6 +358,7 @@ Fragment of `jail.local`
 
 ```ini
 [sshd]
+enabled  = true
 mode     = normal
 port     = ssh
 logpath  = %(sshd_log)s
@@ -370,6 +374,8 @@ sudo systemctl restart fail2ban
 
 #### AIDE
 
+(yes ansible)
+
 AIDE stands for _Advanced Intrusion Detection Environment_ and it monitors file system changes.
 
 ```sh
@@ -383,6 +389,8 @@ sudo aideinit
 It also should create a daily cron job to check system. You can examine it at `/etc/cron.daily/aide`.
 
 ### Configure AppArmor
+
+(yes ansible)
 
 AppArmor is a security program that restrict programs capabilities
 
@@ -405,7 +413,7 @@ sudo apparmor_status
 sudo apt install nginx -y
 ```
 
-Edit `vi /etc/nginx/nginx.conf` and disable showing server name and version
+Edit `sudo vi /etc/nginx/nginx.conf` and disable showing server name and version
 
 ```
 server_tokens off;
@@ -498,18 +506,102 @@ With that we finally have nice looking and informative start screen.
 
 <img src="/assets/posts/complete-guide-to-install-and-configure-debian-12/neofetch-inxi-welcome-screen.png" alt="" />
 
+## Ansible
+
+Nodes (Debian).
+
+First and formost we need to install `ansible`.
+
+But before installing we need to fix problem with `sourcelist` and add user to sudo - then you can use ansible. See "Update broken update" section.
+
+```sh
+# on node pc
+su -
+# enter root pass and execute below commands (therefore there is no sudo)
+
+# update source.list
+tee /etc/apt/sources.list >/dev/null <<EOF
+deb https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
+# deb-src https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
+
+deb https://ftp.debian.org/debian/ bookworm-updates contrib main non-free non-free-firmware
+# deb-src https://ftp.debian.org/debian/ bookworm-updates contrib main non-free non-free-firmware
+
+deb https://ftp.debian.org/debian/ bookworm-proposed-updates contrib main non-free non-free-firmware
+# deb-src https://ftp.debian.org/debian/ bookworm-proposed-updates contrib main non-free non-free-firmware
+
+deb https://ftp.debian.org/debian/ bookworm-backports contrib main non-free non-free-firmware
+# deb-src https://ftp.debian.org/debian/ bookworm-backports contrib main non-free non-free-firmware
+
+deb https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
+# deb-src https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
+EOF
+
+# update package
+apt update
+
+# install sudo and add user to sudo group
+apt install sudo -y
+usermod -aG sudo maciej
+
+# install ansible
+apt install ansible sshpass -y
+```
+
+Laptop macOS
+
+```sh
+brew install ansible sshpass
+
+mkdir ~/ansible_cluster/
+```
+
+**inventory.yaml**
+
+```yaml
+myhosts:
+  hosts:
+    cplane1:
+      ansible_host: 192.168.178.200
+      ansible_user: maciej
+    worker1:
+      ansible_host: 192.168.178.201
+      ansible_user: maciej
+    worker2:
+      ansible_host: 192.168.178.202
+      ansible_user: maciej
+```
+
+```sh
+# test hosts
+# -k, --ask-pass: ask for connection password
+# -K, --ask-become-pass: ask for privilege escalation password
+ansible myhosts -m ping -i inventory.yaml -kK
+```
+
+```sh
+# this might take while for the first time pulling and updating all packages
+ansible-playbook debian_update.yaml -i inventory.yaml
+
+```
+
+```sh
+# copy folder from PC to laptop
+scp -r maciej@192.168.178.200:/home/maciej/ckad-training-ground .
+```
+
 ## Finalization
 
 Hope you enjoy the tutorial and leave a comment what you like and what would you improve. Thank you for staying with me and until next time.
 
 ## Reference
 
--   https://sec-tech.org/how-to-harden-a-freshly-installed-debian-server-a-comprehensive-step-by-step-guide/
--   https://thelinuxcode.com/partition-disks-while-installing-debian-12-bookworm/
--   https://medium.com/@zehan9211/how-to-fix-debian-12-bookworm-update-error-395a3d6d4ab7
--   https://linuxways.net/debian/fix-sudo-command-not-found-debian-12/#post-24005-bookmark=id.x2pttty01825
--   https://cloudybarz.com/custom-motd-in-linux-debian/
--   https://www.putorius.net/custom-motd-login-screen-linux.html
+- https://sec-tech.org/how-to-harden-a-freshly-installed-debian-server-a-comprehensive-step-by-step-guide/
+- https://thelinuxcode.com/partition-disks-while-installing-debian-12-bookworm/
+- https://medium.com/@zehan9211/how-to-fix-debian-12-bookworm-update-error-395a3d6d4ab7
+- https://linuxways.net/debian/fix-sudo-command-not-found-debian-12/#post-24005-bookmark=id.x2pttty01825
+- https://cloudybarz.com/custom-motd-in-linux-debian/
+- https://www.putorius.net/custom-motd-login-screen-linux.html
 
 [post-home-k8s-cluster]: {{ site.baseurl }}{% link _posts/2024-08-26-home-k8s-cluster.md %}
 [weblink-etcher]: https://etcher.balena.io/
