@@ -25,8 +25,8 @@ Throughout the article, you may come across snippets with additional output to i
 ## Before you start
 
 - assemble your machines to together
-    - 3 times network cables to switch
-    - switch to router
+  - 3 times network cables to switch
+  - switch to router
 
 ## Start setup cluster
 
@@ -34,14 +34,14 @@ I assume you...
 
 - install ubuntu 24.02
 
-    ```sh
-    $ lsb_release -a
-    No LSB modules are available.
-    Distributor ID: Ubuntu
-    Description:    Ubuntu 24.04.2 LTS
-    Release:        24.04
-    Codename:       nobles
-    ```
+  ```sh
+  $ lsb_release -a
+  No LSB modules are available.
+  Distributor ID: Ubuntu
+  Description:    Ubuntu 24.04.2 LTS
+  Release:        24.04
+  Codename:       nobles
+  ```
 
 <div class="alert alert-info">
     <p><strong>Hey there! It's me from the future:</strong> In this tutorial, I'll be using Ubuntu as my primary operating system. While it's a great choice for beginners like you, if you're looking for a more stable and low-maintenance option, I'd recommend exploring the latest, stable Debian release.</p>
@@ -57,15 +57,15 @@ in my case:
 
 - Master
 
-    ```sh
-    sudo hostnamectl set-hostname cplane1
-    ```
+  ```sh
+  sudo hostnamectl set-hostname cplane1
+  ```
 
 - Workers
 
-    ```sh
-    sudo hostnamectl set-hostname worker1 # worker 1
-    ```
+  ```sh
+  sudo hostnamectl set-hostname worker1 # worker 1
+  ```
 
 Add to `/ect/hosts`
 
@@ -112,73 +112,73 @@ PING cplane1 (192.168.178.200) 56(84) bytes of data.
 
 - Master
 
-    ```
-    Protocol  Direction Port Range  Purpose Used By
-    -----------------------------------------------
-    TCP       Inbound   6443        Kubernetes API server All
-    TCP       Inbound   2379-2380   etcd server client API  kube-apiserver, etcd
-    TCP       Inbound   10250       Kubelet API Self, Control plane
-    TCP       Inbound   10259       kube-scheduler  Self
-    TCP       Inbound   10257       kube-controller-manager Self
-    ```
+  ```
+  Protocol  Direction Port Range  Purpose Used By
+  -----------------------------------------------
+  TCP       Inbound   6443        Kubernetes API server All
+  TCP       Inbound   2379-2380   etcd server client API  kube-apiserver, etcd
+  TCP       Inbound   10250       Kubelet API Self, Control plane
+  TCP       Inbound   10259       kube-scheduler  Self
+  TCP       Inbound   10257       kube-controller-manager Self
+  ```
 
-    ```sh
-    sudo ufw allow "OpenSSH"
-    sudo ufw enable
+  ```sh
+  sudo ufw allow "OpenSSH"
+  sudo ufw enable
 
-    # Test
-    sudo ufw status
+  # Test
+  sudo ufw status
 
-    sudo ufw allow 6443/tcp
-    sudo ufw allow 2379:2380/tcp
-    sudo ufw allow 10250/tcp
-    sudo ufw allow 10259/tcp
-    sudo ufw allow 10257/tcp
+  sudo ufw allow 6443/tcp
+  sudo ufw allow 2379:2380/tcp
+  sudo ufw allow 10250/tcp
+  sudo ufw allow 10259/tcp
+  sudo ufw allow 10257/tcp
 
-    # Test
-    $ sudo ufw status
-    [sudo] password for maciej:
-    Status: active
+  # Test
+  $ sudo ufw status
+  [sudo] password for maciej:
+  Status: active
 
-    To                         Action      From
-    --                         ------      ----
-    OpenSSH                    ALLOW       Anywhere
-    6443/tcp                   ALLOW       Anywhere
-    2379:2380/tcp              ALLOW       Anywhere
-    10250/tcp                  ALLOW       Anywhere
-    10259/tcp                  ALLOW       Anywhere
-    10257/tcp                  ALLOW       Anywhere
-    OpenSSH (v6)               ALLOW       Anywhere (v6)
-    6443/tcp (v6)              ALLOW       Anywhere (v6)
-    2379:2380/tcp (v6)         ALLOW       Anywhere (v6)
-    10250/tcp (v6)             ALLOW       Anywhere (v6)
-    10259/tcp (v6)             ALLOW       Anywhere (v6)
-    10257/tcp (v6)             ALLOW       Anywhere (v6)
-    ```
+  To                         Action      From
+  --                         ------      ----
+  OpenSSH                    ALLOW       Anywhere
+  6443/tcp                   ALLOW       Anywhere
+  2379:2380/tcp              ALLOW       Anywhere
+  10250/tcp                  ALLOW       Anywhere
+  10259/tcp                  ALLOW       Anywhere
+  10257/tcp                  ALLOW       Anywhere
+  OpenSSH (v6)               ALLOW       Anywhere (v6)
+  6443/tcp (v6)              ALLOW       Anywhere (v6)
+  2379:2380/tcp (v6)         ALLOW       Anywhere (v6)
+  10250/tcp (v6)             ALLOW       Anywhere (v6)
+  10259/tcp (v6)             ALLOW       Anywhere (v6)
+  10257/tcp (v6)             ALLOW       Anywhere (v6)
+  ```
 
 - Workers
 
-    ```sh
-    sudo ufw allow "OpenSSH"
-    sudo ufw enable
+  ```sh
+  sudo ufw allow "OpenSSH"
+  sudo ufw enable
 
-    sudo ufw allow 10250/tcp
-    sudo ufw allow 30000:32767/tcp
+  sudo ufw allow 10250/tcp
+  sudo ufw allow 30000:32767/tcp
 
-    # Test
-    $ sudo ufw status
-    [sudo] password for maciej:
-    Status: active
+  # Test
+  $ sudo ufw status
+  [sudo] password for maciej:
+  Status: active
 
-    To                         Action      From
-    --                         ------      ----
-    10250/tcp                  ALLOW       Anywhere
-    30000:32767/tcp            ALLOW       Anywhere
-    OpenSSH                    ALLOW       Anywhere
-    10250/tcp (v6)             ALLOW       Anywhere (v6)
-    30000:32767/tcp (v6)       ALLOW       Anywhere (v6)
-    OpenSSH (v6)               ALLOW       Anywhere (v6)
-    ```
+  To                         Action      From
+  --                         ------      ----
+  10250/tcp                  ALLOW       Anywhere
+  30000:32767/tcp            ALLOW       Anywhere
+  OpenSSH                    ALLOW       Anywhere
+  10250/tcp (v6)             ALLOW       Anywhere (v6)
+  30000:32767/tcp (v6)       ALLOW       Anywhere (v6)
+  OpenSSH (v6)               ALLOW       Anywhere (v6)
+  ```
 
 ### Enable kernel modules & disable swap
 
@@ -375,18 +375,18 @@ Install Container Network Interface (CNI).
 
 - [Flannel][weblink-flannel-github] (simple, although `NetworkPolicy` is not working with it)
 
-    If you want to use flannel, then you you have to install `flanneld` program
+  If you want to use flannel, then you you have to install `flanneld` program
 
-    ```sh
-    sudo mkdir -p /opt/bin/
-    sudo curl -fsSLo /opt/bin/flanneld https://github.com/flannel-io/flannel/releases/download/v0.25.5/flanneld-amd64
+  ```sh
+  sudo mkdir -p /opt/bin/
+  sudo curl -fsSLo /opt/bin/flanneld https://github.com/flannel-io/flannel/releases/download/v0.25.5/flanneld-amd64
 
-    sudo chmod +x /opt/bin/flanneld
-    ```
+  sudo chmod +x /opt/bin/flanneld
+  ```
 
 - Calico (advance, recommended for K8s course)
 
-    Setup will find later in the article.
+  Setup will find later in the article.
 
 ## Installing kubernetes
 
@@ -498,107 +498,107 @@ kubeadm join 192.168.178.200:6443 --token 8o34w9.jyhtv2av6l2ozv5d \
 
 - Flannel
 
-    ```sh
-    root@cplane1:/home/root# cat <<EOF | tee /run/flannel/subnet.env
-    FLANNEL_NETWORK=10.244.0.0/16
-    FLANNEL_SUBNET=10.244.0.0/16
-    FLANNEL_MTU=1450
-    FLANNEL_IPMASQ=true
-    EOF
+  ```sh
+  root@cplane1:/home/root# cat <<EOF | tee /run/flannel/subnet.env
+  FLANNEL_NETWORK=10.244.0.0/16
+  FLANNEL_SUBNET=10.244.0.0/16
+  FLANNEL_MTU=1450
+  FLANNEL_IPMASQ=true
+  EOF
 
-    root@cplane1:/home/root# kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
-    namespace/kube-flannel created
-    serviceaccount/flannel created
-    clusterrole.rbac.authorization.k8s.io/flannel created
-    clusterrolebinding.rbac.authorization.k8s.io/flannel created
-    configmap/kube-flannel-cfg created
-    daemonset.apps/kube-flannel-ds created
-    ```
+  root@cplane1:/home/root# kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+  namespace/kube-flannel created
+  serviceaccount/flannel created
+  clusterrole.rbac.authorization.k8s.io/flannel created
+  clusterrolebinding.rbac.authorization.k8s.io/flannel created
+  configmap/kube-flannel-cfg created
+  daemonset.apps/kube-flannel-ds created
+  ```
 
 - Calico
   configure NetworkManager
 
-    ```sh
-    $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/tigera-operator.yaml
-    namespace/tigera-operator created
-    customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/bgpfilters.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/caliconodestatuses.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/ipreservations.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/tiers.crd.projectcalico.org created
-    customresourcedefinition.apiextensions.k8s.io/adminnetworkpolicies.policy.networking.k8s.io created
-    customresourcedefinition.apiextensions.k8s.io/apiservers.operator.tigera.io created
-    customresourcedefinition.apiextensions.k8s.io/imagesets.operator.tigera.io created
-    customresourcedefinition.apiextensions.k8s.io/installations.operator.tigera.io created
-    customresourcedefinition.apiextensions.k8s.io/tigerastatuses.operator.tigera.io created
-    serviceaccount/tigera-operator created
-    clusterrole.rbac.authorization.k8s.io/tigera-operator created
-    clusterrolebinding.rbac.authorization.k8s.io/tigera-operator created
-    deployment.apps/tigera-operator created
+  ```sh
+  $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/tigera-operator.yaml
+  namespace/tigera-operator created
+  customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/bgpfilters.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/caliconodestatuses.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/ipreservations.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/kubecontrollersconfigurations.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/tiers.crd.projectcalico.org created
+  customresourcedefinition.apiextensions.k8s.io/adminnetworkpolicies.policy.networking.k8s.io created
+  customresourcedefinition.apiextensions.k8s.io/apiservers.operator.tigera.io created
+  customresourcedefinition.apiextensions.k8s.io/imagesets.operator.tigera.io created
+  customresourcedefinition.apiextensions.k8s.io/installations.operator.tigera.io created
+  customresourcedefinition.apiextensions.k8s.io/tigerastatuses.operator.tigera.io created
+  serviceaccount/tigera-operator created
+  clusterrole.rbac.authorization.k8s.io/tigera-operator created
+  clusterrolebinding.rbac.authorization.k8s.io/tigera-operator created
+  deployment.apps/tigera-operator created
 
-    # Install Calico by creating the necessary custom resource. For more information on
-    # configuration options available in this manifest, see the installation reference.
-    # https://docs.tigera.io/calico/latest/reference/installation/api
+  # Install Calico by creating the necessary custom resource. For more information on
+  # configuration options available in this manifest, see the installation reference.
+  # https://docs.tigera.io/calico/latest/reference/installation/api
 
-    # I used differnt cidr and need to be replaced
-    # 10.244.0.0/16
-    $ curl https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml >> custom-resources.yaml
-    $ sed -i 's/192.168.0.0\/16/10.244.0.0\/16/g' custom-resources.yaml
+  # I used differnt cidr and need to be replaced
+  # 10.244.0.0/16
+  $ curl https://raw.githubusercontent.com/projectcalico/calico/v3.29.2/manifests/custom-resources.yaml >> custom-resources.yaml
+  $ sed -i 's/192.168.0.0\/16/10.244.0.0\/16/g' custom-resources.yaml
 
-    # apply modified config
-    kubectl create -f custom-resources.yaml
+  # apply modified config
+  kubectl create -f custom-resources.yaml
 
-    # check if working
-    watch kubectl get pods -n calico-system
-    Every 2.0s: kubectl get pods -n calico-system                                                                                                                                                                                cplane1: Tue Feb 25 15:43:40 2025
+  # check if working
+  watch kubectl get pods -n calico-system
+  Every 2.0s: kubectl get pods -n calico-system                                                                                                                                                                                cplane1: Tue Feb 25 15:43:40 2025
 
-    NAME                                       READY   STATUS    RESTARTS   AGE
-    calico-kube-controllers-56bf547c9f-nrn42   1/1     Running   0          40s
-    calico-node-mf56l                          1/1     Running   0          41s
-    calico-typha-6854bfcb4d-6bhh5              1/1     Running   0          41s
-    csi-node-driver-mbqcl                      2/2     Running   0          40s
+  NAME                                       READY   STATUS    RESTARTS   AGE
+  calico-kube-controllers-56bf547c9f-nrn42   1/1     Running   0          40s
+  calico-node-mf56l                          1/1     Running   0          41s
+  calico-typha-6854bfcb4d-6bhh5              1/1     Running   0          41s
+  csi-node-driver-mbqcl                      2/2     Running   0          40s
 
-    # check taint
-    $ kubectl describe nodes | grep -i taint
-    Taints: node-role.kubernetes.io/control-plane:NoSchedule
-    Taints: <none>
+  # check taint
+  $ kubectl describe nodes | grep -i taint
+  Taints: node-role.kubernetes.io/control-plane:NoSchedule
+  Taints: <none>
 
-    # untained control plane
-    kubectl taint nodes --all node-role.kubernetes.io/control-plane-
-    node/cplane1 untainted
+  # untained control plane
+  kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+  node/cplane1 untainted
 
-    # recheck taint
-    $ kubectl describe nodes | grep -i taint
-    Taints:             <none>
-    Taints:             <none>
+  # recheck taint
+  $ kubectl describe nodes | grep -i taint
+  Taints:             <none>
+  Taints:             <none>
 
-    # check nodes
-    kubectl get nodes -o wide
-    ```
+  # check nodes
+  kubectl get nodes -o wide
+  ```
 
-    calicoctl
+  calicoctl
 
-    ```sh
-    curl -L https://github.com/projectcalico/calico/releases/download/v3.29.2/calicoctl-linux-amd64 -o calicoctl
-    chmod +x ./calicoctl
+  ```sh
+  curl -L https://github.com/projectcalico/calico/releases/download/v3.29.2/calicoctl-linux-amd64 -o calicoctl
+  chmod +x ./calicoctl
 
-    # move calicoctl to accessible on system path
-    mv calicoctl /usr/local/bin/
-    ```
+  # move calicoctl to accessible on system path
+  mv calicoctl /usr/local/bin/
+  ```
 
 ---
 
