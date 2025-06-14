@@ -53,15 +53,19 @@ wrk -t12 -c400 -d10s http://127.0.0.1:9000
 
 ## Saving
 
-### Opening file with vim without sudo privileges
+### Saving file with vim without sudo privileges
 
-imagine situation when you open file, do lot of work and try saving but it tells you `E45: 'readonly' option is set (add ! to override)`. Trying with `w!` but this also not work. If this is the case, try this:
+Imagine situation when you open file, do lot of important work, and then while trying to save the file, your vim tells you: `E45: 'readonly' option is set (add ! to override)`. Next you, try again, and again, and nothing... Then you remember about "force" and check saving with `w!`, but this also not work...
+
+If this is the case you have encounter, try this:
 
 ```
 :w !sudo tee %
 ```
 
--   `w` - save
--   `!` - execute
--   `sudo tee` - programs
--   `%` - current buffer
+- `w` - save
+- `!` - execute
+- `sudo tee` - programs
+- `%` - current buffer
+
+In short: it will save your current file , by wrapping it up with `sudo tee` which enable a proper saving privileges for sudo user.
