@@ -51,6 +51,21 @@ Spawn 12 threads with 400 simultaneous connections for 10s to `http://127.0.0.1:
 wrk -t12 -c400 -d10s http://127.0.0.1:9000
 ```
 
+### Reaching internet connection (macOS)
+
+Sometimes my laptop loose internet connection. Then I usually check reaching sever `8.8.8.8` and when it's back (and I did not notice) I want to be informed by "beep" sound.
+
+```sh
+while true; do
+  if ping -c 1 8.8.8.8 &> /dev/null; then
+    printf "%s %s\n" "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" success && afplay /System/Library/Sounds/Funk.aiff
+  else
+    printf "%s %s\n" "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" fail
+  fi;
+  sleep 5;
+done
+```
+
 ## Saving
 
 ### Saving file with vim without sudo privileges
