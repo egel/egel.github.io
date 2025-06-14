@@ -31,6 +31,8 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 
 <a href="#">Some basic link</a>
 
+or dynamic links to other posts like [Guide to install and configure Debian 12]({{ site.baseurl }}{% link _posts/2025-06-11-complete-guide-to-install-and-configure-debian-12 copy.md %})
+
 ### Blockquote
 
 <blockquote>Example of blockquote.</blockquote>
@@ -45,10 +47,10 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 
 ## Alerts
 
-<div class="alert alert-info">Some message</div>
-<div class="alert alert-success">Some message</div>
-<div class="alert alert-warning">Some message</div>
-<div class="alert alert-danger">Some message</div>
+<div class="alert alert-info">Some INFO message</div>
+<div class="alert alert-success">Some SUCCESS message</div>
+<div class="alert alert-warning">Some WARNING message</div>
+<div class="alert alert-danger">Some DANGER message</div>
 
 ---
 
