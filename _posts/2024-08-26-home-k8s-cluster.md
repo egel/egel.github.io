@@ -221,7 +221,7 @@ Enable kernel modules and add them to file for permament effect after reboot.
 ```sh
 $ sudo modprobe overlay
 $ sudo modprobe br_netfilter
-$ cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+$ cat <<'EOF' | sudo tee /etc/modules-load.d/k8s.conf
 overlay
 br_netfilter
 EOF
@@ -229,7 +229,7 @@ EOF
 
 ```sh
 # add kernel parametes to load with k8s configuration
-$ cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+$ cat <<'EOF' | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
@@ -439,7 +439,7 @@ To see the stack trace of this error execute with --v=5 or higher
 maciej@cplane1:~$ sudo su
 
 # pull images before
-root@cplane1:/home/root# kubeadm config images pull
+root@cplane1:/home/maciej# kubeadm config images pull
 [config/images] Pulled registry.k8s.io/kube-apiserver:v1.31.0
 [config/images] Pulled registry.k8s.io/kube-controller-manager:v1.31.0
 [config/images] Pulled registry.k8s.io/kube-scheduler:v1.31.0
@@ -449,7 +449,7 @@ root@cplane1:/home/root# kubeadm config images pull
 [config/images] Pulled registry.k8s.io/etcd:3.5.15-0
 
 # kubeadm and save the output text for later use (thanks to tee)
-root@cplane1:/home/root# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.178.200 --cri-socket=unix:///run/containerd/containerd.sock | tee kubeadm_init_store.txt
+root@cplane1:/home/maciej# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.178.200 --cri-socket=unix:///run/containerd/containerd.sock | tee kubeadm_init_store.txt
 [init] Using Kubernetes version: v1.31.0
 [preflight] Running pre-flight checks
 [preflight] Pulling images required for setting up a Kubernetes cluster
@@ -701,7 +701,7 @@ sudo apt-get autoremove
 sudo rm -rf ~/.kube
 sudo rm -rf /etc/cni /etc/kubernetes rm -f /etc/apparmor.d/docker /etc/systemd/system/etcd*
 sudo rm -rf /var/lib/dockershim /var/lib/etcd /var/lib/kubelet \
-         /var/lib/etcd2/ /var/run/kubernetes
+    /var/lib/etcd2/ /var/run/kubernetes
 
 # Clear out the Firewall Tables and Rules (for some must be root user)
 #
@@ -720,8 +720,8 @@ sudo apt-get purge --auto-remove containerd
 
 # if cplane continue to init
 kubeadm init ... # and rest of flags
+
 # if worker continue to join
-sudo apt-get purge --auto-remove containerd
 kubeadm join ... # and rest from kubeadm init
 ```
 
