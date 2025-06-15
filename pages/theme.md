@@ -31,7 +31,7 @@ Example of regular body text. **This part is bold**. _This part is italic._ <s>T
 
 <a href="#">Some basic link</a>
 
-or dynamic links to other posts like [Guide to install and configure Debian 12]({{ site.baseurl }}{% link _posts/2025-06-11-complete-guide-to-install-and-configure-debian-12 copy.md %})
+or dynamic links to other posts like [Guide to install and configure Debian 12]({{ site.baseurl }}{% link _posts/2025-06-11-complete-guide-to-install-and-configure-debian-12.md %})
 
 ### Blockquote
 
