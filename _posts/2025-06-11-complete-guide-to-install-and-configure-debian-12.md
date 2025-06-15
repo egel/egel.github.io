@@ -170,7 +170,7 @@ Using FritzBox, login to your router admin panel <http://fritz.box/>
 
 At first you might get error with "Your connection is not private". This is expected with local router configuration. Simply accept by click "Advanced", and continue "Proceed to fritz.box (unsafe)".
 
-<img src="/assets/posts/complete-guide-to-install-and-configure-debian-12/image.png" alt="" />
+<img src="/assets/posts/complete-guide-to-install-and-configure-debian-12/fritzbox-connection-is-not-private.png" alt="" />
 
 Let's jump to configuration:
 
