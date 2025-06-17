@@ -631,6 +631,29 @@ worker1   NotReady   <none>          4m3s   v1.33.1
 worker2   NotReady   <none>          11s    v1.33.1
 ```
 
+Last but not least is to check taints and unblock it.
+
+> Taints define if the control planes (in our case cplane1) can be used to also schedule some pods on it.
+
+```sh
+$ kubectl describe nodes | grep -i taint
+Taints:             node-role.kubernetes.io/control-plane:NoSchedule
+Taints:             node.kubernetes.io/unreachable:NoExecute
+Taints:             node.kubernetes.io/unreachable:NoExecute
+
+# untained control plane
+$ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+node/cplane1 untainted
+taint "node-role.kubernetes.io/control-plane" not found
+taint "node-role.kubernetes.io/control-plane" not found
+
+# check
+kubectl describe nodes | grep -i taint
+Taints:             <none>
+Taints:             node.kubernetes.io/unreachable:NoExecute
+Taints:             node.kubernetes.io/unreachable:NoExecute
+```
+
 ### Configure CNI Plugin: Calico
 
 It's time to take care of [install CNI Plugin Calico][weblink-calico-docs-quickstart]. We needs install it on the master, and the installer will make sure it also works on the workers nodes via DemonSet.
