@@ -39,13 +39,7 @@ find . -name '*.mp4' -type f | xargs -I '{}' mv '{}' ~/Music
 
 ## Updating
 
-### Update all git repositories from current path
-
-Take current directory (`.`) and search for all git repositories underneath (not nested) and fetch the latest changes from the origin.
-
-```sh
-find . -name .git -type d -prune | xargs -I {} sh -c 'cd {} && cd .. && printf "Repo: %s\n\n" $(realpath) && git fetch'
-```
+TBD
 
 ## Testing
 
@@ -59,6 +53,7 @@ Spawn 12 threads with 400 simultaneous connections for 10s to `http://127.0.0.1:
 wrk -t12 -c400 -d10s http://127.0.0.1:9000
 ```
 
+<<<<<<< Updated upstream
 ### Reaching internet connection (macOS)
 
 Sometimes my laptop loose internet connection. Then I usually check reaching sever `8.8.8.8` and when it's back (and I did not notice) I want to be informed by "beep" sound.
@@ -92,3 +87,29 @@ If this is the case you have encounter, try this:
 - `%` - current buffer
 
 In short: it will save your current file , by wrapping it up with `sudo tee` which enable a proper saving privileges for sudo user.
+=======
+## Git 
+
+### Update all git repositories from current path
+
+Take current directory (`.`) and search for all git repositories underneath (not nested) and fetch the latest changes from the origin.
+
+```sh
+find . -name .git -type d -prune | xargs -I {} sh -c 'cd {} && cd .. && printf "Repo: %s\n\n" $(realpath) && git fetch'
+```
+
+### Change master branch to main
+
+Change `master` to `main` and push to origin. 
+
+> (Optional) update the default branch in repo settings.
+
+```sh
+git checkout master
+git branch -m master main
+git push -u origin main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```
+>>>>>>> Stashed changes
