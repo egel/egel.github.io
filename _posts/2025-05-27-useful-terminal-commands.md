@@ -19,6 +19,14 @@ Search for `<phrase>` in all PDF files (case insensitive, e.g.: `.pdf`, `.PDF`) 
 find . -iname "*.pdf" -exec pdfgrep "<phrase>" {} +
 ```
 
+### Check open port on given IP address
+
+Check if on IP `145.23.12.30` there is open port `8080`
+
+```sh
+nmap -p 8080 145.23.12.30
+```
+
 ## Copying
 
 ### Copy all files of a given type to specific directory
