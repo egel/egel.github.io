@@ -604,6 +604,23 @@ With that we finally have nice looking and informative start screen.
 
 <img src="/assets/posts/complete-guide-to-install-and-configure-debian-12/neofetch-inxi-welcome-screen.png" alt="" />
 
+## Update default editor
+
+The default editor in Debian 12 is `nano`. I much more prefer vim so I will set it up as default
+system editor.
+
+```sh
+# show current editor
+sudo update-alternatives --display editor
+
+# install vim
+sudo apt -y update
+sudo apt -y install vim
+
+# update to vim
+sudo update-alternatives --set editor /usr/bin/vim.basic
+```
+
 ## Ansible
 
 To configure many futher actions easier, we need to install `ansible`. Debian 121 has all packges in standard repository simply do:
