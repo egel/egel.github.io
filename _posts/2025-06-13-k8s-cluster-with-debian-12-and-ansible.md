@@ -254,7 +254,13 @@ ansible-playbook -i inventory.yaml
 
 ### Disable swap
 
-To not have hiccups in our cluster it's recommended to disable the swap .
+We have to disable swap on all machines.
+
+You may ask why this is needed?
+
+This is becasue to provide better predictability, as it's hard to predict how pod might utilize memory especially when swap is enabled.
+
+To not have hiccups in our cluster it's also recommended to disable the swap.
 
 ```yaml
 ---
@@ -276,16 +282,30 @@ To not have hiccups in our cluster it's recommended to disable the swap .
             # release swap
             sudo swapoff -a
 
+            # Essential to make swap modifications that impact boot process
+            sudo update-initramfs -u -v
+
             # update grub configuration
             sudo update-grub
 
-            # Essential to make swap modifications that impact boot process
-            sudo update-initramfs -u
+            # in some cases after reboot the swap still was on 
+            # therefore we must disable autostart by add it to cronjob
+            cat <<'EOF' | sudo tee /etc/sysctl.d/k8s.conf
+            # disable swap after system reboot
+            @reboot   /sbin/swapoff -a
+            EOF
 
       - name: Test if swap has been released
         become: true
         register: out
         ansible.builtin.shell: |
+            # print fstab
+            sudo cat /etc/fstab
+
+            # list cronjobs
+            sudo crontab -l
+
+            # check if swap is off
             free -m
 
       - debug: var=out.stdout_lines
@@ -942,7 +962,8 @@ I put this section at the end as establishing good firewall configuration depend
         register: out
         ansible.builtin.shell: |
             # from registry
-            apt -y install vim build-essential curl wget git kubens kubectx netstat iptables golang
+            apt -y install vim build-essential curl wget kubens kubectx netstat iptables golang \
+                git git-lfs
 
             # k9s
             wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb
@@ -1024,6 +1045,8 @@ As always I want to thank you for time and staying with me. Hoping you had as mu
 - <https://www.servethehome.com/introducing-project-tinyminimicro-home-lab-revolution/hp-elitedesk-705-g3-kubernetes/>
 - <https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart>
 - <https://docs.ansible.com/ansible/latest/cli/ansible-playbook.html>
+- <https://manpages.debian.org/buster/initramfs-tools/update-initramfs.8.en.html>
+- <https://discuss.kubernetes.io/t/swap-off-why-is-it-necessary/6879>
 
 ## FAQ
 
