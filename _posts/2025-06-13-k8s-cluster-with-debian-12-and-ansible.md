@@ -1026,28 +1026,15 @@ sudo exportfs -ra
 sudo showmount -e localhost
 ```
 
+Do same for worker1 and worker2
+
 ```sh
-## WORKER 1
+# worker1 / worker2
 sudo apt update
 sudo apt install nfs-common nfs-kernel-server
 
-sudo showmount -e cplane1 # or IP address
-
-sudo su
-root@worker1:/home/maciej# echo "cplane1:/data/k8s /mnt/k8s nfs defaults 0 2" >> /etc/fstab # 2 is for automount
-root@worker1:/home/maciej# exit
-
-sudo systemctl daemon-reload # reload config
-sudo mkdir /mnt/k8s
-sudo mount /mnt/k8s
-
-ls -al /mnt/k8s # there should be hello file
-```
-
-```sh
-## WORKER 2
-sudo apt update
-sudo apt install nfs-common nfs-kernel-server
+# important to start service in odert to auto-mount
+sudo systemctl enable systemd-networkd-wait-online.service
 
 sudo showmount -e cplane1 # or IP address
 
