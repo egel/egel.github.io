@@ -53,7 +53,6 @@ Spawn 12 threads with 400 simultaneous connections for 10s to `http://127.0.0.1:
 wrk -t12 -c400 -d10s http://127.0.0.1:9000
 ```
 
-<<<<<<< Updated upstream
 ### Reaching internet connection (macOS)
 
 Sometimes my laptop loose internet connection. Then I usually check reaching sever `8.8.8.8` and when it's back (and I did not notice) I want to be informed by "beep" sound.
@@ -87,8 +86,8 @@ If this is the case you have encounter, try this:
 - `%` - current buffer
 
 In short: it will save your current file , by wrapping it up with `sudo tee` which enable a proper saving privileges for sudo user.
-=======
-## Git 
+
+## Git
 
 ### Update all git repositories from current path
 
@@ -100,7 +99,7 @@ find . -name .git -type d -prune | xargs -I {} sh -c 'cd {} && cd .. && printf "
 
 ### Change master branch to main
 
-Change `master` to `main` and push to origin. 
+Change `master` to `main` and push to origin.
 
 > (Optional) update the default branch in repo settings.
 
@@ -112,4 +111,3 @@ git fetch origin
 git branch -u origin/main main
 git remote set-head origin -a
 ```
->>>>>>> Stashed changes
