@@ -85,14 +85,14 @@ I assume you...
 
 - have installed Debian 12 Bookworm on your Nodes.
 
-    ```sh
-    $ lsb_release -a
-    No LSB modules are available.
-    Distributor ID: Debian
-    Description:    Debian GNU/Linux 12 (bookworm)
-    Release:        12
-    Codename:       bookworm
-    ```
+  ```sh
+  $ lsb_release -a
+  No LSB modules are available.
+  Distributor ID: Debian
+  Description:    Debian GNU/Linux 12 (bookworm)
+  Release:        12
+  Codename:       bookworm
+  ```
 
 - each node have user with sudo privileges
 - each node have enabled ssh connection
@@ -122,28 +122,28 @@ If you prefer not write down passwords for each node, remove them and use [Ansib
 
 # Master nodes
 cplanes:
-    hosts:
-        cplane1:
-            ansible_host: 192.168.178.200
-    vars:
-        ansible_user: maciej
-        ansible_post: 22
-        ansible_password: MY_PASSWORD
-        ansible_sudo_pass: MY_PASSWORD
+  hosts:
+    cplane1:
+      ansible_host: 192.168.178.200
+  vars:
+    ansible_user: maciej
+    ansible_post: 22
+    ansible_password: MY_PASSWORD
+    ansible_sudo_pass: MY_PASSWORD
 
 # Worker nodes
 workers:
-    hosts:
-        worker1:
-            ansible_host: 192.168.178.201
-        worker2:
-            ansible_host: 192.168.178.202
-    # Global variables
-    vars:
-        ansible_user: maciej
-        ansible_post: 22
-        ansible_password: MY_PASSWORD
-        ansible_sudo_pass: MY_PASSWORD
+  hosts:
+    worker1:
+      ansible_host: 192.168.178.201
+    worker2:
+      ansible_host: 192.168.178.202
+  # Global variables
+  vars:
+    ansible_user: maciej
+    ansible_post: 22
+    ansible_password: MY_PASSWORD
+    ansible_sudo_pass: MY_PASSWORD
 ```
 
 ### Set up proper hostnames and timezone
@@ -155,22 +155,22 @@ in my case:
 
 - Master
 
-    ```sh
-    sudo hostnamectl set-hostname cplane1
-    sudo timedatectl set-timezone Europe/Berlin
-    ```
+  ```sh
+  sudo hostnamectl set-hostname cplane1
+  sudo timedatectl set-timezone Europe/Berlin
+  ```
 
 - Workers
 
-    ```sh
-    # worker 1
-    sudo hostnamectl set-hostname worker1
-    sudo timedatectl set-timezone Europe/Berlin
+  ```sh
+  # worker 1
+  sudo hostnamectl set-hostname worker1
+  sudo timedatectl set-timezone Europe/Berlin
 
-    # worker 2
-    sudo hostnamectl set-hostname worker2
-    sudo timedatectl set-timezone Europe/Berlin
-    ```
+  # worker 2
+  sudo hostnamectl set-hostname worker2
+  sudo timedatectl set-timezone Europe/Berlin
+  ```
 
 Add to `/ect/hosts`
 
@@ -188,14 +188,14 @@ Test from each machine, example of reaching `cplane1`, `worker1` & `worker2`.
 - name: This playbook will test ping all cluster nodes
   hosts: mynodes
   tasks:
-      - name: Ping each node
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            ping cplane1 -c3
-            ping worker1 -c3
-            ping worker2 -c3
-      - debug: var=out.stdout_lines
+    - name: Ping each node
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        ping cplane1 -c3
+        ping worker1 -c3
+        ping worker2 -c3
+    - debug: var=out.stdout_lines
 ```
 
 Let's play to check successful connections
@@ -213,39 +213,39 @@ Enable kernel modules and add them to file for permanent effect after reboot.
 ---
 - name: This playbook for enabling kernel modules on Debian 12 Bookworm
   hosts:
-      - cplanes
-      - workers
+    - cplanes
+    - workers
   tasks:
-      - name: Check if target OS is Debian
-        fail:
-            msg: Stopped execution as the target OS is not Debian
-        when: ansible_facts['os_family'] != "Debian"
+    - name: Check if target OS is Debian
+      fail:
+        msg: Stopped execution as the target OS is not Debian
+      when: ansible_facts['os_family'] != "Debian"
 
-      - name: Enable kernel modules
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            sudo modprobe overlay
-            sudo modprobe br_netfilter
+    - name: Enable kernel modules
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        sudo modprobe overlay
+        sudo modprobe br_netfilter
 
-            # persist modules after restart
-            cat <<'EOF' | sudo tee /etc/modules-load.d/k8s.conf
-            overlay
-            br_netfilter
-            EOF
+        # persist modules after restart
+        cat <<'EOF' | sudo tee /etc/modules-load.d/k8s.conf
+        overlay
+        br_netfilter
+        EOF
 
-            # add kernel parameters to load with k8s configuration
-            cat <<'EOF' | sudo tee /etc/sysctl.d/k8s.conf
-            net.bridge.bridge-nf-call-iptables  = 1
-            net.bridge.bridge-nf-call-ip6tables = 1
-            net.ipv4.ip_forward                 = 1
-            EOF
+        # add kernel parameters to load with k8s configuration
+        cat <<'EOF' | sudo tee /etc/sysctl.d/k8s.conf
+        net.bridge.bridge-nf-call-iptables  = 1
+        net.bridge.bridge-nf-call-ip6tables = 1
+        net.ipv4.ip_forward                 = 1
+        EOF
 
-            # load modules above
-            sudo sysctl --system
+        # load modules above
+        sudo sysctl --system
 
-      - name: Show results
-        debug: var=out.stdout_lines
+    - name: Show results
+      debug: var=out.stdout_lines
 ```
 
 ```sh
@@ -266,49 +266,49 @@ To not have hiccups in our cluster it's also recommended to disable the swap.
 ---
 - name: This playbook disable swap on Debian 12 Bookworm
   hosts:
-      - cplanes
-      - workers
+    - cplanes
+    - workers
   tasks:
-      - name: Check if target OS is Debian
-        fail:
-            msg: Stopped execution as the target OS is not Debian
-        when: ansible_facts['os_family'] != "Debian"
+    - name: Check if target OS is Debian
+      fail:
+        msg: Stopped execution as the target OS is not Debian
+      when: ansible_facts['os_family'] != "Debian"
 
-      - name: Disable swap
-        become: true
-        ansible.builtin.shell: |
-            # disable swap in f
-            sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-            # release swap
-            sudo swapoff -a
+    - name: Disable swap
+      become: true
+      ansible.builtin.shell: |
+        # disable swap in f
+        sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+        # release swap
+        sudo swapoff -a
 
-            # Essential to make swap modifications that impact boot process
-            sudo update-initramfs -u -v
+        # Essential to make swap modifications that impact boot process
+        sudo update-initramfs -u -v
 
-            # update grub configuration
-            sudo update-grub
+        # update grub configuration
+        sudo update-grub
 
-            # in some cases after reboot the swap still was on 
-            # therefore we must disable autostart by add it to cronjob
-            cat <<'EOF' | sudo tee /etc/sysctl.d/k8s.conf
-            # disable swap after system reboot
-            @reboot   /sbin/swapoff -a
-            EOF
+        # in some cases after reboot the swap still was on 
+        # therefore we must disable autostart by add it to cronjob
+        cat <<'EOF' | sudo tee /etc/sysctl.d/k8s.conf
+        # disable swap after system reboot
+        @reboot   /sbin/swapoff -a
+        EOF
 
-      - name: Test if swap has been released
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            # print fstab
-            sudo cat /etc/fstab
+    - name: Test if swap has been released
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        # print fstab
+        sudo cat /etc/fstab
 
-            # list cronjobs
-            sudo crontab -l
+        # list cronjobs
+        sudo crontab -l
 
-            # check if swap is off
-            free -m
+        # check if swap is off
+        free -m
 
-      - debug: var=out.stdout_lines
+    - debug: var=out.stdout_lines
 ```
 
 And play it
@@ -328,39 +328,39 @@ Let's run this ansible command
 ---
 - name: This playbook update install docker and containerd on Debian 12 Bookworm
   hosts:
-      - cplanes
-      - workers
+    - cplanes
+    - workers
   tasks:
-      - name: Update and upgrade Debian packages
-        become: true
-        ansible.builtin.shell: |
-            apt -y update
-            apt -y upgrade
-      # source: https://docs.docker.com/engine/install/debian/
-      - name: Add Docker's official GPG key and add repository to sourcelist
-        become: true
-        ansible.builtin.shell: |
-            sudo apt -y install ca-certificates curl
-            sudo install -m 0755 -d /etc/apt/keyrings
-            sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-            sudo chmod a+r /etc/apt/keyrings/docker.asc
+    - name: Update and upgrade Debian packages
+      become: true
+      ansible.builtin.shell: |
+        apt -y update
+        apt -y upgrade
+    # source: https://docs.docker.com/engine/install/debian/
+    - name: Add Docker's official GPG key and add repository to sourcelist
+      become: true
+      ansible.builtin.shell: |
+        sudo apt -y install ca-certificates curl
+        sudo install -m 0755 -d /etc/apt/keyrings
+        sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+        sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-            # Add the repository to Apt sources:
-            echo \
-              "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-              $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-              sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-            sudo apt update -y
-      - name: Install docker and containerd
-        become: true
-        ansible.builtin.shell: |
-            sudo apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-      - name: Test docker installation
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            sudo docker run hello-world
-      - debug: var=out.stdout_lines
+        # Add the repository to Apt sources:
+        echo \
+          "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+          $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+          sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        sudo apt update -y
+    - name: Install docker and containerd
+      become: true
+      ansible.builtin.shell: |
+        sudo apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    - name: Test docker installation
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        sudo docker run hello-world
+    - debug: var=out.stdout_lines
 ```
 
 ```sh
@@ -384,56 +384,56 @@ Now, if we already have `conainerd` installed on all our nodes let's configure t
 ---
 - name: This playbook to configure containerd on Debian 12 Bookworm
   hosts:
-      - cplanes
-      - workers
+    - cplanes
+    - workers
   tasks:
-      - name: Check if target OS is Debian
-        fail:
-            msg: Stopped execution as the target OS is not Debian
-        when: ansible_facts['os_family'] != "Debian"
+    - name: Check if target OS is Debian
+      fail:
+        msg: Stopped execution as the target OS is not Debian
+      when: ansible_facts['os_family'] != "Debian"
 
-      - name: Check if containerd exist
-        stat:
-            path: /usr/bin/containerd
-        register: program_exist
+    - name: Check if containerd exist
+      stat:
+        path: /usr/bin/containerd
+      register: program_exist
 
-      - name: Fail if conatinerd does not exist
-        fail:
-            msg: Please install conatinerd before
-        when: not program_exist.stat.exists
+    - name: Fail if conatinerd does not exist
+      fail:
+        msg: Please install conatinerd before
+      when: not program_exist.stat.exists
 
-      - name: Update and upgrade Debian packages
-        become: true
-        ansible.builtin.shell: |
-            apt -y update
-            apt -y upgrade
+    - name: Update and upgrade Debian packages
+      become: true
+      ansible.builtin.shell: |
+        apt -y update
+        apt -y upgrade
 
-      - name: Configure containerd
-        become: true
-        ansible.builtin.shell: |
-            # stop containers
-            sudo systemctl stop containerd
+    - name: Configure containerd
+      become: true
+      ansible.builtin.shell: |
+        # stop containers
+        sudo systemctl stop containerd
 
-            # copy original configuration
-            sudo mv /etc/containerd/config.toml /etc/containerd/config.toml.orig
-            sudo containerd config default > /etc/containerd/config.toml
+        # copy original configuration
+        sudo mv /etc/containerd/config.toml /etc/containerd/config.toml.orig
+        sudo containerd config default > /etc/containerd/config.toml
 
-            # replace "SystemdCgroup = false" to "SystemdCgroup = true".
-            sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+        # replace "SystemdCgroup = false" to "SystemdCgroup = true".
+        sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 
-            # replace 'sandbox_image = "registry.k8s.io/pause:3.8" with newer 3.10
-            sudo sed -i 's/sandbox_image \= "registry.k8s.io\/pause:3.8"/sandbox_image \= "registry.k8s.io\/pause:3.10"/g' /etc/containerd/config.toml
+        # replace 'sandbox_image = "registry.k8s.io/pause:3.8" with newer 3.10
+        sudo sed -i 's/sandbox_image \= "registry.k8s.io\/pause:3.8"/sandbox_image \= "registry.k8s.io\/pause:3.10"/g' /etc/containerd/config.toml
 
-            # start
-            sudo systemctl start containerd
+        # start
+        sudo systemctl start containerd
 
-      - name: Test the status of containerd
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            sudo systemctl is-enabled containerd
-      - name: Show results
-        debug: var=out.stdout_lines
+    - name: Test the status of containerd
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        sudo systemctl is-enabled containerd
+    - name: Show results
+      debug: var=out.stdout_lines
 ```
 
 ```sh
@@ -449,58 +449,58 @@ ansible-playbook -i inventory.yaml debian_configure_containerd.yaml
 ---
 - name: This playbook install kubelet, kubectl and kubeadm on Debian 12 Bookworm
   hosts:
-      - cplanes
-      - workers
+    - cplanes
+    - workers
   tasks:
-      - name: Check if target OS is Debian
-        fail:
-            msg: Stopped execution as the target OS is not Debian
-        when: ansible_facts['os_family'] != "Debian"
+    - name: Check if target OS is Debian
+      fail:
+        msg: Stopped execution as the target OS is not Debian
+      when: ansible_facts['os_family'] != "Debian"
 
-      # source: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-      - name: Update and install required packages
-        become: true
-        ansible.builtin.shell: |
-            sudo apt -y update
-            sudo apt -y install apt-transport-https ca-certificates curl gnupg
+    # source: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+    - name: Update and install required packages
+      become: true
+      ansible.builtin.shell: |
+        sudo apt -y update
+        sudo apt -y install apt-transport-https ca-certificates curl gnupg
 
-      - name: Download the public signing key for the Kubernetes package repositories
-        become: true
-        ansible.builtin.shell: |
-            sudo mkdir -p -m 755 /etc/apt/keyrings
-            curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.33/deb/Release.key | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-            sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged APT programs to read this keyring
+    - name: Download the public signing key for the Kubernetes package repositories
+      become: true
+      ansible.builtin.shell: |
+        sudo mkdir -p -m 755 /etc/apt/keyrings
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.33/deb/Release.key | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+        sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg # allow unprivileged APT programs to read this keyring
 
-      - name: Add the appropriate Kubernetes apt repository
-        become: true
-        ansible.builtin.shell: |
-            # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
-            echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-            sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list   # helps tools such as command-not-found to work correctly
+    - name: Add the appropriate Kubernetes apt repository
+      become: true
+      ansible.builtin.shell: |
+        # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+        echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.33/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+        sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list   # helps tools such as command-not-found to work correctly
 
-      - name: Update apt package index, then install kubectl, kubectl kubeadm
-        become: true
-        ansible.builtin.shell: |
-            sudo apt -y update
-            sudo apt -y install kubelet kubectl kubeadm
-            sudo systemctl enable --now kubelet
+    - name: Update apt package index, then install kubectl, kubectl kubeadm
+      become: true
+      ansible.builtin.shell: |
+        sudo apt -y update
+        sudo apt -y install kubelet kubectl kubeadm
+        sudo systemctl enable --now kubelet
 
-      - name: Check installed versions
-        register: out
-        ansible.builtin.shell: |
-            kubelet --version
-            kubectl version
-            kubeadm version
-      - name: Show results
-        debug: var=out.stdout_lines
+    - name: Check installed versions
+      register: out
+      ansible.builtin.shell: |
+        kubelet --version
+        kubectl version
+        kubeadm version
+    - name: Show results
+      debug: var=out.stdout_lines
 
-      - name: Prevent kubernetes packages from being upgraded between versions
-        become: true
-        register: out2
-        ansible.builtin.shell: |
-            sudo apt-mark hold kubelet kubectl kubeadm
-      - name: Show results
-        debug: var=out2.stdout_lines
+    - name: Prevent kubernetes packages from being upgraded between versions
+      become: true
+      register: out2
+      ansible.builtin.shell: |
+        sudo apt-mark hold kubelet kubectl kubeadm
+    - name: Show results
+      debug: var=out2.stdout_lines
 ```
 
 ```sh
@@ -820,7 +820,7 @@ No IPv6 peers found.
 ## Install helm
 
 ```sh
-mkdir downloads 
+mkdir downloads
 cd downloads
 wget https://get.helm.sh/helm-v3.18.3-linux-amd64.tar.gz
 tar -zxvf helm-v3.18.3-linux-amd64.tar.gz
@@ -907,73 +907,73 @@ I put this section at the end as establishing good firewall configuration depend
 
 - Master
 
-    ```
-    Protocol  Direction Port Range  Purpose Used By
-    -----------------------------------------------
-    TCP       Inbound   6443        Kubernetes API server All
-    TCP       Inbound   2379-2380   etcd server client API  kube-apiserver, etcd
-    TCP       Inbound   10250       Kubelet API Self, Control plane
-    TCP       Inbound   10259       kube-scheduler  Self
-    TCP       Inbound   10257       kube-controller-manager Self
-    ```
+  ```
+  Protocol  Direction Port Range  Purpose Used By
+  -----------------------------------------------
+  TCP       Inbound   6443        Kubernetes API server All
+  TCP       Inbound   2379-2380   etcd server client API  kube-apiserver, etcd
+  TCP       Inbound   10250       Kubelet API Self, Control plane
+  TCP       Inbound   10259       kube-scheduler  Self
+  TCP       Inbound   10257       kube-controller-manager Self
+  ```
 
-    ```sh
-    sudo ufw allow "OpenSSH"
-    sudo ufw enable
+  ```sh
+  sudo ufw allow "OpenSSH"
+  sudo ufw enable
 
-    # Test
-    sudo ufw status
+  # Test
+  sudo ufw status
 
-    sudo ufw allow 6443/tcp
-    sudo ufw allow 2379:2380/tcp
-    sudo ufw allow 10250/tcp
-    sudo ufw allow 10259/tcp
-    sudo ufw allow 10257/tcp
+  sudo ufw allow 6443/tcp
+  sudo ufw allow 2379:2380/tcp
+  sudo ufw allow 10250/tcp
+  sudo ufw allow 10259/tcp
+  sudo ufw allow 10257/tcp
 
-    # Test
-    $ sudo ufw status
-    [sudo] password for maciej:
-    Status: active
+  # Test
+  $ sudo ufw status
+  [sudo] password for maciej:
+  Status: active
 
-    To                         Action      From
-    --                         ------      ----
-    OpenSSH                    ALLOW       Anywhere
-    6443/tcp                   ALLOW       Anywhere
-    2379:2380/tcp              ALLOW       Anywhere
-    10250/tcp                  ALLOW       Anywhere
-    10259/tcp                  ALLOW       Anywhere
-    10257/tcp                  ALLOW       Anywhere
-    OpenSSH (v6)               ALLOW       Anywhere (v6)
-    6443/tcp (v6)              ALLOW       Anywhere (v6)
-    2379:2380/tcp (v6)         ALLOW       Anywhere (v6)
-    10250/tcp (v6)             ALLOW       Anywhere (v6)
-    10259/tcp (v6)             ALLOW       Anywhere (v6)
-    10257/tcp (v6)             ALLOW       Anywhere (v6)
-    ```
+  To                         Action      From
+  --                         ------      ----
+  OpenSSH                    ALLOW       Anywhere
+  6443/tcp                   ALLOW       Anywhere
+  2379:2380/tcp              ALLOW       Anywhere
+  10250/tcp                  ALLOW       Anywhere
+  10259/tcp                  ALLOW       Anywhere
+  10257/tcp                  ALLOW       Anywhere
+  OpenSSH (v6)               ALLOW       Anywhere (v6)
+  6443/tcp (v6)              ALLOW       Anywhere (v6)
+  2379:2380/tcp (v6)         ALLOW       Anywhere (v6)
+  10250/tcp (v6)             ALLOW       Anywhere (v6)
+  10259/tcp (v6)             ALLOW       Anywhere (v6)
+  10257/tcp (v6)             ALLOW       Anywhere (v6)
+  ```
 
 - Workers
 
-    ```sh
-    sudo ufw allow "OpenSSH"
-    sudo ufw enable
+  ```sh
+  sudo ufw allow "OpenSSH"
+  sudo ufw enable
 
-    sudo ufw allow 10250/tcp
-    sudo ufw allow 30000:32767/tcp
+  sudo ufw allow 10250/tcp
+  sudo ufw allow 30000:32767/tcp
 
-    # Test
-    $ sudo ufw status
-    [sudo] password for maciej:
-    Status: active
+  # Test
+  $ sudo ufw status
+  [sudo] password for maciej:
+  Status: active
 
-    To                         Action      From
-    --                         ------      ----
-    10250/tcp                  ALLOW       Anywhere
-    30000:32767/tcp            ALLOW       Anywhere
-    OpenSSH                    ALLOW       Anywhere
-    10250/tcp (v6)             ALLOW       Anywhere (v6)
-    30000:32767/tcp (v6)       ALLOW       Anywhere (v6)
-    OpenSSH (v6)               ALLOW       Anywhere (v6)
-    ```
+  To                         Action      From
+  --                         ------      ----
+  10250/tcp                  ALLOW       Anywhere
+  30000:32767/tcp            ALLOW       Anywhere
+  OpenSSH                    ALLOW       Anywhere
+  10250/tcp (v6)             ALLOW       Anywhere (v6)
+  30000:32767/tcp (v6)       ALLOW       Anywhere (v6)
+  OpenSSH (v6)               ALLOW       Anywhere (v6)
+  ```
 
 ### Installing useful tools
 
@@ -981,30 +981,30 @@ I put this section at the end as establishing good firewall configuration depend
 ---
 - name: This playbook install useful programs
   hosts:
-      - cplanes
-      - workers
+    - cplanes
+    - workers
   tasks:
-      - name: Update and upgrade Debian packages
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            apt -y update
-            apt -y upgrade
-      - name: Install programs
-        become: true
-        register: out
-        ansible.builtin.shell: |
-            # from registry
-            apt -y install vim build-essential curl wget kubens kubectx netstat iptables golang \
-                git git-lfs
+    - name: Update and upgrade Debian packages
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        apt -y update
+        apt -y upgrade
+    - name: Install programs
+      become: true
+      register: out
+      ansible.builtin.shell: |
+        # from registry
+        apt -y install vim build-essential curl wget kubens kubectx netstat iptables golang \
+            git git-lfs
 
-            # k9s
-            wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb
-            apt -y install ./k9s_linux_amd64.deb
-            rm k9s_linux_amd64.deb
+        # k9s
+        wget https://github.com/derailed/k9s/releases/latest/download/k9s_linux_amd64.deb
+        apt -y install ./k9s_linux_amd64.deb
+        rm k9s_linux_amd64.deb
 
-      - name: Show results
-        debug: var=out.stdout_lines
+    - name: Show results
+      debug: var=out.stdout_lines
 ```
 
 ```sh
@@ -1163,7 +1163,7 @@ vol2   200Mi      RWO            Retain           Bound    default/nginx-claim0 
 ```
 
 [post-home-k8s-cluster]: {{ site.baseurl }}{% link _posts/2024-08-26-home-k8s-cluster.md %}
-[post-install-and-configure-debian12]: {{ site.baseurl }}{% link _posts/2025-06-11-complete-guide-to-install-and-configure-debian-12 copy.md %}
+[post-install-and-configure-debian12]: {{ site.baseurl }}{% link _posts/2025-06-11-complete-guide-to-install-and-configure-debian-12.md %}
 [weblink-flannel-github]: https://github.com/flannel-io/flannel
 [weblink-ansible-docs]: https://docs.ansible.com/
 [weblink-ansible-cli-docs]: https://docs.ansible.com/ansible/latest/cli/ansible.html

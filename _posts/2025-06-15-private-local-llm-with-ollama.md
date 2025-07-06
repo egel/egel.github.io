@@ -23,5 +23,4 @@ curl http://192.168.178.200:31434/api/generate -d '{ "model": "your_model_name",
 pull model `llama3.2:latest`
 
 [post-home-k8s-cluster]: {{ site.baseurl }}{% link _posts/2024-08-26-home-k8s-cluster.md %}
-[post-install-and-configure-debian12]: {{ site.baseurl }}{% link _posts/2025-06-11-complete-guide-to-install-and-configure-debian-12 copy.md %}
 [weblink-ollama-llama32]: https://ollama.com/library/llama3.2
