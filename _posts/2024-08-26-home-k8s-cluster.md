@@ -92,6 +92,40 @@ PING cplane1 (192.168.178.200) 56(84) bytes of data.
 64 bytes from cplane1 (192.168.178.200): icmp_seq=3 ttl=64 time=0.607 ms
 ```
 
+### Quick and secure SSH connection
+
+If you want to have easy, quick and secure connection to your machine from your machine where you connect to cluster (laptop) you can add your public SSH key to your `cplane1`.
+
+> There is no need to add this to workers machines as only cplane1 is used for communication with
+> cluster, but will not stop you if you want to do it anyway ;)
+
+```sh
+$ ssh-copy-id -i ~/.ssh/id_ed25519.pub maciej@192.168.178.200
+
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/Users/maciej/.ssh/id_ed25519.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+maciej@192.168.178.200's password:
+
+Number of key(s) added:        1
+
+Now try logging into the machine, with: "ssh -i /Users/maciej/.ssh/id_ed25519 'maciej@192.168.178.200'"
+and check to make sure that only the key(s) you wanted were added.
+```
+
+Then on same extertal machine add new entry to your `~/.ssh/config` like the one following:
+
+```
+Host cplane1
+    HostName 192.168.178.200
+    User maciej
+    Port 22  # adapt if you use different port
+    IdentityFile ~/.ssh/id_ed25519
+    PreferredAuthentications publickey
+```
+
+Now, try to ssh like pro `ssh cplane1`.
+
 ### Enabling firewall
 
 <div class="alert alert-warning">
