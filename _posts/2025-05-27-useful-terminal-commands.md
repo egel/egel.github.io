@@ -87,6 +87,27 @@ If this is the case you have encounter, try this:
 
 In short: it will save your current file , by wrapping it up with `sudo tee` which enable a proper saving privileges for sudo user.
 
+## Generating
+
+### Random passwords
+
+- Option 1: Using `openssl` and generate random 12 characters password.
+
+  ```sh
+  openssl rand -base64 12
+  ```
+
+### Secure password file for users
+
+- Option 1: Using `htpasswd` and generate given sample password `123` and save to `auth` file with `john` key name.
+
+  ```sh
+  $ htpasswd -c auth john
+
+  $ cat auth
+  john:$apr1$VqXa9gLG$pAIL.jm6Ts48QH4RKlX6k0
+  ```
+
 ## Git
 
 ### Update all git repositories from current path
