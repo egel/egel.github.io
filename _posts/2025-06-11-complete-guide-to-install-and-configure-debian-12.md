@@ -630,6 +630,27 @@ To configure many futher actions easier, we need to install `ansible`. Debian 12
 apt install ansible sshpass -y
 ```
 
+## Shell
+
+Change shell can be also a productive boost for you. I like to use zsh therefore here will also
+drop recommendation to install it:
+
+```sh
+# install zsh
+sudo apt update && sudo apt install zsh
+
+# change the default shell to zsh
+chsh -s $(which zsh)
+```
+
+### oh-my-zsh
+
+When talking about zsh I have to suggest you also installing [oh-my-zsh](https://ohmyz.sh/#install)
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
 ## Finalization
 
 Woooohooo! This was a long ride but it was worth it! Now you have system Hope you enjoy the tutorial will leave a comment what you like and what see improved. Thank you for staying with me and as alwyas until next time.
