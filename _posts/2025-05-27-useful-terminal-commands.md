@@ -97,9 +97,15 @@ In short: it will save your current file , by wrapping it up with `sudo tee` whi
   openssl rand -base64 12
   ```
 
+- Option 2: Generate chars `[a-z0-9]` (no special chars)
+
+  ```sh
+  LC_ALL=C bash -c 'head /dev/urandom | tr -dc a-z0-9 | head -c30'
+  ```
+
 ### Secure password file for users
 
-- Option 1: Using `htpasswd` and generate given sample password `123` and save to `auth` file with `john` key name.
+- Option 3: Using `htpasswd` and generate given sample password `123` and save to `auth` file with `john` key name.
 
   ```sh
   $ htpasswd -c auth john
