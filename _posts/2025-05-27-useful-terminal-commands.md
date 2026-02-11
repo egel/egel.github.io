@@ -138,3 +138,20 @@ git fetch origin
 git branch -u origin/main main
 git remote set-head origin -a
 ```
+
+## Docker
+
+Sometimes we have to check what's inside prepared docker image, but it might be hard debug it. Nothing far from that.
+
+Here is little solution. To explain:
+
+- (optional): `--name podman1` runs under unique name `podman1`. This is handy if you need easy reference to the container
+- (optional): `--rm` remove and cleanup container after closing. This is handy if you do not want dangling containers around
+- `--entrypoint=""` override image's entrypoint. This is handy to cleanup if the container has custom entrypoint
+- `-it` to start interactive session
+- use the container `egel/podman:latest`
+- jump to `bash` shell
+
+```sh
+docker run --name podman1 --rm --entrypoint="" -it egel/podman:latest bash
+```
