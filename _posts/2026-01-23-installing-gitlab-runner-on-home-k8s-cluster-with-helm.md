@@ -178,7 +178,7 @@ Enough with the setup details, let's dive into defining the `gitlab-runner-value
 ---
 # GitLab connection
 gitlabUrl: https://gitlab.com/ # or your self-hosted URL
-runnerToken: "PLACE YOUR GITLAB RUNNER TOKER HERE" # paste your token from previous steps or better use a secret (see desc below)
+runnerToken: "PLACE YOUR GITLAB RUNNER TOKEN HERE" # paste your token from previous steps or better use a secret (see desc below)
 
 imagePullPolicy: IfNotPresent
 
