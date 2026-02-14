@@ -27,6 +27,14 @@ Check if on IP `145.23.12.30` there is open port `8080`
 nmap -p 8080 145.23.12.30
 ```
 
+## Listing
+
+### Show all directories and their real sizes (with sort)
+
+```sh
+du -sh */ | sort -hr
+```
+
 ## Copying
 
 ### Copy all files of a given type to specific directory
